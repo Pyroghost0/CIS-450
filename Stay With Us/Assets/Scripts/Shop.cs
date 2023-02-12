@@ -60,6 +60,7 @@ public class Shop : MonoBehaviour
     public GameObject buyButton;
     public TextMeshProUGUI shopBuyButtonText;
     public TextMeshProUGUI returnButtonText;
+    public Sprite[] buttonSprites;
 
     public void StartShop(Shoptender newShoptender)
     {
@@ -114,6 +115,7 @@ public class Shop : MonoBehaviour
             buyButton.SetActive(true);
             shopBuyButtonText.text = items[itemSelected] + "[" + amountBuying + "] $" + itemPrices[itemSelected];
             returnButtonText.text = "Cancel";
+            //buttons[itemSelected].GetComponent<Image>().sprite = ;
             amountButtons[itemSelected * 2].SetActive(true);
             amountButtons[itemSelected * 2+1].SetActive(true);
             buttonPriceTexts[itemSelected].text = "X" + amountBuying;
@@ -182,7 +184,7 @@ public class Shop : MonoBehaviour
 
     public void Add()
     {
-        if (amountBuying < itemAmount[itemSelected] || itemAmount[itemSelected] == -1)
+        if (amountBuying < itemAmount[itemSelected] || itemAmount[itemSelected] <= -1)
         {
             amountBuying++;
             buttonPriceTexts[itemSelected].text = "X" + amountBuying;
