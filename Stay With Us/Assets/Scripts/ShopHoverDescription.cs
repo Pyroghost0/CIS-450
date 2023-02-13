@@ -20,13 +20,17 @@ public class ShopHoverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         //Debug.Log("Enter " + itemNumber);
         //mouseOver = true;
-        if (shop.items[itemNumber] == ItemType.Empty)
+        if (shop.itemSelected == -1)
         {
-            shop.SlowText("We're sold out... Read the sign.");
-        }
-        else
-        {
-            shop.SlowText(shop.itemTexts[(int)shop.items[itemNumber]]);
+            shop.SlowText(shop.itemDescriptions[(int)shop.items[itemNumber]]);
+            /*if (shop.items[itemNumber] == ItemType.Empty)
+            {
+                shop.SlowText("We're sold out... Read the sign.");
+            }
+            else
+            {
+                shop.SlowText(shop.itemDescriptions[(int)shop.items[itemNumber]]);
+            }*/
         }
     }
 
@@ -35,7 +39,10 @@ public class ShopHoverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
         //Debug.Log("Leave " + itemNumber);
         //mouseOver = false;
         //shop.SlowText(shop.shoptenderMainTexts[(int)shop.shopType][Random.Range(0, shop.shoptenderMainTexts[(int)shop.shopType].Length)]);
-        shop.SlowText(shop.talkTexts[Random.Range(0, shop.talkTexts.Length)]);
+        if (shop.itemSelected == -1)
+        {
+            shop.SlowText(shop.talkTexts[Random.Range(0, shop.talkTexts.Length)]);
+        }
     }
 }
 

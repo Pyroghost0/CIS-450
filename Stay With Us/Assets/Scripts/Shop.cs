@@ -50,27 +50,32 @@ public class Shop : MonoBehaviour
 
     //private float[] textSpeeds = { .03f, .02f, .016f, .025f };
     private string[] shopNames = { "The Bar", "Gun Shop", "Black Market", "Tailor" };
-    public string[] itemTexts = { "Sold out, read the sign...", "Some bullets..."};
-    public string[] talkTexts = { "What a fine day to be living... I mean be dead...", "What? Me, a reaper? No... I'm not... Tell anyone and your dead..."};
+    public string[] itemDescriptions = { "Sold out, read the sign...", "Some bullets..."};
+    public string[] talkTexts = { "What a fine day to be living... I mean be dead...", "What? Me, a reaper? No... I'm not... Tell anyone and your dead...", "Stories? Yeah I got stories... One time someone died. The End...", "I've taken the soul out of plants before... Don't ask how...",
+    "Hurry up and buy something, I might just die from boredom here...", "Yes, yes... dogs go to heaven, and cats go to hell...", "How are the plants growing so fast? Uhh... becuase I said so...", "Why do I need money? I'm just saving up so I can reincarnate into a shrimp...",
+    "Are there more reapers? Yes, can't you see the one behind you?...", "Life and death are... who cares about philiosiphy anyways...", "I have plenty of hobbies killing, reaping souls... I don't have a hobby...", "THIS SCYTHE IS NOT FOR FARMING..."};
     //public string[][] shoptenderMainTexts = { barMainTexts, gunMainTexts, theifMainTexts, tailorMainTexts };
 
     public GameObject[] amountButtons;
-    private int itemSelected = -1;
+    public int itemSelected = -1;
     private int amountBuying;
     public GameObject buyButton;
     public TextMeshProUGUI shopBuyButtonText;
     public TextMeshProUGUI returnButtonText;
     public Sprite[] buttonSprites;
+    public GameObject[] inventoryAmountButtons;
+    public TextMeshProUGUI[] inventoryButtonPriceTexts;
+    public Button[] inventoryButtons;
 
     public void StartShop(Shoptender newShoptender)
     {
         //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraRatio>().AddShopCanvas(GetComponent<CanvasScaler>());
         shoptender = newShoptender;
-        //shopType = shoptender.shopType;
-        //shoptenderImage.sprite = shoptenderSprites[(int)shopType];
         items = shoptender.items;
         itemPrices = shoptender.itemPrices;
         itemAmount = shoptender.itemAmount;
+        //shopType = shoptender.shopType;
+        //shoptenderImage.sprite = shoptenderSprites[(int)shopType];
         //itemPriceTypes = shoptender.itemPriceTypes;
         //shopName.text = shopNames[(int)shopType];
         //shopMainText.text = shoptenderMainTexts[(int)shopType][Random.Range(0, shoptenderMainTexts[(int)shopType].Length)];
@@ -142,6 +147,55 @@ public class Shop : MonoBehaviour
                 items[buttonNum] = ItemType.Empty;
                 //GameObject.FindGameObjectWithTag("TownUI").GetComponent<TownUI>().UpdateValues();
             }*/
+        //}
+    }
+
+    public void SellItem(int buttonNum)
+    {
+        //Inventory Add statement
+        //if (shoptender.gameShop)
+        //{
+        //PlayerBehaviour player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        //if (player.money >= itemPrices[buttonNum])
+        //{
+        if (itemSelected == -1)
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].interactable = false;
+            }
+            itemSelected = buttonNum;
+            amountBuying = 1;
+            buyButton.SetActive(true);
+            shopBuyButtonText.text = items[itemSelected] + "[" + amountBuying + "] $" + itemPrices[itemSelected];
+            returnButtonText.text = "Cancel";
+            //buttons[itemSelected].GetComponent<Image>().sprite = ;
+            amountButtons[itemSelected * 2].SetActive(true);
+            amountButtons[itemSelected * 2 + 1].SetActive(true);
+            buttonPriceTexts[itemSelected].text = "X" + amountBuying;
+        }
+        else
+        {
+            SlowText("Sorry... You're too poor... I don't speak to peasents...");
+        }
+        //}
+        //else
+        //{
+        /*if (PlayerPrefs.GetInt(itemPriceTypes[buttonNum].ToString()) >= itemPrices[buttonNum])
+        {
+            PlayerPrefs.SetInt(itemPriceTypes[buttonNum].ToString(), PlayerPrefs.GetInt(itemPriceTypes[buttonNum].ToString()) - itemPrices[buttonNum]);
+            if (items[buttonNum] == ItemType.flower)
+            {
+                PlayerPrefs.SetFloat("Stamina", PlayerPrefs.GetFloat("Stamina")+10f);
+            }
+            buyAudio.Play();
+            buttons[buttonNum].interactable = false;
+            itemImages[buttonNum].sprite = itemTypeSprites[0];//Empty
+            buyButtons[buttonNum].SetActive(false);
+            soldOutButtons[buttonNum].SetActive(true);
+            items[buttonNum] = ItemType.Empty;
+            //GameObject.FindGameObjectWithTag("TownUI").GetComponent<TownUI>().UpdateValues();
+        }*/
         //}
     }
 
