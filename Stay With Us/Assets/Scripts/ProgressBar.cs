@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     public int maximum;
-    public int current;
+    public float current;
     public Image mask;
     //public Image fill;
     //public Color color;
