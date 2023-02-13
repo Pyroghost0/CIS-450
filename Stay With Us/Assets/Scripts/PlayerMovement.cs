@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
 
+    public PlotOfDirt plotOfDirt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
         {
             //interaction or abilities?
             Debug.Log("Q button was pressed");
+            if (plotOfDirt != null)
+            {
+                plotOfDirt.PlantFlower(0);
+            }
         }
 
     }
@@ -47,5 +53,15 @@ public class PlayerMovement : MonoBehaviour
         playerRb.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
 
 
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("PlantableDirt"))
+        {
+
+               plotOfDirt = other.GetComponent<PlotOfDirt>();
+
+        }
     }
 }

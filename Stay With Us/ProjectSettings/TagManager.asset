@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Grave
   - Ghost
+  - Shop
+  - Shoptender
+  - PlantableDirt
   layers:
   - Default
   - TransparentFX
