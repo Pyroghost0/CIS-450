@@ -9,6 +9,7 @@ TagManager:
   - Shop
   - Shoptender
   - PlantableDirt
+  - Item
   layers:
   - Default
   - TransparentFX

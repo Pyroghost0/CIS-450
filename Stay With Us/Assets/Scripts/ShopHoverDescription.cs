@@ -13,6 +13,7 @@ public class ShopHoverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
 {
     public Shop shop;
     public int itemNumber;
+    public bool shopSide = true;
     //public bool mouseOver = false;
 
 
@@ -20,9 +21,9 @@ public class ShopHoverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         //Debug.Log("Enter " + itemNumber);
         //mouseOver = true;
-        if (shop.itemSelected == -1)
+        if (shop.itemSelected == -1 && (shopSide || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventorySelection] != ItemType.Empty))
         {
-            shop.SlowText(shop.itemDescriptions[(int)shop.items[itemNumber]]);
+            shop.SlowText(shopSide ? shop.itemDescriptions[(int)shop.items[itemNumber]] : shop.itemDescriptions[(int)GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[itemNumber]]);
             /*if (shop.items[itemNumber] == ItemType.Empty)
             {
                 shop.SlowText("We're sold out... Read the sign.");
@@ -39,7 +40,7 @@ public class ShopHoverDescription : MonoBehaviour, IPointerEnterHandler, IPointe
         //Debug.Log("Leave " + itemNumber);
         //mouseOver = false;
         //shop.SlowText(shop.shoptenderMainTexts[(int)shop.shopType][Random.Range(0, shop.shoptenderMainTexts[(int)shop.shopType].Length)]);
-        if (shop.itemSelected == -1)
+        if (shop.itemSelected == -1 && (shopSide || GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventorySelection] != ItemType.Empty))
         {
             shop.SlowText(shop.talkTexts[Random.Range(0, shop.talkTexts.Length)]);
         }
