@@ -12,6 +12,13 @@ using TMPro;
 public class PlayerInventory : MonoBehaviour
 {
     public ItemType[] inventory;
+    public ItemType item
+    {
+        get
+        {
+            return inventory[inventorySelection];
+        }
+    }
     public int[] inventoryAmount;
     public int inventorySize = 6;
     public Sprite[] itemSprites;
@@ -24,7 +31,7 @@ public class PlayerInventory : MonoBehaviour
     /* Use Items like this
      * if (Input.GetMouseButtonDown(1) && !gc.isPaused && canUseItems)
         {
-            if (playerInventory.inventory[playerInventory.inventorySelection] == ItemType.Molotov)
+            if (playerInventory.item == ItemType.Molotov)
             {
                 StartCoroutine(ThrowMolotov());
                 playerInventory.UseItem();
@@ -136,6 +143,7 @@ public class PlayerInventory : MonoBehaviour
             else if (inventory[i] == item)
             {
                 inventoryAmount[i] += amount;
+                amountTexts[i].gameObject.SetActive(true);
                 amountTexts[i].text = "x" + inventoryAmount[i];
                 return true;
             }
@@ -145,8 +153,11 @@ public class PlayerInventory : MonoBehaviour
             inventory[firstEmpty] = item;
             invItems[firstEmpty].sprite = itemSprites[(int)item];
             inventoryAmount[firstEmpty] += amount;
-            amountTexts[firstEmpty].gameObject.SetActive(true);
-            amountTexts[firstEmpty].text = "x" + inventoryAmount[firstEmpty];
+            if (inventoryAmount[inventorySelection] > 1)
+            {
+                amountTexts[firstEmpty].gameObject.SetActive(true);
+                amountTexts[firstEmpty].text = "x" + inventoryAmount[firstEmpty];
+            }
             return true;
         }
         return false;
@@ -159,6 +170,9 @@ public class PlayerInventory : MonoBehaviour
         {
             inventory[inventorySelection] = ItemType.Empty;
             invItems[inventorySelection].sprite = itemSprites[0];//Empty sprite
+        }
+        else if (inventoryAmount[inventorySelection] == 1)
+        {
             amountTexts[inventorySelection].gameObject.SetActive(false);
         }
         else

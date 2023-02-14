@@ -52,6 +52,7 @@ public class Shop : MonoBehaviour
     //public string[][] shoptenderMainTexts = { barMainTexts, gunMainTexts, theifMainTexts, tailorMainTexts };
 
     public GameObject[] amountButtons;
+    public TextMeshProUGUI[] shopItemAmountTexts;
     public int itemSelected = -1;
     private int amountBuying;
     private bool inventorySelected;
@@ -63,6 +64,7 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI[] inventoryButtonPriceTexts;
     public Image[] inventoryItemImages;
     public GameObject[] inventoryAmountButtons;
+    public TextMeshProUGUI[] inventoryItemAmountTexts;
 
     public void StartShop(Shoptender newShoptender)
     {
@@ -85,6 +87,11 @@ public class Shop : MonoBehaviour
                 buttonPriceTexts[i].gameObject.SetActive(false);
                 soldOutButtons[i].SetActive(true);
             }
+            else if (itemAmount[i] != -1)
+            {
+                shopItemAmountTexts[i].gameObject.SetActive(true);
+                shopItemAmountTexts[i].text = "x" + itemAmount[i];
+            }
             //else if (itemPriceTypes[i] == MoneyType.Money)
             //{//Normally images are money sprite
             buttonPriceTexts[i].text = "$" + ((int)(itemPrices[i] / 100)) + "." + (itemPrices[i] % 100 == 0 ? "00" : itemPrices[i] / 10 % 10 == 0 ? "0" + (itemPrices[i] % 100).ToString() : (itemPrices[i] % 100).ToString());
@@ -104,6 +111,11 @@ public class Shop : MonoBehaviour
             {
                 inventoryButtons[i].interactable = false;
                 inventoryButtonPriceTexts[i].gameObject.SetActive(false);
+            }
+            else
+            {
+                inventoryItemAmountTexts[i].gameObject.SetActive(true);
+                inventoryItemAmountTexts[i].text = "x" + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[i];
             }
             inventoryButtonPriceTexts[i].text =  "$" + ((int)(itemSellPrices[(int)inventory[i]] / 100)) + "." + (itemSellPrices[(int)inventory[i]] % 100 == 0 ? "00" : itemSellPrices[(int)inventory[i]] / 10 % 10 == 0 ? "0" + (itemSellPrices[(int)inventory[i]] % 100).ToString() : (itemSellPrices[(int)inventory[i]] % 100).ToString());
         }
@@ -213,9 +225,11 @@ public class Shop : MonoBehaviour
             {
                 inventoryItemImages[itemSelected].sprite = itemTypeSprites[0];//Empty
                 inventoryButtonPriceTexts[itemSelected].gameObject.SetActive(false);
+                inventoryItemAmountTexts[itemSelected].gameObject.SetActive(false);
             }
             else
             {
+                inventoryItemAmountTexts[itemSelected].text = "x" + playerInventory.inventoryAmount[itemSelected];
                 inventoryButtonPriceTexts[itemSelected].text = "$" + ((int)(itemSellPrices[(int)playerInventory.inventory[itemSelected]] / 100)) + "." + (itemSellPrices[(int)playerInventory.inventory[itemSelected]] % 100 == 0 ? "00" : itemSellPrices[(int)playerInventory.inventory[itemSelected]] / 10 % 10 == 0 ? "0" + (itemSellPrices[(int)playerInventory.inventory[itemSelected]] % 100).ToString() : (itemSellPrices[(int)playerInventory.inventory[itemSelected]] % 100).ToString());
                 inventoryButtonPriceTexts[itemSelected].gameObject.SetActive(true);
             }
@@ -232,9 +246,11 @@ public class Shop : MonoBehaviour
                 items[itemSelected] = ItemType.Empty;
                 buttonPriceTexts[itemSelected].gameObject.SetActive(false);
                 soldOutButtons[itemSelected].SetActive(true);
+                shopItemAmountTexts[itemSelected].gameObject.SetActive(false);
             }
             else
             {
+                shopItemAmountTexts[itemSelected].text = "x" + itemAmount[itemSelected];
                 buttonPriceTexts[itemSelected].text = "$" + ((int)(itemPrices[itemSelected] / 100)) + "." + (itemPrices[itemSelected] % 100 == 0 ? "00" : itemPrices[itemSelected] / 10 % 10 == 0 ? "0" + (itemPrices[itemSelected] % 100).ToString() : (itemPrices[itemSelected] % 100).ToString());
                 buttonPriceTexts[itemSelected].gameObject.SetActive(true);
             }
@@ -248,7 +264,7 @@ public class Shop : MonoBehaviour
         }
         for (int i = 0; i < inventoryButtons.Length; i++)
         {
-            if (items[i] != ItemType.Empty)
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[i] != ItemType.Empty)
             {
                 inventoryButtons[i].interactable = true;
             }
@@ -316,7 +332,7 @@ public class Shop : MonoBehaviour
             }
             for (int i = 0; i < inventoryButtons.Length; i++)
             {
-                if (items[i] != ItemType.Empty)
+                if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[i] != ItemType.Empty)
                 {
                     inventoryButtons[i].interactable = true;
                 }
