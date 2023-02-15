@@ -958,7 +958,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2107,7 +2107,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1344047283}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 10
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -12776,6 +12776,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3174085425452460655, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -881203733, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
     - target: {fileID: 3174085426532818815, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0
@@ -15309,6 +15313,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3174085425452460655, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -881203733, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
     - target: {fileID: 3174085426532818815, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0
@@ -15463,6 +15471,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3174085425452460655, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -881684642, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
     - target: {fileID: 3174085426532818815, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0
@@ -17172,6 +17184,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3174085425452460655, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -881684642, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
     - target: {fileID: 3174085426532818815, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0
@@ -44894,6 +44910,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3174085425452460655, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -881203733, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
     - target: {fileID: 3174085426532818815, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0
@@ -45091,6 +45111,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3174085425452460655, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -881684642, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
     - target: {fileID: 3174085426532818815, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0
