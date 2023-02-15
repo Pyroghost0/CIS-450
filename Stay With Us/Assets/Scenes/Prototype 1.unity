@@ -14170,6 +14170,7 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   plotOfDirt: {fileID: 0}
+  playerInventory: {fileID: 0}
 --- !u!212 &1344047282
 SpriteRenderer:
   m_ObjectHideFlags: 0
