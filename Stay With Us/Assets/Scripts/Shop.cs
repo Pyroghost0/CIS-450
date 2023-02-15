@@ -131,28 +131,39 @@ public class Shop : MonoBehaviour
         //{
         if (itemSelected == -1)
         {
-            for (int i = 0; i < buttons.Length; i++)
+            if (false)
             {
-                buttons[i].interactable = false;
+                SlowText("Sorry... You're too poor... I don't speak to peasents...");
             }
-            for (int i = 0; i < inventoryButtons.Length; i++)
+            else if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().CanAdd(items[buttonNum]))
             {
-                inventoryButtons[i].interactable = false;
+                for (int i = 0; i < buttons.Length; i++)
+                {
+                    buttons[i].interactable = false;
+                }
+                for (int i = 0; i < inventoryButtons.Length; i++)
+                {
+                    inventoryButtons[i].interactable = false;
+                }
+                inventorySelected = false;
+                itemSelected = buttonNum;
+                amountBuying = 1;
+                buyButton.SetActive(true);
+                shopBuyButtonText.text = items[itemSelected] + "[" + amountBuying + "] $" + itemPrices[itemSelected];
+                returnButtonText.text = "Cancel";
+                buttons[itemSelected].GetComponent<Image>().sprite = buttonSprites[0];
+                amountButtons[itemSelected * 2].SetActive(true);
+                amountButtons[itemSelected * 2 + 1].SetActive(true);
+                buttonPriceTexts[itemSelected].text = "X" + amountBuying;
             }
-            inventorySelected = false;
-            itemSelected = buttonNum;
-            amountBuying = 1;
-            buyButton.SetActive(true);
-            shopBuyButtonText.text = items[itemSelected] + "[" + amountBuying + "] $" + itemPrices[itemSelected];
-            returnButtonText.text = "Cancel";
-            buttons[itemSelected].GetComponent<Image>().sprite = buttonSprites[0];
-            amountButtons[itemSelected * 2].SetActive(true);
-            amountButtons[itemSelected * 2+1].SetActive(true);
-            buttonPriceTexts[itemSelected].text = "X" + amountBuying;
+            else
+            {
+                SlowText("Uhh... Look at your inventory dude...");
+            }
         }
         else
         {
-            SlowText("Sorry... You're too poor... I don't speak to peasents...");
+            
         }
         //}
         //else
@@ -236,6 +247,24 @@ public class Shop : MonoBehaviour
         }
         else
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().AddInventory(items[itemSelected], amountBuying);
+            ItemType[] inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory;
+            for (int i = 0; i < inventory.Length; i++)
+            {
+                inventoryItemImages[i].sprite = itemTypeSprites[(int)inventory[i]];
+                if (inventory[i] == ItemType.Empty)
+                {
+                    inventoryButtons[i].interactable = false;
+                    inventoryButtonPriceTexts[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    inventoryButtonPriceTexts[i].gameObject.SetActive(true);
+                    inventoryItemAmountTexts[i].gameObject.SetActive(true);
+                    inventoryItemAmountTexts[i].text = "x" + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[i];
+                }
+                inventoryButtonPriceTexts[i].text = "$" + ((int)(itemSellPrices[(int)inventory[i]] / 100)) + "." + (itemSellPrices[(int)inventory[i]] % 100 == 0 ? "00" : itemSellPrices[(int)inventory[i]] / 10 % 10 == 0 ? "0" + (itemSellPrices[(int)inventory[i]] % 100).ToString() : (itemSellPrices[(int)inventory[i]] % 100).ToString());
+            }
             itemAmount[itemSelected] -= amountBuying;
             buttons[itemSelected].GetComponent<Image>().sprite = buttonSprites[1];
             amountButtons[itemSelected * 2].SetActive(false);

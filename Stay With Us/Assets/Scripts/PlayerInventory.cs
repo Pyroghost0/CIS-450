@@ -180,4 +180,16 @@ public class PlayerInventory : MonoBehaviour
             amountTexts[inventorySelection].text = "x" + inventoryAmount[inventorySelection];
         }
     }
+
+    public bool CanAdd(ItemType itemType)
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i] == itemType || inventory[i] == ItemType.Empty)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
