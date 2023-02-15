@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: b7e7337bad5dab54cacf78e58e6b0870
   - enabled: 1
-    path: Assets/Scenes/Night 1.unity
+    path: Assets/Scenes/Prototype 1.unity
     guid: da0f2c3208d8ff841810bc9a3f7528e8
   - enabled: 1
     path: Assets/Scenes/Shop.unity
