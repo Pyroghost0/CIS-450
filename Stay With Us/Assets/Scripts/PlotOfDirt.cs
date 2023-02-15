@@ -9,10 +9,12 @@ public class PlotOfDirt : MonoBehaviour
 
     public Grave grave;
     public bool flowerPlanted;
+
+    public PlayerInventory playerInventory;
     // Start is called before the first frame update
     void Start()
     {
-
+        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame

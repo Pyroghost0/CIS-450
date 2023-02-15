@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,10 +17,12 @@ public class PlayerMovement : MonoBehaviour
 
     public PlotOfDirt plotOfDirt;
 
+    public PlayerInventory playerInventory;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -42,7 +45,11 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Q button was pressed");
             if (plotOfDirt != null)
             {
-                plotOfDirt.PlantFlower(0);
+                if (playerInventory.item == ItemType.Flower)
+                {
+                    playerInventory.UseItem();
+                    plotOfDirt.PlantFlower(0);
+                }
             }
         }
 
