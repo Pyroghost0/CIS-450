@@ -7,6 +7,8 @@ public class PlotOfDirt : MonoBehaviour
     public GameObject[] flowers; //could use a design pattern for this. strategy?
                                  //or decorator for the stages of growth.
 
+    public Grave grave;
+    public bool flowerPlanted;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,16 @@ public class PlotOfDirt : MonoBehaviour
     public void PlantFlower(int flowerNum)
     {
         flowers[flowerNum].SetActive(true);
-
+        flowers[flowerNum].GetComponent<Flower>().stageOfGrowth = 0;
+        //instead of hardcoding this, i'd like the remembernce to be tied to flower type and grave preferences. will fix once prototype works (and design patterns implemented)
+        if (grave.rememberance >= 80)
+        {
+            grave.rememberance = 100;
+        }
+        else
+        {
+            grave.rememberance += 20;
+        }
         //can manage other flower related variables here. 
     }
 }

@@ -150,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074584003
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 2108275596, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -202,6 +202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rememberanceBar: {fileID: 3174085425720237061}
+  rememberance: 100
+  player: {fileID: 0}
+  playerInventory: {fileID: 0}
 --- !u!1 &3174085425720237063
 GameObject:
   m_ObjectHideFlags: 0
