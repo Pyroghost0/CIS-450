@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5797492780237999609}
   - component: {fileID: 5797492780237999612}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Despawnable Item
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,16 +95,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5797492780237999608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa529a9567a49394298c93d37b556a10, type: 3}
+  m_Script: {fileID: 11500000, guid: d6d449388b6cf884d82d98481d7847da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 1
-  despawn: 0
-  despawnTime: 15
-  despawnFadeTime: 2
+  itemType: 0
   floatCycleTime: 0.8
   floatCycleDistence: 0.2
   sprite: {fileID: 5797492780237999614}
+  despawnTime: 15
+  despawnFadeTime: 2
 --- !u!58 &5797492780237999612
 CircleCollider2D:
   m_ObjectHideFlags: 0

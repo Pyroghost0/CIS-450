@@ -19,9 +19,12 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerInventory playerInventory;
 
+    public SpriteRenderer sprite;
+
     // Start is called before the first frame update
     void Start()
     {
+        GameObject.FindGameObjectWithTag("ItemCreator").GetComponent<ItemCreator>().SpawnItem(ItemType.Flower, Vector3.zero, true);
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
     }
 
@@ -53,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        sprite.sortingOrder = (int)(transform.position.y * -10);
     }
 
     private void FixedUpdate()

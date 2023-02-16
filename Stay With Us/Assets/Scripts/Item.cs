@@ -13,72 +13,59 @@ public enum ItemType
     Flower = 1
 }
 
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
     public ItemType itemType;
-    public bool despawn = true;
-    public float despawnTime = 15f;
-    public float despawnFadeTime = 2f;
     public float floatCycleTime = .8f;
     public float floatCycleDistence = .2f;
     public SpriteRenderer sprite;
-    private float curentYpos = 0f;
-    private float timer = 0f;
-    private bool DoublePickUp = false;
-
+    protected float curentYpos = 0f;
+    protected float timer = 0f;
+    protected bool doublePickUp = false;
 
     void Update()
     {
-        timer += Time.deltaTime;
-        float distence = floatCycleDistence * -Mathf.Sin(timer / floatCycleTime * Mathf.PI);
-        transform.position += new Vector3(0f, curentYpos - distence, 0f);
-        curentYpos = distence;
-        if (despawn && timer > despawnTime - despawnFadeTime)
+        if (!doublePickUp)
         {
-            if (timer > despawnTime)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                sprite.color = new Color(1f, 1f, 1f, (despawnTime - timer) / despawnFadeTime);
-            }
+            UpdateFunction();
         }
-        sprite.sortingOrder = (int)(transform.position.y * -10);
+        if (transform.parent == null)
+        {
+            sprite.sortingOrder = (int)(transform.position.y * -10);
+        }
     }
+
+    protected abstract void UpdateFunction();
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !DoublePickUp)
+        if (collision.CompareTag("Player") && !doublePickUp)
         {
             if (itemType == ItemType.Flower)
             {
                 if (collision.GetComponent<PlayerInventory>().AddInventory(ItemType.Flower))
                 {
-                    DoublePickUp = true;
-                    Destroy(gameObject);
+                    doublePickUp = true;
+                    StartCoroutine(CollectionAnimation());
+                    //Destroy(gameObject);
                 }
             }
-            /*if (itemType == ItemType.Money50)
-            {
-                PlayerBehaviour player = collision.GetComponent<PlayerBehaviour>();
-                player.money += PlayerPrefs.GetInt("MoneyGained");
-                //money check debug
-                //Debug.Log(player.money + "cash item");
-                //Debug.Log(PlayerPrefs.GetInt("Money") + "prefs item");
-                player.moneyText.text = "$" + ((int)(player.money / 100)) + "." + (player.money % 100 == 0 ? "00" : player.money / 10 % 10 == 0 ? "0" + (player.money % 100).ToString() : (player.money % 100).ToString());
-                DoublePickUp = true;
-                Destroy(gameObject);
-            }
-            else if (itemType == ItemType.Molotov)
-            {
-                GameController gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-                if (gc.AddInventory(ItemType.Molotov))
-                {
-                    DoublePickUp = true;
-                    Destroy(gameObject);
-                }
-            }*/
+        }
+    }
+
+    IEnumerator CollectionAnimation()
+    {
+        doublePickUp = true;
+        sprite.sortingOrder = 9999;
+        transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform);
+        Vector3 distance = transform.localPosition * -2f;
+        timer = 0f;
+        while (timer < .5f)
+        {
+            transform.localScale = Vector3.one * ((.5f - timer) / .5f);
+            yield return new WaitForFixedUpdate();
+            timer+=Time.deltaTime;
+            transform.position += distance * Time.deltaTime;
         }
     }
 }
