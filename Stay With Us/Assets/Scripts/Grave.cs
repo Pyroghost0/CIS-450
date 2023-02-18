@@ -5,7 +5,7 @@ using UnityEngine;
 public class Grave : MonoBehaviour
 {
     public ProgressBar rememberanceBar;
-    public float rememberance = 200;
+    public float rememberance = 100;
 
     //implement decorator pattern eventually
 
@@ -32,7 +32,7 @@ public class Grave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rememberance -= Time.deltaTime*.5f;
+        rememberance -= Time.deltaTime*.25f;
         if (rememberance <= 0)
         {
             rememberanceBar.current = 0;

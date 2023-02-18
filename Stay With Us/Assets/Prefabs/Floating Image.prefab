@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1708389879460273424}
-  distence: {x: 1, y: 0.5, z: 0}
+  distence: {x: 0.5, y: 0.25, z: 0}
   noticeTime: 2
