@@ -23,16 +23,21 @@ public abstract class Item : MonoBehaviour
     protected float timer = 0f;
     protected bool doublePickUp = false;
 
+    void Start()
+    {
+        sprite.sortingOrder = (int)(transform.position.y * -10);
+    }
+
     void Update()
     {
         if (!doublePickUp)
         {
             UpdateFunction();
         }
-        if (transform.parent == null)
+        /*if (transform.parent == null)
         {
             sprite.sortingOrder = (int)(transform.position.y * -10);
-        }
+        }*/
     }
 
     protected abstract void UpdateFunction();

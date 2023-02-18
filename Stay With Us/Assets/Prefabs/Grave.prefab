@@ -149,8 +149,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2074584003
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2108275596, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -205,6 +205,7 @@ MonoBehaviour:
   rememberance: 100
   player: {fileID: 0}
   playerInventory: {fileID: 0}
+  sprite: {fileID: 3174085425452460655}
 --- !u!1 &3174085425720237063
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +448,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2074584003
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3174085426532818813

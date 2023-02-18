@@ -240,6 +240,7 @@ MonoBehaviour:
   items: 000000000000000000000000000000000000000000000000
   itemAmount: ffffffffffffffffffffffffffffffffffffffffffffffff
   itemPrices: 000000000000000000000000000000000000000000000000
+  sprite: {fileID: 1712594217906618547}
 --- !u!82 &8300417467745225219
 AudioSource:
   m_ObjectHideFlags: 0

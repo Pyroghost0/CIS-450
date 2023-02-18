@@ -19,17 +19,14 @@ public class Shoptender : MonoBehaviour
     //public ShopType shopType;
     //public MoneyType[] itemPriceTypes = new MoneyType[3];
     public int[] itemPrices = new int[3];
-    //public SpriteRenderer spriteRenderer;
+    public SpriteRenderer sprite;
     //public AudioSource shopBell;
 
 
-    /*void Start()
+    void Start()
     {
-        if (gameShop)
-        {
-            spriteRenderer.sortingOrder = (int)(transform.position.y * -10);
-        }
-    }*/
+        sprite.sortingOrder = (int)(transform.position.y * -10);
+    }
 
     void Update()
     {

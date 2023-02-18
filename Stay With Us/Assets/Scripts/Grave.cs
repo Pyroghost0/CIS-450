@@ -15,6 +15,7 @@ public class Grave : MonoBehaviour
     
     public PlayerMovement player;
     public PlayerInventory playerInventory;
+    public SpriteRenderer sprite;
 
     //for the ghost ai
 
@@ -25,6 +26,7 @@ public class Grave : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+        sprite.sortingOrder = (int)(transform.position.y * -10);
     }
 
     // Update is called once per frame
