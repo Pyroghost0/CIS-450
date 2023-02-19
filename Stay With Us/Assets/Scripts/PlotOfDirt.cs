@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlotOfDirt : MonoBehaviour
@@ -9,6 +10,8 @@ public class PlotOfDirt : MonoBehaviour
 
     public Grave grave;
     public bool flowerPlanted;
+
+    
 
     public PlayerInventory playerInventory;
     // Start is called before the first frame update
@@ -29,15 +32,55 @@ public class PlotOfDirt : MonoBehaviour
     {
         flowers[flowerNum].SetActive(true);
         flowers[flowerNum].GetComponent<Flower>().stageOfGrowth = 0;
-        //instead of hardcoding this, i'd like the remembernce to be tied to flower type and grave preferences. will fix once prototype works (and design patterns implemented)
-        if (grave.rememberance >= 80)
+        
+        for(int i = 0; i < grave.flowerPreferences.Length; i++) 
         {
-            grave.rememberance = 100;
+            if (grave.flowerPreferences[i] == flowers[flowerNum].GetComponent<Flower>().flowerType)
+            {
+                Debug.Log("grave loves this");
+                Destroy(grave.GetComponent<GraveReaction>());
+                grave.reaction = grave.gameObject.AddComponent<Loved>();
+
+                grave.flowerLovedIndicator.SetActive(true);
+                grave.flowerHatedIndicator.SetActive(false);
+            }
+            else if (grave.flowerHates[i] == flowers[flowerNum].GetComponent<Flower>().flowerType)
+            {
+                Debug.Log("grave hates this");
+                Destroy(grave.GetComponent<GraveReaction>());
+                grave.reaction = grave.gameObject.AddComponent<Hated>();
+
+                grave.flowerLovedIndicator.SetActive(false);
+                grave.flowerHatedIndicator.SetActive(true);
+            }
+            else
+            {
+                Destroy(grave.GetComponent<GraveReaction>());
+                grave.reaction = grave.gameObject.AddComponent<Neutral>();
+
+                grave.flowerLovedIndicator.SetActive(false);
+                grave.flowerHatedIndicator.SetActive(false);
+            }
+        }
+        if (grave.rememberance >= 100 - grave.reaction.UpdateRemembrance())
+        {
+            if (grave.reaction.UpdateRemembrance() > 0)
+            {
+                grave.rememberance = 100;
+            }
+            else
+            {
+                grave.rememberance -= 10;
+            }
+        }
+        else if (grave.rememberance < 10 && grave.reaction.UpdateRemembrance() < 0)
+        {
+            grave.rememberance = 0;
         }
         else
         {
-            grave.rememberance += 20;
+            grave.rememberance += grave.reaction.UpdateRemembrance();
         }
-        //can manage other flower related variables here. 
+
     }
 }

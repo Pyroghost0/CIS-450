@@ -9,6 +9,8 @@ public class Flower : MonoBehaviour
     public int stageOfGrowth = 0;
     public float growthStageTime = 20;
     public float timer;
+
+    public string flowerType; // could also be enum
     
     // Start is called before the first frame update
     void Start()

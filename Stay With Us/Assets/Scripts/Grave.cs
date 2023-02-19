@@ -17,6 +17,14 @@ public class Grave : MonoBehaviour
     public PlayerInventory playerInventory;
     public SpriteRenderer sprite;
 
+    public GraveReaction reaction;
+
+    public string[] flowerPreferences;
+    public string[] flowerHates;
+
+    public GameObject flowerLovedIndicator;
+    public GameObject flowerHatedIndicator;
+
     //for the ghost ai
 
     //public Ghost ghost; 

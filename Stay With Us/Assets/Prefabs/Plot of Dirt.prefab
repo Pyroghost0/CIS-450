@@ -322,3 +322,4 @@ MonoBehaviour:
   stageOfGrowth: 0
   growthStageTime: 20
   timer: 0
+  flowerType: test
