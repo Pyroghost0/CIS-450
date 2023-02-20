@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rememberanceBar: {fileID: 3174085425720237061}
-  rememberance: 100
+  rememberance: 200
   player: {fileID: 0}
   playerInventory: {fileID: 0}
   sprite: {fileID: 3174085425452460655}
@@ -782,6 +782,18 @@ PrefabInstance:
       propertyPath: grave
       value: 
       objectReference: {fileID: 3293670656280478495}
+    - target: {fileID: 4509748415495507206, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1093920112, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+    - target: {fileID: 5733082951442611860, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133301599396415441, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
 --- !u!4 &2306439799860384284 stripped

@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Night 1");
+        SceneManager.LoadScene("Prototype 1");
     }
 
     public void QuitGame()

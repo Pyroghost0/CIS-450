@@ -16,6 +16,7 @@ public class Flower : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sortingOrder = (int)(transform.position.y * -10);
     }
 
     // Update is called once per frame
