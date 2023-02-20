@@ -266,6 +266,10 @@ public class Shop : MonoBehaviour
                 inventoryButtonPriceTexts[i].text = "$" + ((int)(itemSellPrices[(int)inventory[i]] / 100)) + "." + (itemSellPrices[(int)inventory[i]] % 100 == 0 ? "00" : itemSellPrices[(int)inventory[i]] / 10 % 10 == 0 ? "0" + (itemSellPrices[(int)inventory[i]] % 100).ToString() : (itemSellPrices[(int)inventory[i]] % 100).ToString());
             }
             itemAmount[itemSelected] -= amountBuying;
+            if (itemAmount[itemSelected] < -1)
+            {
+                itemAmount[itemSelected] = -1;
+            }
             buttons[itemSelected].GetComponent<Image>().sprite = buttonSprites[1];
             amountButtons[itemSelected * 2].SetActive(false);
             amountButtons[itemSelected * 2 + 1].SetActive(false);

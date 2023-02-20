@@ -72,5 +72,6 @@ public abstract class Item : MonoBehaviour
             timer+=Time.deltaTime;
             transform.position += distance * Time.deltaTime;
         }
+        Destroy(gameObject);
     }
 }
