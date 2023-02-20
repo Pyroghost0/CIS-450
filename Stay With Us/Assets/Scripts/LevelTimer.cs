@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelTimer : MonoBehaviour
 {
     public float levelLength;
-    private float timer;
+    private float timeRemaining;
     public ProgressBar moonlightBar;
     //public GameManager gameManager;
 
@@ -19,10 +19,10 @@ public class LevelTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer <= levelLength)
+        timeRemaining += Time.deltaTime;
+        if (timeRemaining <= levelLength)
         {
-            moonlightBar.current = ((levelLength - timer) / levelLength)*100;
+            moonlightBar.current = ((levelLength - timeRemaining) / levelLength)*100;
         }
         else
         { 
