@@ -12,9 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: b7e7337bad5dab54cacf78e58e6b0870
   - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: ba36580b509549d45adcc75ad4584a67
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 25d0fd392e700134d866cf8212a872f1
+  - enabled: 1
     path: Assets/Scenes/Prototype 1.unity
     guid: da0f2c3208d8ff841810bc9a3f7528e8
   - enabled: 1
-    path: Assets/Scenes/Shop.unity
-    guid: ba36580b509549d45adcc75ad4584a67
+    path: Assets/Scenes/Prototype 2.unity
+    guid: 060ffa8a0936b934abd388b0f97f3b10
+  - enabled: 1
+    path: Assets/Scenes/Prototype 3.unity
+    guid: 82d50843f6553b34db6c01de4158ca03
   m_configObjects: {}
