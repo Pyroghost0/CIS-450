@@ -16,6 +16,8 @@ public class MainMenuManager : MonoBehaviour
     public Button[] levelButtons;
     public RectTransform mainMenu;
 
+    public AudioSource buttonClick;
+
     /* To load main menu from levels use this *Change last function from "Tutorial" to scene name (can keep scene name as parametor manually changed in each scene on the object)
     public void LoadMainMenu()
     {
@@ -103,4 +105,11 @@ public class MainMenuManager : MonoBehaviour
         Debug.Log("Quitting Game");
         Application.Quit();
     }
+
+
+    public void ButtonClickSound()
+    {
+        buttonClick.Play();
+    }
+
 }
