@@ -78,8 +78,12 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("PlantableDirt"))
         {
 
-               plotOfDirt = other.GetComponent<PlotOfDirt>();
+            plotOfDirt = other.GetComponent<PlotOfDirt>();
 
+        }
+        else 
+        { 
+            plotOfDirt= null;
         }
     }
 }
