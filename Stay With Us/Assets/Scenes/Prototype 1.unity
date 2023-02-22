@@ -10315,10 +10315,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 897425845}
     m_Modifications:
-    - target: {fileID: 2306439799860384284, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460652, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10366,22 +10362,6 @@ PrefabInstance:
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_Name
       value: Grave (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3174085425452460655, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -881684642, guid: 79568a58e37d6d8428a656b860c1f450, type: 3}
-    - target: {fileID: 3174085426532818815, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4110924155381853577, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
@@ -37403,6 +37383,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5655026609911881467, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
+      propertyPath: itemSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: -396464957, guid: 668117fca80282b4da73132857b8500d, type: 3}
+    - target: {fileID: 5655026609911881467, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
+      propertyPath: itemSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -396464957, guid: 668117fca80282b4da73132857b8500d, type: 3}
     - target: {fileID: 6379450966965090117, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
       value: -15
