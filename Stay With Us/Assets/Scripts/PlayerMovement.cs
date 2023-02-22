@@ -61,7 +61,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerRb.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
+        //playerRb.velocity = new Vector2(horizontalInput * speed, verticalInput * speed);
+        float magnitude = Mathf.Sqrt(horizontalInput * horizontalInput + verticalInput * verticalInput);
+        if (magnitude != 0)
+        {
+            horizontalInput *= Mathf.Abs(horizontalInput) / magnitude;
+            verticalInput *= Mathf.Abs(verticalInput) / magnitude;
+        }
+        playerRb.velocity = new Vector2(horizontalInput, verticalInput) * speed;
 
 
     }

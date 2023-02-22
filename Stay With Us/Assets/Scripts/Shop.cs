@@ -77,7 +77,7 @@ public class Shop : MonoBehaviour
         //shoptenderImage.sprite = shoptenderSprites[(int)shopType];
         //itemPriceTypes = shoptender.itemPriceTypes;
         //shopName.text = shopNames[(int)shopType];
-        //shopMainText.text = shoptenderMainTexts[(int)shopType][Random.Range(0, shoptenderMainTexts[(int)shopType].Length)];
+        shopMainText.text = talkTexts[Random.Range(0, talkTexts.Length)];
         for (int i = 0; i < buttons.Length; i++)
         {
             itemImages[i].sprite = itemTypeSprites[(int)items[i]];
