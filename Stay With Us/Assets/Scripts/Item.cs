@@ -10,7 +10,12 @@ using UnityEngine;
 public enum ItemType
 {
     Empty = 0,
-    Flower = 1
+    Ectoplasm = 1,
+    SunflowerSeed = 2,
+    MagnoliaSeed = 3,
+    IrisSeed = 4,
+    PoppySeed = 5,
+    RoseSeed = 6,
 }
 
 public abstract class Item : MonoBehaviour
@@ -22,6 +27,8 @@ public abstract class Item : MonoBehaviour
     protected float curentYpos = 0f;
     protected float timer = 0f;
     protected bool doublePickUp = false;
+
+    //GameObject.FindGameObjectWithTag("ItemCreator").GetComponent<ItemCreator>().SpawnItem(ItemType.Flower, Vector3.zero, true);
 
     void Start()
     {
@@ -46,9 +53,27 @@ public abstract class Item : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !doublePickUp)
         {
-            if (itemType == ItemType.Flower)
+            if (itemType == ItemType.Ectoplasm)
             {
-                if (collision.GetComponent<PlayerInventory>().AddInventory(ItemType.Flower))
+                /*if (collision.GetComponent<PlayerInventory>().AddInventory(ItemType.Flower))
+                {
+                    doublePickUp = true;
+                    StartCoroutine(CollectionAnimation());
+                    //Destroy(gameObject);
+                }*/
+            }
+            /*else if (itemType == ItemType.SunflowerSeed)
+            {
+                if (collision.GetComponent<PlayerInventory>().AddInventory(ItemType.SunflowerSeed))
+                {
+                    doublePickUp = true;
+                    StartCoroutine(CollectionAnimation());
+                    //Destroy(gameObject);
+                }
+            }*/
+            else if (itemType != ItemType.Empty)
+            {
+                if (collision.GetComponent<PlayerInventory>().AddInventory(itemType))
                 {
                     doublePickUp = true;
                     StartCoroutine(CollectionAnimation());

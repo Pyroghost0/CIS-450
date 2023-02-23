@@ -44,8 +44,9 @@ public class Shop : MonoBehaviour
 
     //private float[] textSpeeds = { .03f, .02f, .016f, .025f };
     //private string[] shopNames = { "The Bar", "Gun Shop", "Black Market", "Tailor" };
-    public int[] itemSellPrices = { 0, 100};
-    public string[] itemDescriptions = { "Sold out, read the sign...", "Some bullets..."};
+    public int[] itemSellPrices = { 0, 1, 1, 1, 1, 1, 1};
+    public string[] itemDescriptions = { "Sold out, read the sign...", "Wait how are you selling that?...", "Sunflower seeds, I hear __ likes them...", "Magnolia seeds, I hear __ likes them...", "Iris seeds, I hear __ likes them...", 
+    "Poppy seeds, I hear __ likes them...", "Rose seeds, I hear __ likes them..." };
     public string[] talkTexts = { "What a fine day to be living... I mean be dead...", "What? Me, a reaper? No... I'm not... Tell anyone and your dead...", "Stories? Yeah I got stories... One time someone died. The End...", "I've taken the soul out of plants before... Don't ask how...",
     "Hurry up and buy something, I might just die from boredom here...", "Yes, yes... dogs go to heaven, and cats go to hell...", "How are the plants growing so fast? Uhh... becuase I said so...", "Why do I need money? I'm just saving up so I can reincarnate into a shrimp...",
     "Are there more reapers? Yes, can't you see the one behind you?...", "Life and death are... who cares about philiosiphy anyways...", "I have plenty of hobbies killing, reaping souls... I don't have a hobby...", "THIS SCYTHE IS NOT FOR FARMING..."};

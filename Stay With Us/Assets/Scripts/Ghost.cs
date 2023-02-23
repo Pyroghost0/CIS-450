@@ -222,7 +222,6 @@ public class Ghost : MonoBehaviour
             }
             if (!walkableZone.IsTouching(ghostCollider))
             {
-                Debug.Log("q");
                 Vector2 dir = new Vector2(0f - transform.position.x, 0f - transform.position.y).normalized * 40f; ;
                 float timer = 0f;
                 while (timer < 1f)

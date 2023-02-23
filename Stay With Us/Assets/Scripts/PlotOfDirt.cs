@@ -13,7 +13,7 @@ public class PlotOfDirt : MonoBehaviour
 
     
 
-    public PlayerInventory playerInventory;
+    /*public PlayerInventory playerInventory;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class PlotOfDirt : MonoBehaviour
     void Update()
     {
 
-    }
+    }*/
 
     //takes the number of flower to plant from the inventory
     //then shows the sprite and will manage other variables.

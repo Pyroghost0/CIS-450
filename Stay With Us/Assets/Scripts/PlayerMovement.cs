@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.FindGameObjectWithTag("ItemCreator").GetComponent<ItemCreator>().SpawnItem(ItemType.Flower, Vector3.zero, true);
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
     }
 
@@ -35,23 +34,23 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
 
-        if (Input.GetKeyDown(KeyCode.E))
+        /*if (Input.GetKeyDown(KeyCode.E))
         {
             //for player inventory im guessing
             Debug.Log("E button was pressed");
-        }
+        }*/
 
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
             //interaction or abilities?
-            Debug.Log("Q button was pressed");
+            //Debug.Log("Q button was pressed");
             if (plotOfDirt != null)
             {
-                if (playerInventory.item == ItemType.Flower)
+                if ((int)playerInventory.item >= 2 && (int)playerInventory.item <= 6)
                 {
                     playerInventory.UseItem();
-                    plotOfDirt.PlantFlower(0);
+                    plotOfDirt.PlantFlower((int)playerInventory.item - 2);
                 }
             }
         }
@@ -81,9 +80,13 @@ public class PlayerMovement : MonoBehaviour
             plotOfDirt = other.GetComponent<PlotOfDirt>();
 
         }
-        else 
-        { 
-            plotOfDirt= null;
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("PlantableDirt") && plotOfDirt != null && other.gameObject == plotOfDirt.gameObject)
+        {
+            plotOfDirt = null;
         }
     }
 }
