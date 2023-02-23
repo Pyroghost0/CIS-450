@@ -28,6 +28,9 @@ public class PlayerInventory : MonoBehaviour
     public TextMeshProUGUI[] amountTexts;
     private float scrollAmount = 0f;
 
+    public int money;
+    public TextMeshProUGUI moneyText;
+
     /* Use Items like this
      * if (Input.GetMouseButtonDown(1) && !gc.isPaused && canUseItems)
         {
@@ -41,8 +44,9 @@ public class PlayerInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    //inventorySize = PlayerPrefs.GetInt("Inventory");
-    inventory = new ItemType[inventorySize];
+        moneyText.text = money.ToString();
+        //inventorySize = PlayerPrefs.GetInt("Inventory");
+        inventory = new ItemType[inventorySize];
         inventoryAmount = new int[inventorySize];
         for (int i = 0; i < invFrames.Length; i++)
         {
@@ -129,6 +133,12 @@ public class PlayerInventory : MonoBehaviour
             invFrames[inventorySelection].color = Color.white;
             scrollAmount = 0f;
         }
+    }
+
+    public void UpdateMoney(int difference)
+    {
+        money += difference;
+        moneyText.text = money.ToString();
     }
 
     public bool AddInventory(ItemType item, int amount = 1)//Returns true if added
