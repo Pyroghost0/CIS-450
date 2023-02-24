@@ -24,7 +24,7 @@ public class Flower : MonoBehaviour
     {
         timer += Time.deltaTime;
         spriteRenderer.sprite = stagesOfGrowth[stageOfGrowth];
-        if (timer > growthStageTime && stageOfGrowth < stagesOfGrowth.Length)
+        if (timer > growthStageTime && stageOfGrowth < stagesOfGrowth.Length - 1)
         { 
             stageOfGrowth++;
             timer = 0;

@@ -11,28 +11,19 @@ public class PlotOfDirt : MonoBehaviour
     public Grave grave;
     public bool flowerPlanted;
 
-    
-
-    /*public PlayerInventory playerInventory;
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }*/
-
     //takes the number of flower to plant from the inventory
     //then shows the sprite and will manage other variables.
     public void PlantFlower(int flowerNum)
     {
+        for (int i = 0; i < flowers.Length; i++)
+        {
+            flowers[i].SetActive(false);
+        }
         flowers[flowerNum].SetActive(true);
         flowers[flowerNum].GetComponent<Flower>().stageOfGrowth = 0;
-        
+
+        Debug.Log("flowerNum is " + flowerNum);
+
         for(int i = 0; i < grave.flowerPreferences.Length; i++) 
         {
             if (grave.flowerPreferences[i] == flowers[flowerNum].GetComponent<Flower>().flowerType)
@@ -44,7 +35,7 @@ public class PlotOfDirt : MonoBehaviour
                 grave.flowerLovedIndicator.SetActive(true);
                 grave.flowerHatedIndicator.SetActive(false);
             }
-            else if (grave.flowerHates[i] == flowers[flowerNum].GetComponent<Flower>().flowerType)
+            else if (grave.flowerHates.Length > i && grave.flowerHates[i] == flowers[flowerNum].GetComponent<Flower>().flowerType)
             {
                 Debug.Log("grave hates this");
                 Destroy(grave.GetComponent<GraveReaction>());
