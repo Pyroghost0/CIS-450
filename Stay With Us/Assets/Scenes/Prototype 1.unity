@@ -28046,7 +28046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_Name
-      value: likes forgetMeNots grave
+      value: likes poppy's grave
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_IsActive
@@ -28058,7 +28058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3293670656280478495, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: flowerPreferences.Array.data[0]
-      value: forgetMeNot
+      value: poppy
       objectReference: {fileID: 0}
     - target: {fileID: 4110924155381853577, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_RootOrder
