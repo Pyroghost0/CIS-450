@@ -162,8 +162,8 @@ public class PlayerInventory : MonoBehaviour
         {
             inventory[firstEmpty] = item;
             invItems[firstEmpty].sprite = itemSprites[(int)item];
-            inventoryAmount[firstEmpty] += amount;
-            if (inventoryAmount[inventorySelection] > 1)
+            inventoryAmount[firstEmpty] = amount;
+            if (amount > 1)
             {
                 amountTexts[firstEmpty].gameObject.SetActive(true);
                 amountTexts[firstEmpty].text = "x" + inventoryAmount[firstEmpty];

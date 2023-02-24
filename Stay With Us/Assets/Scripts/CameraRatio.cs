@@ -71,7 +71,7 @@ public class CameraRatio : MonoBehaviour
     public void AddShopCanvas(UnityEngine.UI.CanvasScaler canvasScaler)
     {
         canvasScaler.gameObject.GetComponent<Canvas>().worldCamera = GetComponent<Camera>();
-        canvasScaler.gameObject.GetComponent<Canvas>().sortingLayerName = "Camera";
+        canvasScaler.gameObject.GetComponent<Canvas>().sortingLayerName = "Other";
         float targetaspect = 16.0f / 9.0f;
         float windowaspect = (float)Screen.width / (float)Screen.height;
         float scaleheight = windowaspect / targetaspect;

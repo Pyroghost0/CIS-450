@@ -55,6 +55,9 @@ public abstract class Item : MonoBehaviour
         {
             if (itemType == ItemType.Ectoplasm)
             {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().UpdateMoney(10);
+                doublePickUp = true;
+                StartCoroutine(CollectionAnimation());
                 /*if (collision.GetComponent<PlayerInventory>().AddInventory(ItemType.Flower))
                 {
                     doublePickUp = true;

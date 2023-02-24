@@ -282,7 +282,12 @@ public class Ghost : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            ghostBar.SetActive(false);
+            //ghostBar.SetActive(false);
+            Collider2D[] pc = collision.GetComponents<Collider2D>();
+            if (!GetComponent<Collider2D>().IsTouching(pc[0]) && !GetComponent<Collider2D>().IsTouching(pc[1]))
+            {
+                ghostBar.SetActive(false);
+            }
         }
     }
 }
