@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     //Ok this should be the overall for the playermovement, ill do the best i can
 
-
+    public bool speedUp;
     public int speed;
 
     public Rigidbody2D playerRb;
@@ -61,7 +61,31 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!speedUp)
+            {
+                speed *= 2;
+                speedUp = true;
+                StartCoroutine(Stamia());
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            if (speedUp)
+            { 
+                speed = speed/ 2;
+                speedUp = false;            }
+        }
+
         sprite.sortingOrder = (int)(transform.position.y * -10);
+    }
+
+    IEnumerator Stamia()
+    {
+        yield return new WaitForSeconds(4);
+        speed = speed / 2;
+        speedUp = false;
     }
 
     private void FixedUpdate()
