@@ -434,6 +434,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3646050304284838983, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7385313681546013328, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_Name
       value: BasicScene
