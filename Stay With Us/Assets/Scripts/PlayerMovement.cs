@@ -84,8 +84,11 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Stamia()
     {
         yield return new WaitForSeconds(4);
-        speed = speed / 2;
-        speedUp = false;
+        if (speedUp)
+        {
+            speed = speed / 2;
+            speedUp = false;
+        }
     }
 
     private void FixedUpdate()

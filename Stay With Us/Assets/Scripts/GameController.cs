@@ -15,26 +15,35 @@ public class GameController : MonoBehaviour
     public GameObject winPannel;
     public TextMeshProUGUI winResultText;
     public TextMeshProUGUI winDescriptionText;
-    private string[] winTexts = { "They don't hate you, so I think you've won", "Bet you wouldn't have won if the flowers needed sunlight to grow", "Did you win? Maybe you can rest in peace now", "Insert funny HaHa joke here so you feel accomplished", 
+    private string[] winTexts = { "They don't hate you, so I think you've won", "Bet you wouldn't have won if the flowers needed sunlight to grow", "Did you win? Maybe you can rest in peace now", "Insert funny HaHa joke here so you feel accomplished",
     "This wouldn't have been possible with the Discord mod ghost", "Winning? More like a slave to society, am I right?", "Now just ask death for Portal 3", "You know, a lot of people would die to be where you are now"};
-    private string[] loseTexts = { "Congradulations, you've successfully failed at life twice", "If you've faied at life once, you can fail again", "Who said you only have one chance at life, try again", "After all that work they hate you, maybe they deserve not to be remembered", 
+    private string[] loseTexts = { "Congradulations, you've successfully failed at life twice", "If you've faied at life once, you can fail again", "Who said you only have one chance at life, try again", "After all that work they hate you, maybe they deserve not to be remembered",
     "Nothing in life came easy, it probably the same in death", "I mean you're trading their ectoplasm, so it makes sence why they're mad at you", "When life gave you lemons, you forgot to ask how much ectoplasm they're worth", "Losing is anouther way of saying you lose"};
     public float levelLength = 240f;
     public float timeRemaining;
     public ProgressBar moonlightBar;
 
-    public ItemType[] summonableObjectTypes = { ItemType.SunflowerSeed, ItemType.MagnoliaSeed, ItemType.IrisSeed , ItemType.PoppySeed , ItemType.RoseSeed };
+    public ItemType[] summonableObjectTypes = { ItemType.SunflowerSeed, ItemType.MagnoliaSeed, ItemType.IrisSeed, ItemType.PoppySeed, ItemType.RoseSeed };
     private LayerMask layerMask;
     public Collider2D graveyardCollider;
     public Collider2D[] dontStopColliderSpots = new Collider2D[0];
+
+    public GameObject player;
+    public GameObject lorePanel;
+    public GameObject tutorialPanel;
+    public TextMeshProUGUI loreText;
+    public TextMeshProUGUI tutorialText;
+    public bool textRead;
     //public EdgeCollider2D mapCollider;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         layerMask = LayerMask.GetMask("Graveyard");
         StartCoroutine(LevelTimer());
         StartCoroutine(RandomItemSummon());
+        StartCoroutine(Tutorial());
         //Debug.Log(RanddomSpawnPosition());
     }
 
@@ -75,7 +84,7 @@ public class GameController : MonoBehaviour
         while (timeRemaining < levelLength)
         {
             yield return new WaitForSeconds(Random.Range(1f, 3f));
-            if (Random.value <.3f)
+            if (Random.value < .3f)
             {
                 GameObject.FindGameObjectWithTag("ItemCreator").GetComponent<ItemCreator>().SpawnItem(ItemType.Ectoplasm, RanddomSpawnPosition(), true);
             }
@@ -85,6 +94,36 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+    public void ContinueButton()
+    {
+        textRead = true;
+    }
+
+    IEnumerator Tutorial()
+    {
+        //LORE
+        loreText.text = "Unfortunately, you have died." +
+            "\nSurpsingly, your death is of use!" +
+            "\nDeath has tasked you with overseeing the graves of those who have also passed." +
+            "\nThey deserve happiness. You will give it to them.";
+        
+        yield return new WaitUntil(() => textRead);
+        lorePanel.SetActive(false);
+        //Move
+        tutorialPanel.SetActive(true);
+        tutorialText.text = "To move, use WASD or arrow keys.";
+        yield return new WaitUntil(() => (player.transform.position.x > -7));
+        tutorialText.text = "Great job! You can use SPACE to sprint.";
+        yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Space)));
+        tutorialText.text = "You can pick up ectoplasm to use as currency in the shop.\nYou can see how much you have in the top right.";
+
+        yield return new WaitForSeconds(5);
+        //Sprint
+        //grabing items
+    }
+
+
 
     private Vector3 RanddomSpawnPosition()
     {
