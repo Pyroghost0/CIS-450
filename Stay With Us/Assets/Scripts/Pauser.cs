@@ -6,6 +6,7 @@ public class Pauser : MonoBehaviour, ISubject
 {
     public GameObject pauseMenu;
     public List<IObserver> observers = new List<IObserver>();
+    public bool canTimeScale = true;
     public bool canPause = true;
     public bool isPaused = false;
 
@@ -31,7 +32,10 @@ public class Pauser : MonoBehaviour, ISubject
     {
         isPaused = false;
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
+        if (canTimeScale)
+        {
+            Time.timeScale = 1f;
+        }
         NotifyObservers(false);
     }
 
@@ -42,7 +46,10 @@ public class Pauser : MonoBehaviour, ISubject
         {
             isPaused = !isPaused;
             pauseMenu.SetActive(isPaused);
-            Time.timeScale = isPaused ? 0f : 1f;
+            if (canTimeScale)
+            {
+                Time.timeScale = isPaused ? 0f : 1f;
+            }
             NotifyObservers(isPaused);
         }
     }

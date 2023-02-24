@@ -29,6 +29,7 @@ public class Shop : MonoBehaviour
     //public Sprite[] moneyImageType;
     //public Image[] buttonMoneyImages;
     //public MoneyType[] itemPriceTypes;
+
     public TextMeshProUGUI shopMainText;
     public Sprite[] itemTypeSprites;
     public Image[] itemImages;
@@ -69,6 +70,7 @@ public class Shop : MonoBehaviour
 
     public void StartShop(Shoptender newShoptender)
     {
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<Pauser>().canTimeScale = false;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraRatio>().AddShopCanvas(GetComponent<CanvasScaler>());
         shoptender = newShoptender;
         items = shoptender.items;
@@ -358,6 +360,7 @@ public class Shop : MonoBehaviour
     {
         if (itemSelected == -1)
         {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<Pauser>().canTimeScale = true;
             shoptender.items = items;
             shoptender.itemPrices = itemPrices;
             shoptender.CloseShop();

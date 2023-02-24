@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : MonoBehaviour, IObserver
 {
     public ItemType[] inventory;
     public ItemType item
@@ -30,6 +30,7 @@ public class PlayerInventory : MonoBehaviour
 
     public int money;
     public TextMeshProUGUI moneyText;
+    public bool isPaused = false;
 
     /* Use Items like this
      * if (Input.GetMouseButtonDown(1) && !gc.isPaused && canUseItems)
@@ -66,72 +67,76 @@ public class PlayerInventory : MonoBehaviour
                 invFrames[i].gameObject.SetActive(false);
             }
         }
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<Pauser>().RegisterObserver(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+        if (!isPaused)
         {
-            scrollAmount += Input.GetAxis("Mouse ScrollWheel");
-            //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
-            if (scrollAmount > PlayerPrefs.GetFloat("Inventory Scroll"))
+            if (Input.GetAxis("Mouse ScrollWheel") != 0f)
+            {
+                scrollAmount += Input.GetAxis("Mouse ScrollWheel");
+                //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
+                if (scrollAmount > PlayerPrefs.GetFloat("Inventory Scroll"))
+                {
+                    invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
+                    inventorySelection++;
+                    if (inventorySelection == inventorySize)
+                    {
+                        inventorySelection = 0;
+                    }
+                    invFrames[inventorySelection].color = Color.white;
+                    scrollAmount = 0f;
+                }
+                else if (scrollAmount < -PlayerPrefs.GetFloat("Inventory Scroll"))
+                {
+                    invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
+                    inventorySelection--;
+                    if (inventorySelection == -1)
+                    {
+                        inventorySelection = inventorySize - 1;
+                    }
+                    invFrames[inventorySelection].color = Color.white;
+                    scrollAmount = 0f;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha1) && inventorySize > 0)//Add pause checker
             {
                 invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
-                inventorySelection++;
-                if (inventorySelection == inventorySize)
-                {
-                    inventorySelection = 0;
-                }
+                inventorySelection = 0;
                 invFrames[inventorySelection].color = Color.white;
                 scrollAmount = 0f;
             }
-            else if (scrollAmount < -PlayerPrefs.GetFloat("Inventory Scroll"))
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && inventorySize > 1)
             {
                 invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
-                inventorySelection--;
-                if (inventorySelection == -1)
-                {
-                    inventorySelection = inventorySize - 1;
-                }
+                inventorySelection = 1;
                 invFrames[inventorySelection].color = Color.white;
                 scrollAmount = 0f;
             }
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha1) && inventorySize > 0)//Add pause checker
-        {
-            invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
-            inventorySelection = 0;
-            invFrames[inventorySelection].color = Color.white;
-            scrollAmount = 0f;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && inventorySize > 1)
-        {
-            invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
-            inventorySelection = 1;
-            invFrames[inventorySelection].color = Color.white;
-            scrollAmount = 0f;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && inventorySize > 2)
-        {
-            invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
-            inventorySelection = 2;
-            invFrames[inventorySelection].color = Color.white;
-            scrollAmount = 0f;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) && inventorySize > 3)
-        {
-            invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
-            inventorySelection = 3;
-            invFrames[inventorySelection].color = Color.white;
-            scrollAmount = 0f;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5) && inventorySize > 4)
-        {
-            invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
-            inventorySelection = 4;
-            invFrames[inventorySelection].color = Color.white;
-            scrollAmount = 0f;
+            else if (Input.GetKeyDown(KeyCode.Alpha3) && inventorySize > 2)
+            {
+                invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
+                inventorySelection = 2;
+                invFrames[inventorySelection].color = Color.white;
+                scrollAmount = 0f;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4) && inventorySize > 3)
+            {
+                invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
+                inventorySelection = 3;
+                invFrames[inventorySelection].color = Color.white;
+                scrollAmount = 0f;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha5) && inventorySize > 4)
+            {
+                invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
+                inventorySelection = 4;
+                invFrames[inventorySelection].color = Color.white;
+                scrollAmount = 0f;
+            }
         }
     }
 
@@ -201,5 +206,10 @@ public class PlayerInventory : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void UpdateSelf(bool paused)
+    {
+        isPaused = paused;
     }
 }

@@ -46,6 +46,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForFixedUpdate();
             timeRemaining += Time.deltaTime;
         }
+        gameObject.GetComponent<Pauser>().canPause = false;
         moonlightBar.current = 0f;
         Time.timeScale = 0f;
         GameObject[] graveObjects = GameObject.FindGameObjectsWithTag("Grave");
