@@ -20,7 +20,7 @@ public class ItemFactory : MonoBehaviour
         }
         else
         {
-            PermanentItem item = Instantiate(itemCreator.despawnableItemPrefab, spawnPosition, itemCreator.transform.rotation).GetComponent<PermanentItem>();
+            PermanentItem item = Instantiate(itemCreator.permanentItemPrefab, spawnPosition, itemCreator.transform.rotation).GetComponent<PermanentItem>();
             item.itemType = itemType;
             item.sprite.sprite = itemCreator.itemSprites[(int)itemType];
         }

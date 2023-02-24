@@ -141,7 +141,7 @@ public class Ghost : MonoBehaviour
                         }
                         else if (ghostBigRadiusCollider.IsTouching(playerCollider))
                         {
-                            //GameObject.FindGameObjectWithTag("ItemCreator").GetComponent<ItemCreator>().SpawnItem(ItemType.Ectoplasm, transform.position, true);
+                            GameObject.FindGameObjectWithTag("ItemCreator").GetComponent<ItemCreator>().SpawnItem(ItemType.Ectoplasm, transform.position, false);
                             break;
                         }
                     }

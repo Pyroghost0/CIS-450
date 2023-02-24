@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 3293670656280478495}
   m_Layer: 0
   m_Name: Grave
-  m_TagString: Untagged
+  m_TagString: Grave
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -534,6 +534,7 @@ MonoBehaviour:
   flowerPreferences:
   - test
   flowerHates: []
+  rememberanceRate: 0.5
   flowerLovedIndicator: {fileID: 6998119887290269850}
   flowerHatedIndicator: {fileID: 5126168367520584105}
 --- !u!1 &3174085425720237063

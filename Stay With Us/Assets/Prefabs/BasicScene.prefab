@@ -240,7 +240,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5603300418663997264}
   m_Father: {fileID: 7832689445565190031}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -287,6 +288,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: Prototype 1
   winPannel: {fileID: 210707867245574591}
+  winResultText: {fileID: 8973095635731475653}
+  winDescriptionText: {fileID: 8432848213535499736}
+  levelLength: 240
+  timeRemaining: 0
+  moonlightBar: {fileID: 2211139130933606201}
+  summonableObjectTypes: 0200000003000000040000000500000006000000
+  graveyardCollider: {fileID: 6379450966965090117}
+  mapCollider: {fileID: 0}
 --- !u!1 &1479523429155285256
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1134,6 @@ GameObject:
   - component: {fileID: 2211139130933606199}
   - component: {fileID: 2211139130933606198}
   - component: {fileID: 2211139130933606201}
-  - component: {fileID: 2211139130933606196}
   m_Layer: 0
   m_Name: Night to Day Timer
   m_TagString: Untagged
@@ -1207,20 +1215,6 @@ MonoBehaviour:
   maximum: 100
   current: 0
   mask: {fileID: 2211139130950985542}
---- !u!114 &2211139130933606196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2211139130933606203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 031e2b61a9fc3c4479ec43300a8e6435, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelLength: 120
-  moonlightBar: {fileID: 0}
 --- !u!1 &2211139130944614469
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,6 +2700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasScalers:
   - {fileID: 2211139132503741149}
+  - {fileID: 8749013404681572193}
 --- !u!1 &2211139131627876334
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,6 +4182,7 @@ MonoBehaviour:
   plotOfDirt: {fileID: 0}
   playerInventory: {fileID: 2211139132515190459}
   sprite: {fileID: 2211139132515190460}
+  audioSource: {fileID: 0}
 --- !u!50 &2211139132515190462
 Rigidbody2D:
   serializedVersion: 4
@@ -5357,7 +5353,7 @@ Canvas:
   m_GameObject: {fileID: 6836358233278612601}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 2211139131509885182}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -5367,7 +5363,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -2074584003
-  m_SortingOrder: 100
+  m_SortingOrder: 102
   m_TargetDisplay: 0
 --- !u!114 &8749013404681572193
 MonoBehaviour:
@@ -5573,10 +5569,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnableItemPrefab: {fileID: 5797492780237999608, guid: ab17a5138a30f524480b3716f1fe8d28, type: 3}
-  permanentItemPrefab: {fileID: 5797492780237999608, guid: ab17a5138a30f524480b3716f1fe8d28, type: 3}
+  permanentItemPrefab: {fileID: 5797492780237999608, guid: 43f124f84f71c64469713cc3bdaf8078, type: 3}
   itemSprites:
   - {fileID: 21300000, guid: df5a9950e97fc9545b6a3a93e5f03a64, type: 3}
   - {fileID: 21300000, guid: 9125c204f566db048a92ebcb64d9d14a, type: 3}
+  - {fileID: -396464957, guid: 668117fca80282b4da73132857b8500d, type: 3}
+  - {fileID: -106795215, guid: 668117fca80282b4da73132857b8500d, type: 3}
+  - {fileID: -1794974980, guid: 668117fca80282b4da73132857b8500d, type: 3}
+  - {fileID: -1692541105, guid: 668117fca80282b4da73132857b8500d, type: 3}
+  - {fileID: 1412073621, guid: 668117fca80282b4da73132857b8500d, type: 3}
 --- !u!114 &4410100449052440918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5589,6 +5590,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f781ee5f209724b8dd2a2bd4b238d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9085503764187757398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5603300418663997264}
+  - component: {fileID: 2251126599839731985}
+  - component: {fileID: 1217175004184450815}
+  m_Layer: 10
+  m_Name: Spawnable Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5603300418663997264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085503764187757398}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6766988681119324980}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &2251126599839731985
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085503764187757398}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -30, y: -20}
+  - {x: 30, y: -20}
+  - {x: 30, y: 20}
+  - {x: -30, y: 20}
+  - {x: -30, y: -20}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!68 &1217175004184450815
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085503764187757398}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -20, y: -10}
+  - {x: 20, y: -10}
+  - {x: 20, y: 10}
+  - {x: -20, y: 10}
+  - {x: -20, y: -10}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &9184796633061997178
 GameObject:
   m_ObjectHideFlags: 0

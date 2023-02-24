@@ -22,6 +22,7 @@ public class Grave : MonoBehaviour
     public string[] flowerPreferences;
     public string[] flowerHates;
 
+    public float rememberanceRate = .5f;
     public GameObject flowerLovedIndicator;
     public GameObject flowerHatedIndicator;
 
@@ -40,7 +41,7 @@ public class Grave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rememberance -= Time.deltaTime*.25f;
+        rememberance -= Time.deltaTime*rememberanceRate;
         if (rememberance <= 0)
         {
             rememberanceBar.current = 0;

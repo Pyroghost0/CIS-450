@@ -53,8 +53,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 if ((int)playerInventory.item >= 2 && (int)playerInventory.item <= 6)
                 {
-                    playerInventory.UseItem();
                     plotOfDirt.PlantFlower((int)playerInventory.item - 2);
+                    playerInventory.UseItem();
 
                     audioSource.Play();
                 }
