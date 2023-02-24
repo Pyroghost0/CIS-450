@@ -25,8 +25,9 @@ public class GameController : MonoBehaviour
 
     public ItemType[] summonableObjectTypes = { ItemType.SunflowerSeed, ItemType.MagnoliaSeed, ItemType.IrisSeed , ItemType.PoppySeed , ItemType.RoseSeed };
     private LayerMask layerMask;
-    public PolygonCollider2D graveyardCollider;
-    public EdgeCollider2D mapCollider;
+    public Collider2D graveyardCollider;
+    public Collider2D[] dontStopColliderSpots = new Collider2D[0];
+    //public EdgeCollider2D mapCollider;
 
     // Start is called before the first frame update
     void Start()

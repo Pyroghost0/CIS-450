@@ -9,5 +9,5 @@ using UnityEngine;
  */
 public interface IObserver
 {
-    public void UpdateSelf();
+    public void UpdateSelf(bool paused);
 }
