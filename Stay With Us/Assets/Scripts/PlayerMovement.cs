@@ -21,10 +21,14 @@ public class PlayerMovement : MonoBehaviour
 
     public SpriteRenderer sprite;
 
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     playerInventory.UseItem();
                     plotOfDirt.PlantFlower((int)playerInventory.item - 2);
+
+                    audioSource.Play();
                 }
             }
         }
