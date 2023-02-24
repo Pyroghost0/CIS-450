@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     public float timeRemaining;
     public ProgressBar moonlightBar;
 
-    public ItemType[] summonableObjectTypes = { ItemType.SunflowerSeed, ItemType.MagnoliaSeed, ItemType.IrisSeed, ItemType.PoppySeed, ItemType.RoseSeed };
+    public ItemType[] summonableObjectTypes = { ItemType.DaisySeed, ItemType.SunflowerSeed, ItemType.ForgetMeNotSeed, ItemType.PoppySeed, ItemType.RoseSeed };
     private LayerMask layerMask;
     public Collider2D graveyardCollider;
     public Collider2D[] dontStopColliderSpots = new Collider2D[0];
@@ -53,8 +53,8 @@ public class GameController : MonoBehaviour
         if (!isTutorial)
         {
             StartCoroutine(LevelTimer());
+            StartCoroutine(RandomItemSummon());
         }
-        StartCoroutine(RandomItemSummon());
         if (isTutorial)
         {
             StartCoroutine(Tutorial());
@@ -143,16 +143,24 @@ public class GameController : MonoBehaviour
         yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Alpha2)));
         tutorialText.text = "This is Elam. He likes poppies. Press Q when on the plot of dirt in front of the grave to plant seeds.";
         yield return new WaitUntil(() => tutorialGrave.reaction != null);
+        Debug.Log(tutorialGrave.reaction);
         if (tutorialGrave.reaction.UpdateRemembrance() > 0)
         {
-            tutorialText.text = "Elam loves this flower! That made his remembereance bar go up a little bit. If the ghosts are happy they will gift you ectoplasm!";
+            tutorialText.text = "Elam loves this flower! That made his remembereance bar go up a little bit. If the ghosts are happy they will gift you ectoplasm!\n[press ENTER to continue]";
         }
         else 
         {
-            tutorialText.text = "Uh oh, Elam hates roses. That made his rememberance bar go down. If it gets too far down the ghost will be unhappy.";
+            tutorialText.text = "Uh oh, Elam hates this flower. That made his rememberance bar go down. If it gets too far down the ghost will be unhappy.\n[press ENTER to continue]";
         }
-
-
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        tutorialText.text = "The blue bar above graves indicates how happy the ghost is. At the end of the night, you want all of these to be as filled as possible.\n[press ENTER to continue]";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        StartCoroutine(LevelTimer());
+        tutorialText.text = "The 'Moonlight Remaining' bar shows you how much time is left in the night. You need to make sure to have all the ghosts happy by the end of the night.";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        tutorialText.text = "That's it for the tutorial! Next time you step foot in the graveyard, it will be for real. Press ENTER to return to the main menu!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        MainMenu();
     }
 
 

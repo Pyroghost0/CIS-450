@@ -11,9 +11,9 @@ public enum ItemType
 {
     Empty = 0,
     Ectoplasm = 1,
-    SunflowerSeed = 2,
-    MagnoliaSeed = 3,
-    IrisSeed = 4,
+    DaisySeed = 2,
+    SunflowerSeed = 3,
+    ForgetMeNotSeed = 4,
     PoppySeed = 5,
     RoseSeed = 6,
 }
