@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     //Ok this should be the overall for the playermovement, ill do the best i can
 
-    public bool speedUp;
+    //public bool speedUp;
+    private int initSpeed;
     public int speed;
 
     public Rigidbody2D playerRb;
@@ -22,12 +23,13 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer sprite;
 
     public AudioSource audioSource;
+    public float stamina = 4f;
 
     // Start is called before the first frame update
     void Start()
     {
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
-
+        initSpeed = speed;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -61,27 +63,45 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            if (!speedUp)
+            if (stamina > 0f)
+            {
+                speed = initSpeed * 2;
+                stamina -= Time.deltaTime;
+            }
+            else
+            {
+                speed = initSpeed;
+            }
+            /*if (!speedUp)
             {
                 speed *= 2;
                 speedUp = true;
                 StartCoroutine(Stamia());
+            }*/
+        }
+        else if (stamina < 4f)
+        {
+            speed = initSpeed;
+            stamina += Time.deltaTime;
+            if (stamina > 4f)
+            {
+                stamina = 4f;
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        /*if (Input.GetKeyUp(KeyCode.Space))
         {
             if (speedUp)
             { 
                 speed = speed/ 2;
                 speedUp = false;            }
-        }
+        }*/
 
         sprite.sortingOrder = (int)(transform.position.y * -10);
     }
 
-    IEnumerator Stamia()
+    /*IEnumerator Stamia()
     {
         yield return new WaitForSeconds(4);
         if (speedUp)
@@ -89,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
             speed = speed / 2;
             speedUp = false;
         }
-    }
+    }*/
 
     private void FixedUpdate()
     {
