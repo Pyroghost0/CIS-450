@@ -28,22 +28,37 @@ public class GameController : MonoBehaviour
     public Collider2D graveyardCollider;
     public Collider2D[] dontStopColliderSpots = new Collider2D[0];
 
+    public bool isTutorial;
+
     public GameObject player;
+    public PlayerInventory playerInventory;
+    public GameObject inivisWall;
     public GameObject lorePanel;
     public GameObject tutorialPanel;
     public TextMeshProUGUI loreText;
     public TextMeshProUGUI tutorialText;
     public bool textRead;
+
+    public GameObject poppySeed;
+    public GameObject sunflowerSeed;
+    public Grave tutorialGrave;
     //public EdgeCollider2D mapCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         layerMask = LayerMask.GetMask("Graveyard");
-        StartCoroutine(LevelTimer());
+        if (!isTutorial)
+        {
+            StartCoroutine(LevelTimer());
+        }
         StartCoroutine(RandomItemSummon());
-        StartCoroutine(Tutorial());
+        if (isTutorial)
+        {
+            StartCoroutine(Tutorial());
+        }
         //Debug.Log(RanddomSpawnPosition());
     }
 
@@ -116,11 +131,28 @@ public class GameController : MonoBehaviour
         yield return new WaitUntil(() => (player.transform.position.x > -7));
         tutorialText.text = "Great job! You can use SPACE to sprint.";
         yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Space)));
+        inivisWall.SetActive(false);
         tutorialText.text = "You can pick up ectoplasm to use as currency in the shop.\nYou can see how much you have in the top right.";
+        yield return new WaitUntil(() => (playerInventory.money > 0));
 
-        yield return new WaitForSeconds(5);
-        //Sprint
-        //grabing items
+        //insert shop tutorial
+
+        tutorialText.text = "You can pick up flower seeds and plant them to keep ghosts happy.";
+        yield return new WaitUntil(() => (poppySeed == null && sunflowerSeed == null));
+        tutorialText.text = "In the lower lefthand corner is your inventory. Press the number keys to change your active item.";
+        yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Alpha2)));
+        tutorialText.text = "This is Elam. He likes poppies. Press Q when on the plot of dirt in front of the grave to plant seeds.";
+        yield return new WaitUntil(() => tutorialGrave.reaction != null);
+        if (tutorialGrave.reaction.UpdateRemembrance() > 0)
+        {
+            tutorialText.text = "Elam loves this flower! That made his remembereance bar go up a little bit. If the ghosts are happy they will gift you ectoplasm!";
+        }
+        else 
+        {
+            tutorialText.text = "Uh oh, Elam hates roses. That made his rememberance bar go down. If it gets too far down the ghost will be unhappy.";
+        }
+
+
     }
 
 
