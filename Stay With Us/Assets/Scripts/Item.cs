@@ -92,10 +92,11 @@ public abstract class Item : MonoBehaviour
         sprite.sortingOrder = 9999;
         transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform);
         Vector3 distance = transform.localPosition * -2f;
+        Vector3 origonalScale = transform.localScale;
         timer = 0f;
         while (timer < .5f)
         {
-            transform.localScale = Vector3.one * ((.5f - timer) / .5f);
+            transform.localScale = origonalScale * ((.5f - timer) / .5f);
             yield return new WaitForFixedUpdate();
             timer+=Time.deltaTime;
             transform.position += distance * Time.deltaTime;

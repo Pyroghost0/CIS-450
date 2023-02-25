@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     //public bool speedUp;
     private int initSpeed;
     public int speed;
+    public Animator playerAnimation;
 
     public Rigidbody2D playerRb;
 
@@ -120,6 +121,8 @@ public class PlayerMovement : MonoBehaviour
             horizontalInput *= Mathf.Abs(horizontalInput) / magnitude;
             verticalInput *= Mathf.Abs(verticalInput) / magnitude;
         }
+        playerAnimation.SetFloat("X", horizontalInput);
+        playerAnimation.SetFloat("Y", verticalInput);
         playerRb.velocity = new Vector2(horizontalInput, verticalInput) * speed;
 
 

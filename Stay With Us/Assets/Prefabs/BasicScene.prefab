@@ -297,12 +297,18 @@ MonoBehaviour:
   summonableObjectTypes: 0200000003000000040000000500000006000000
   graveyardCollider: {fileID: 6379450966965090117}
   dontStopColliderSpots: []
+  isTutorial: 0
   player: {fileID: 0}
+  playerInventory: {fileID: 0}
+  inivisWall: {fileID: 0}
   lorePanel: {fileID: 0}
   tutorialPanel: {fileID: 0}
   loreText: {fileID: 0}
   tutorialText: {fileID: 0}
   textRead: 0
+  poppySeed: {fileID: 0}
+  sunflowerSeed: {fileID: 0}
+  tutorialGrave: {fileID: 0}
 --- !u!114 &2590916079805216146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,7 +794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f3a41378cd58d7446ae348436da18c63, type: 2}
   m_sharedMaterial: {fileID: 3245533515795796310, guid: f3a41378cd58d7446ae348436da18c63, type: 2}
@@ -4514,6 +4520,7 @@ GameObject:
   - component: {fileID: 2211139132515190459}
   - component: {fileID: 5179145479390935469}
   - component: {fileID: 3646050304284838983}
+  - component: {fileID: 5233073880781017231}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4530,7 +4537,7 @@ Transform:
   m_GameObject: {fileID: 2211139132515190433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.69915867, y: 0.7494, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2211139131509885183}
@@ -4579,7 +4586,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -489766349, guid: b3659b6e584a69748b7b195fb04331c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4603,6 +4610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  playerAnimation: {fileID: 5233073880781017231}
   playerRb: {fileID: 2211139132515190462}
   horizontalInput: 0
   verticalInput: 0
@@ -4645,9 +4653,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
+  m_Offset: {x: 0, y: -0.3}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!114 &2211139132515190459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4709,8 +4717,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25}
-  m_Size: {x: 2.5, y: 3.5}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.5, y: 2}
   m_Direction: 0
 --- !u!82 &3646050304284838983
 AudioSource:
@@ -4808,6 +4816,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &5233073880781017231
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211139132515190433}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b6788fc909187542aac042cd5ca1dbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2211139132779253967
 GameObject:
   m_ObjectHideFlags: 0

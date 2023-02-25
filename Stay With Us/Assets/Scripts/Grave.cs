@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Grave : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class Grave : MonoBehaviour
     public GameObject flowerLovedIndicator;
     public GameObject flowerHatedIndicator;
 
+    public GameObject graveName;
+    public TextMeshProUGUI graveNameText;
+    public TextMeshProUGUI ghostNameText;
+
     //for the ghost ai
 
     //public Ghost ghost; 
@@ -33,6 +38,7 @@ public class Grave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        graveNameText.text = ghostNameText.text + "'s Grave";
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         sprite.sortingOrder = (int)(transform.position.y * -10);
@@ -49,6 +55,27 @@ public class Grave : MonoBehaviour
         else
         {
             rememberanceBar.current = rememberance;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            graveName.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            //ghostBar.SetActive(false);
+            Collider2D[] pc = collision.GetComponents<Collider2D>();
+            if (!GetComponent<Collider2D>().IsTouching(pc[0]) && !GetComponent<Collider2D>().IsTouching(pc[1]))
+            {
+                graveName.SetActive(false);
+            }
         }
     }
 }
