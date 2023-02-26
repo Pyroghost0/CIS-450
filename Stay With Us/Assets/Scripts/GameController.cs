@@ -71,6 +71,7 @@ public class GameController : MonoBehaviour
             timeRemaining += Time.deltaTime;
         }
         gameObject.GetComponent<Pauser>().canPause = false;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().isPaused = true;
         moonlightBar.current = 0f;
         Time.timeScale = 0f;
         GameObject[] graveObjects = GameObject.FindGameObjectsWithTag("Grave");

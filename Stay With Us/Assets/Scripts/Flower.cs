@@ -7,7 +7,7 @@ public class Flower : MonoBehaviour
     public Sprite[] stagesOfGrowth;
     public SpriteRenderer spriteRenderer;
     public int stageOfGrowth = 0;
-    public float growthStageTime = 20;
+    private float growthStageTime = 10f;
     public float timer;
 
     public string flowerType; // could also be enum
@@ -17,17 +17,26 @@ public class Flower : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = (int)(transform.position.y * -10);
+        spriteRenderer.sprite = stagesOfGrowth[stageOfGrowth];
+        timer = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        spriteRenderer.sprite = stagesOfGrowth[stageOfGrowth];
-        if (timer > growthStageTime && stageOfGrowth < stagesOfGrowth.Length - 1)
+        if (timer > growthStageTime && (stageOfGrowth != stagesOfGrowth.Length -1 || timer > growthStageTime * 2f))// && stageOfGrowth < stagesOfGrowth.Length - 1)
         { 
             stageOfGrowth++;
-            timer = 0;
+            if (stageOfGrowth == stagesOfGrowth.Length)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                spriteRenderer.sprite = stagesOfGrowth[stageOfGrowth];
+                timer = 0;
+            }
         }
     }
 }

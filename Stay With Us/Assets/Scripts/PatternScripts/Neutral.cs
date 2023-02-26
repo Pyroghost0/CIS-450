@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Loved : GraveReaction
+public class Neutral : GraveReaction
 {
-    public float pointsWorth = 20;
+    private float pointsWorth = 25f;
     public override float UpdateRemembrance()
     {
         return pointsWorth;

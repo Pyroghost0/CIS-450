@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hated : GraveReaction
 {
-    public float pointsWorth = -10;
+    public float pointsWorth = -10f;
     public override float UpdateRemembrance()
     {
         return pointsWorth;
