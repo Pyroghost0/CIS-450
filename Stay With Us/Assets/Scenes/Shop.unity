@@ -5950,8 +5950,8 @@ MonoBehaviour:
   itemTypeSprites:
   - {fileID: 21300000, guid: df5a9950e97fc9545b6a3a93e5f03a64, type: 3}
   - {fileID: 21300000, guid: 886dc1e978821aa45bb235a3555f9cd9, type: 3}
-  - {fileID: -396464957, guid: 668117fca80282b4da73132857b8500d, type: 3}
   - {fileID: -106795215, guid: 668117fca80282b4da73132857b8500d, type: 3}
+  - {fileID: -396464957, guid: 668117fca80282b4da73132857b8500d, type: 3}
   - {fileID: -1794974980, guid: 668117fca80282b4da73132857b8500d, type: 3}
   - {fileID: -1692541105, guid: 668117fca80282b4da73132857b8500d, type: 3}
   - {fileID: 1412073621, guid: 668117fca80282b4da73132857b8500d, type: 3}

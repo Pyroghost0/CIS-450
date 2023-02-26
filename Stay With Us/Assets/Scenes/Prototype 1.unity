@@ -27948,7 +27948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_Name
-      value: WW1 vet grave
+      value: WW1 vet grave / Steve
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_IsActive
@@ -27996,7 +27996,7 @@ PrefabInstance:
       objectReference: {fileID: 740516224, guid: f9619d24139271f4ab829d9e70c81b06, type: 3}
     - target: {fileID: 4110924155417188512, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_text
-      value: WWI Vet
+      value: Steve
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
@@ -28152,7 +28152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_Name
-      value: Cat grave
+      value: Cat grave / Neko
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_IsActive
@@ -28204,7 +28204,7 @@ PrefabInstance:
       objectReference: {fileID: 226191858, guid: f9619d24139271f4ab829d9e70c81b06, type: 3}
     - target: {fileID: 4110924155417188512, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_text
-      value: Cat
+      value: Neko
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
@@ -28270,7 +28270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_Name
-      value: Child grave
+      value: Boy grave
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_IsActive
@@ -28310,7 +28310,7 @@ PrefabInstance:
       objectReference: {fileID: -1907787430, guid: f9619d24139271f4ab829d9e70c81b06, type: 3}
     - target: {fileID: 4110924155417188512, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_text
-      value: Child
+      value: Boy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
@@ -28841,7 +28841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_Name
-      value: Grandma grave
+      value: Grandma grave / Tia
       objectReference: {fileID: 0}
     - target: {fileID: 3293670656280478495, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: flowerPreferences.Array.size
@@ -28873,7 +28873,7 @@ PrefabInstance:
       objectReference: {fileID: -292932863, guid: f9619d24139271f4ab829d9e70c81b06, type: 3}
     - target: {fileID: 4110924155417188512, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_text
-      value: Grandma
+      value: Tia
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
@@ -28951,7 +28951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3293670656280478495, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: flowerPreferences.Array.data[0]
-      value: sunflowers
+      value: sunflower
       objectReference: {fileID: 0}
     - target: {fileID: 4110924155381853577, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_RootOrder
@@ -90529,7 +90529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_Name
-      value: Anxious grave
+      value: Anxious grave / Zawazawa
       objectReference: {fileID: 0}
     - target: {fileID: 3174085425452460654, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_IsActive
@@ -90577,7 +90577,7 @@ PrefabInstance:
       objectReference: {fileID: 520627149, guid: f9619d24139271f4ab829d9e70c81b06, type: 3}
     - target: {fileID: 4110924155417188512, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: m_text
-      value: Anxiety
+      value: Zawazawa
       objectReference: {fileID: 0}
     - target: {fileID: 5139890074477152281, guid: 6b62de0eaa910284899cfc565a6edac6, type: 3}
       propertyPath: flowerType
@@ -90624,6 +90624,10 @@ PrefabInstance:
     - target: {fileID: 2211139131509885183, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211139132515190459, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
+      propertyPath: money
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2211139132515190461, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_LocalPosition.x
