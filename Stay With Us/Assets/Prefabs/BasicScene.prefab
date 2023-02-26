@@ -3575,6 +3575,7 @@ RectTransform:
   - {fileID: 2211139131115226816}
   - {fileID: 2211139131454860700}
   - {fileID: 2211139131397267373}
+  - {fileID: 3612205963036881941}
   m_Father: {fileID: 2211139132503741147}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4434,7 +4435,6 @@ RectTransform:
   m_Children:
   - {fileID: 2211139130944614466}
   - {fileID: 2211139131986847219}
-  - {fileID: 3612205963036881941}
   m_Father: {fileID: 7832689445565190031}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4704,6 +4704,7 @@ MonoBehaviour:
   money: 0
   moneyText: {fileID: 1657008334632370680}
   isPaused: 0
+  itemNameText: {fileID: 3461466064111845315}
 --- !u!70 &5179145479390935469
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -6349,7 +6350,7 @@ GameObject:
   - component: {fileID: 2285454524766417438}
   - component: {fileID: 3461466064111845315}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Item Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6362,17 +6363,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5829274648778559600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2211139132503741147}
-  m_RootOrder: 2
+  m_Father: {fileID: 2211139131986847219}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -230, y: -80}
+  m_AnchoredPosition: {x: -215, y: -395}
   m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2285454524766417438
@@ -6403,10 +6404,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '''Q'' to plant a flower in a plot of dirt'
+  m_text: Empty
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f3a41378cd58d7446ae348436da18c63, type: 2}
-  m_sharedMaterial: {fileID: 3245533515795796310, guid: f3a41378cd58d7446ae348436da18c63, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b778bfcfe36d7e5488e29d0e1acfd693, type: 2}
+  m_sharedMaterial: {fileID: 3245533515795796310, guid: b778bfcfe36d7e5488e29d0e1acfd693, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6437,7 +6438,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: -3

@@ -154,11 +154,14 @@ public class GameController : MonoBehaviour
         }
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         tutorialText.text = "The blue bar above graves indicates how happy the ghost is. At the end of the night, you want all of these to be as filled as possible.\n[press ENTER to continue]";
+        yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         StartCoroutine(LevelTimer());
         tutorialText.text = "The 'Moonlight Remaining' bar shows you how much time is left in the night. You need to make sure to have all the ghosts happy by the end of the night.";
+        yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         tutorialText.text = "That's it for the tutorial! Next time you step foot in the graveyard, it will be for real. Press ENTER to return to the main menu!";
+        yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         MainMenu();
     }

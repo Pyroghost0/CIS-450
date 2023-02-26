@@ -32,6 +32,8 @@ public class PlayerInventory : MonoBehaviour, IObserver
     public TextMeshProUGUI moneyText;
     public bool isPaused = false;
 
+    public TextMeshProUGUI itemNameText;
+
     /* Use Items like this
      * if (Input.GetMouseButtonDown(1) && !gc.isPaused && canUseItems)
         {
@@ -138,6 +140,7 @@ public class PlayerInventory : MonoBehaviour, IObserver
                 scrollAmount = 0f;
             }
         }
+        itemNameText.text = inventory[inventorySelection].ToString();
     }
 
     public void UpdateMoney(int difference)
