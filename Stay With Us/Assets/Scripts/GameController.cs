@@ -56,8 +56,8 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(LevelTimer());
             StartCoroutine(RandomItemSummon());
-            cameraLUT.Brightness = -0.5f;
-            cameraLUT.Saturation = -0.5f;
+            cameraLUT.Brightness = -0.25f;
+            cameraLUT.Saturation = -0.25f;
         }
         if (isTutorial)
         {
@@ -75,8 +75,8 @@ public class GameController : MonoBehaviour
             timeRemaining += Time.deltaTime;
             if (cameraLUT.Brightness <= 0)
 			{
-                cameraLUT.Brightness += 0.25f * Time.deltaTime / levelLength;
-                cameraLUT.Saturation += Time.deltaTime / levelLength;
+                cameraLUT.Brightness += 0.2f * Time.deltaTime / levelLength;
+                cameraLUT.Saturation += 0.75f * Time.deltaTime / levelLength;
             }
         }
         gameObject.GetComponent<Pauser>().canPause = false;

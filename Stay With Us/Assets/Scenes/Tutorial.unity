@@ -73059,6 +73059,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6966447067169661536, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966447067169661536, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: Brightness
       value: -0.25
       objectReference: {fileID: 0}

@@ -71,6 +71,7 @@ public class Shop : MonoBehaviour
     public void StartShop(Shoptender newShoptender)
     {
         GameObject.FindGameObjectWithTag("GameController").GetComponent<Pauser>().canTimeScale = false;
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().cameraLUT.enabled = false;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraRatio>().AddShopCanvas(GetComponent<CanvasScaler>());
         shoptender = newShoptender;
         items = shoptender.items;
@@ -402,6 +403,7 @@ public class Shop : MonoBehaviour
             buyButton.SetActive(false);
             SlowText(talkTexts[Random.Range(0, talkTexts.Length)]);
         }
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().cameraLUT.enabled = true;
     }
 
     public void SlowText(string newText)

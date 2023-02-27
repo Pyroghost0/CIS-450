@@ -3152,8 +3152,8 @@ MonoBehaviour:
   Amount: 1
   TintColor: {r: 1, g: 1, b: 1, a: 1}
   Hue: 0
-  Saturation: -0.5
-  Brightness: -0.5
+  Saturation: 0
+  Brightness: 0
   Contrast: 0
   Sharpness: 0
 --- !u!1 &2211139131627876334
