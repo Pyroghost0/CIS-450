@@ -50,7 +50,7 @@ public class Shop : MonoBehaviour
     "Poppy seeds, I hear Steve likes them...", "Rose seeds, give them to people who need love..." };
     [System.NonSerialized] public string[] talkTexts = { "What a fine day to be living... I mean be dead...", "What? Me, a reaper? No... I'm not... Tell anyone and your dead...", "Stories? Yeah I got stories... One time someone died. The End...", "I've taken the soul out of plants before... Don't ask how...",
     "Hurry up and buy something, I might just die from boredom here...", "Yes, yes... dogs go to heaven, and cats go to hell...", "How are the plants growing so fast? Uhh... becuase I said so...", "Why do I need money? I'm just saving up so I can reincarnate into a shrimp...",
-    "Are there more reapers? Yes, can't you see the one behind you?...", "Life and death are... who cares about philiosiphy anyways...", "I have plenty of hobbies killing, reaping souls... I don't have a hobby...", "THIS SCYTHE IS NOT FOR FARMING..."};
+    "Are there more reapers? Yes, can't you see the one behind you?...", "Life and death are... who cares about philosophy anyways...", "I have plenty of hobbies killing, reaping souls... I don't have a hobby...", "THIS SCYTHE IS NOT FOR FARMING..."};
     //public string[][] shoptenderMainTexts = { barMainTexts, gunMainTexts, theifMainTexts, tailorMainTexts };
 
     public GameObject[] amountButtons;
@@ -138,7 +138,7 @@ public class Shop : MonoBehaviour
         {
             if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().money < itemPrices[buttonNum])
             {
-                SlowText("Sorry... You're too poor... I don't speak to peasents...");
+                SlowText("Sorry... You're too poor... I don't speak to peasants...");
             }
             else if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().CanAdd(items[buttonNum]))
             {

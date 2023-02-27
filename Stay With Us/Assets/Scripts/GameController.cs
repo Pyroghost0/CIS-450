@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using DigitalRuby.SimpleLUT;
 
 public class GameController : MonoBehaviour
 {
@@ -17,8 +18,8 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI winDescriptionText;
     private string[] winTexts = { "They don't hate you, so I think you've won", "Bet you wouldn't have won if the flowers needed sunlight to grow", "Did you win? Maybe you can rest in peace now", "Insert funny HaHa joke here so you feel accomplished",
     "This wouldn't have been possible with the Discord mod ghost", "Winning? More like a slave to society, am I right?", "Now just ask death for Portal 3", "You know, a lot of people would die to be where you are now"};
-    private string[] loseTexts = { "Congradulations, you've successfully failed at life twice", "If you've faied at life once, you can fail again", "Who said you only have one chance at life, try again", "After all that work they hate you, maybe they deserve not to be remembered",
-    "Nothing in life came easy, it probably the same in death", "I mean you're trading their ectoplasm, so it makes sence why they're mad at you", "When life gave you lemons, you forgot to ask how much ectoplasm they're worth", "Losing is anouther way of saying you lose"};
+    private string[] loseTexts = { "Congratulations, you've successfully failed at life twice", "If you've failed at life once, you can fail again", "Who said you only have one chance at life, try again", "After all that work they hate you, maybe they deserve not to be remembered",
+    "Nothing in life came easy, it's probably the same in death", "I mean you're trading their ectoplasm, so it makes sense why they're mad at you", "When life gave you lemons, you forgot to ask how much ectoplasm they're worth", "Losing is another way of saying you lose"};
     public float levelLength = 240f;
     public float timeRemaining;
     public ProgressBar moonlightBar;
@@ -42,6 +43,7 @@ public class GameController : MonoBehaviour
     public GameObject poppySeed;
     public GameObject sunflowerSeed;
     public Grave tutorialGrave;
+    public SimpleLUT cameraLUT;
     //public EdgeCollider2D mapCollider;
 
     // Start is called before the first frame update
@@ -54,6 +56,8 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(LevelTimer());
             StartCoroutine(RandomItemSummon());
+            cameraLUT.Brightness = -0.5f;
+            cameraLUT.Saturation = -0.5f;
         }
         if (isTutorial)
         {
@@ -69,6 +73,11 @@ public class GameController : MonoBehaviour
             moonlightBar.current = ((levelLength - timeRemaining) / levelLength) * 100f;
             yield return new WaitForFixedUpdate();
             timeRemaining += Time.deltaTime;
+            if (cameraLUT.Brightness <= 0)
+			{
+                cameraLUT.Brightness += 0.25f * Time.deltaTime / levelLength;
+                cameraLUT.Saturation += Time.deltaTime / levelLength;
+            }
         }
         gameObject.GetComponent<Pauser>().canPause = false;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().isPaused = true;
@@ -120,7 +129,7 @@ public class GameController : MonoBehaviour
     {
         //LORE
         loreText.text = "Unfortunately, you have died." +
-            "\nSurpsingly, your death is of use!" +
+            "\nSurprisingly, your death is of use!" +
             "\nDeath has tasked you with overseeing the graves of those who have also passed." +
             "\nThey deserve happiness. You will give it to them.";
         
@@ -147,11 +156,11 @@ public class GameController : MonoBehaviour
         Debug.Log(tutorialGrave.reaction);
         if (tutorialGrave.reaction.UpdateRemembrance() > 0)
         {
-            tutorialText.text = "Elam loves this flower! That made his remembereance bar go up a little bit. If the ghosts are happy they will gift you ectoplasm!\n[press ENTER to continue]";
+            tutorialText.text = "Elam loves this flower! That made his remembrance bar go up a little bit. If the ghosts are happy they will gift you ectoplasm!\n[press ENTER to continue]";
         }
         else 
         {
-            tutorialText.text = "Uh oh, Elam hates this flower. That made his rememberance bar go down. If it gets too far down the ghost will be unhappy.\n[press ENTER to continue]";
+            tutorialText.text = "Uh oh, Elam hates this flower. That made his remembrance bar go down. If it gets too far down the ghost will be unhappy.\n[press ENTER to continue]";
         }
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         tutorialText.text = "The blue bar above graves indicates how happy the ghost is. At the end of the night, you want all of these to be as filled as possible.\n[press ENTER to continue]";

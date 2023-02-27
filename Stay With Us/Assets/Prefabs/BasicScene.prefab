@@ -309,6 +309,7 @@ MonoBehaviour:
   poppySeed: {fileID: 0}
   sunflowerSeed: {fileID: 0}
   tutorialGrave: {fileID: 0}
+  cameraLUT: {fileID: 6966447067169661536}
 --- !u!114 &2590916079805216146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3011,6 +3012,7 @@ GameObject:
   - component: {fileID: 2211139131509885153}
   - component: {fileID: 2211139131509885180}
   - component: {fileID: 320784639935375396}
+  - component: {fileID: 6966447067169661536}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3133,6 +3135,27 @@ MonoBehaviour:
   canvasScalers:
   - {fileID: 2211139132503741149}
   - {fileID: 8749013404681572193}
+--- !u!114 &6966447067169661536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211139131509885152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2fd0b11cfb2fb4ca4ed47adfcc3b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shader: {fileID: 4800000, guid: 9d7e8f87435780644abb4acdfd72a2f0, type: 3}
+  LookupTexture: {fileID: 0}
+  Amount: 1
+  TintColor: {r: 1, g: 1, b: 1, a: 1}
+  Hue: 0
+  Saturation: -0.5
+  Brightness: -0.5
+  Contrast: 0
+  Sharpness: 0
 --- !u!1 &2211139131627876334
 GameObject:
   m_ObjectHideFlags: 0
