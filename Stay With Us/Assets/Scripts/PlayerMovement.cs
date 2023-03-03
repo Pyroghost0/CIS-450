@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource audioSource;
     public float stamina = 4f;
+    public bool talking = false;
+    public Ghost talkingGhost;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,37 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("E button was pressed");
         }*/
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (talking)
+            {
+                talking = false;
+                Time.timeScale = 1f;
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<Pauser>().canPause = true;
+                talkingGhost.talkingComponent.SetActive(false);
+            }
+            else if (GameObject.FindGameObjectWithTag("Shoptender") == null || (GameObject.FindGameObjectWithTag("Shoptender").transform.position - transform.position).magnitude > 5f)
+            {
+                GameObject[] ghosts = GameObject.FindGameObjectsWithTag("Ghost");
+                int minNum = 0;
+                for (int i = 1; i < ghosts.Length; i++)
+                {
+                    if ((ghosts[i].transform.position - transform.position).magnitude < (ghosts[minNum].transform.position - transform.position).magnitude)
+                    {
+                        minNum = i;
+                    }
+                }
+                if ((ghosts[minNum].transform.position - transform.position).magnitude < 3f)
+                {
+                    talking = true;
+                    talkingGhost = ghosts[minNum].GetComponent<Ghost>();
+                    Time.timeScale = 0f;
+                    GameObject.FindGameObjectWithTag("GameController").GetComponent<Pauser>().canPause = false;
+                    talkingGhost.talkingComponent.SetActive(true);
+                    talkingGhost.Talk();
+                }
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {

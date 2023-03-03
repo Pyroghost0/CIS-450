@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Ghost : MonoBehaviour
 {
@@ -23,11 +24,32 @@ public class Ghost : MonoBehaviour
     private Collider2D walkableZone;
     private bool canEmotion = true;
 
+    public GameObject talkingComponent;
+    public TextMeshProUGUI talkingText;
+    public bool alreadyTalked = false;
+    private int previousPromptNumber = 0;
+    public string initialText;
+    public string[] ghostTexts;
+
     // Start is called before the first frame update
     void Start()
     {
         walkableZone = GameObject.FindGameObjectWithTag("GameController").GetComponent<PolygonCollider2D>();
         StartCoroutine(GhostBehavior());
+    }
+
+    public void Talk()
+    {
+        if (alreadyTalked)
+        {
+            previousPromptNumber = (Random.Range(1, ghostTexts.Length) + previousPromptNumber) % ghostTexts.Length;
+            talkingText.text = ghostTexts[previousPromptNumber];
+        }
+        else
+        {
+            alreadyTalked = true;
+            talkingText.text = initialText;
+        }
     }
 
     IEnumerator GhostBehavior()
