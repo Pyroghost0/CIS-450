@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public PlayerInventory playerInventory;
     public GameObject inivisWall;
+    public GameObject inivisWallCurrency;
+    public GameObject inivisWallSeeds;
     public GameObject lorePanel;
     public GameObject tutorialPanel;
     public TextMeshProUGUI loreText;
@@ -139,11 +141,12 @@ public class GameController : MonoBehaviour
         tutorialPanel.SetActive(true);
         tutorialText.text = "To move, use WASD or arrow keys.";
         yield return new WaitUntil(() => (player.transform.position.x > -7));
-        tutorialText.text = "Great job! You can use SPACE to sprint.";
-        yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Space)));
+        tutorialText.text = "Great job! You can use SPACE or SHIFT to sprint.";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift));
         inivisWall.SetActive(false);
         tutorialText.text = "You can pick up ectoplasm to use as currency in the shop.\nYou can see how much you have in the top right.";
-        yield return new WaitUntil(() => (playerInventory.money > 0));
+        yield return new WaitUntil(() => (playerInventory.money > 5));
+        inivisWallCurrency.SetActive(false);
 
         //insert shop tutorial
 
@@ -151,6 +154,7 @@ public class GameController : MonoBehaviour
         yield return new WaitUntil(() => (poppySeed == null && sunflowerSeed == null));
         tutorialText.text = "In the lower lefthand corner is your inventory. Press the number keys to change your active item.";
         yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Alpha2)));
+        inivisWallSeeds.SetActive(false);
         tutorialText.text = "This is Elam. He likes poppies. Press Q when on the plot of dirt in front of the grave to plant seeds.";
         yield return new WaitUntil(() => tutorialGrave.reaction != null);
         Debug.Log(tutorialGrave.reaction);
@@ -167,7 +171,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         StartCoroutine(LevelTimer());
-        tutorialText.text = "The 'Moonlight Remaining' bar shows you how much time is left in the night. You need to make sure to have all the ghosts happy by the end of the night.";
+        tutorialText.text = "The 'Moonlight Remaining' bar shows you how much time is left in the night. You need to make sure to have all the ghosts happy by the end of the night.\n[press ENTER to continue]";
         yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         tutorialText.text = "That's it for the tutorial! Next time you step foot in the graveyard, it will be for real. Press ENTER to return to the main menu!";
