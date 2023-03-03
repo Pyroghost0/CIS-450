@@ -9,6 +9,7 @@ public class Flower : MonoBehaviour
     public int stageOfGrowth = 0;
     private float growthStageTime = 10f;
     public float timer;
+    public PlotOfDirt plotOfDirt;
 
     public string flowerType; // could also be enum
     

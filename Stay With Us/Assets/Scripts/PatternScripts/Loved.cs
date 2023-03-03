@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Loved : GraveReaction
 {
-    private float pointsWorth = 50f;
+    private float newRate = -.5f;
     public override float UpdateRemembrance()
     {
-        return pointsWorth;
+        return newRate;
     }
 }

@@ -69,26 +69,8 @@ public class PlotOfDirt : MonoBehaviour
 
             flowerPlanted = true;
         }
-           
-        if (grave.rememberance >= 100 - grave.reaction.UpdateRemembrance())
-        {
-            if (grave.reaction.UpdateRemembrance() > 0)
-            {
-                grave.rememberance = 100;
-            }
-            else
-            {
-                grave.rememberance -= 10;
-            }
-        }
-        else if (grave.rememberance < 10 && grave.reaction.UpdateRemembrance() < 0)
-        {
-            grave.rememberance = 0;
-        }
-        else
-        {
-            grave.rememberance += grave.reaction.UpdateRemembrance();
-        }
+
+        grave.rememberanceRate = grave.reaction.UpdateRemembrance();
 
 
     }
