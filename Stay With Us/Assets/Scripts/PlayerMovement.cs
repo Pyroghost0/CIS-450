@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log("Q button was pressed");
             if (plotOfDirt != null)
             {
-                if ((int)playerInventory.item >= 2 && (int)playerInventory.item <= 6)
+                if ((int)playerInventory.item >= 2 && (int)playerInventory.item <= 6 && plotOfDirt.newFlowerCanBePlanted)
                 {
                     plotOfDirt.PlantFlower((int)playerInventory.item - 2);
                     playerInventory.UseItem();

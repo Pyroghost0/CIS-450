@@ -32,6 +32,8 @@ public class Flower : MonoBehaviour
             if (stageOfGrowth == stagesOfGrowth.Length)
             {
                 gameObject.SetActive(false);
+                //plotOfDirt.FlowerDied();
+                Debug.Log("flowerdied");
             }
             else
             {

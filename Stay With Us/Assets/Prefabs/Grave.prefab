@@ -239,8 +239,8 @@ MonoBehaviour:
   - {fileID: 1812286849, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   spriteRenderer: {fileID: 1185185775286790096}
   stageOfGrowth: 0
-  growthStageTime: 20
   timer: 0
+  plotOfDirt: {fileID: 2306439799860384285}
   flowerType: daisy
 --- !u!1 &1895538083179953787
 GameObject:
@@ -346,8 +346,8 @@ MonoBehaviour:
   - {fileID: 1825261939, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   spriteRenderer: {fileID: 605575803582218541}
   stageOfGrowth: 0
-  growthStageTime: 20
   timer: 0
+  plotOfDirt: {fileID: 2306439799860384285}
   flowerType: roses
 --- !u!1 &2505333917727132902
 GameObject:
@@ -454,8 +454,8 @@ MonoBehaviour:
   - {fileID: 1202709637, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   spriteRenderer: {fileID: 2395282969017074646}
   stageOfGrowth: 0
-  growthStageTime: 20
   timer: 0
+  plotOfDirt: {fileID: 2306439799860384285}
   flowerType: poppy
 --- !u!1 &3174085425129877005
 GameObject:
@@ -1160,8 +1160,8 @@ MonoBehaviour:
   - {fileID: -1740552048, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   spriteRenderer: {fileID: 7061292312475403058}
   stageOfGrowth: 0
-  growthStageTime: 20
   timer: 0
+  plotOfDirt: {fileID: 2306439799860384285}
   flowerType: forgetMeNot
 --- !u!1 &6998119887290269850
 GameObject:
@@ -1343,8 +1343,8 @@ MonoBehaviour:
   - {fileID: 245957792, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   spriteRenderer: {fileID: 754837115193710225}
   stageOfGrowth: 0
-  growthStageTime: 20
   timer: 0
+  plotOfDirt: {fileID: 2306439799860384285}
   flowerType: sunflower
 --- !u!1001 &2384876858996730877
 PrefabInstance:
@@ -1510,6 +1510,10 @@ PrefabInstance:
       propertyPath: flowers.Array.data[4]
       value: 
       objectReference: {fileID: 1895538083179953787}
+    - target: {fileID: 973835521319072245, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
+      propertyPath: newFlowerCanBePlanted
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 973835521707706203, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1574,3 +1578,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 973835521319072244, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
   m_PrefabInstance: {fileID: 3279144961871782888}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2306439799860384285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 973835521319072245, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
+  m_PrefabInstance: {fileID: 3279144961871782888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fed99679718e81419b9dcfe7142fa84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,4 +1,4 @@
-/* Caleb Kahn
+/* Caleb Kahn, Anna Breuker
  * GameController
  * Project 1
  * Controls some aspects of the game like pausing
