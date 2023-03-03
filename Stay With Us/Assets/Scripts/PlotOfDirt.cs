@@ -15,6 +15,7 @@ public class PlotOfDirt : MonoBehaviour
     //then shows the sprite and will manage other variables.
     public void PlantFlower(int flowerNum)
     {
+        bool flowerPlanted = false;
         for (int i = 0; i < flowers.Length; i++)
         {
             flowers[i].SetActive(false);
@@ -24,9 +25,15 @@ public class PlotOfDirt : MonoBehaviour
 
         Debug.Log("flowerNum is " + flowerNum);
 
-        for(int i = 0; i < grave.flowerPreferences.Length; i++) 
+        for (int i = 0; i < grave.flowerPreferences.Length; i++)
         {
-            if (grave.flowerPreferences[i] == flowers[flowerNum].GetComponent<Flower>().flowerType)
+            Debug.Log(grave.flowerPreferences[i]);
+            if (grave.flowerHates.Length > i)
+            {
+                Debug.Log(grave.flowerPreferences[i]);
+            }
+            Debug.Log(flowers[flowerNum]);
+            if (grave.flowerPreferences[i] == flowers[flowerNum].GetComponent<Flower>().flowerType && !flowerPlanted)
             {
                 Debug.Log("grave loves this");
                 Destroy(grave.GetComponent<GraveReaction>());
@@ -34,8 +41,13 @@ public class PlotOfDirt : MonoBehaviour
 
                 grave.flowerLovedIndicator.SetActive(true);
                 grave.flowerHatedIndicator.SetActive(false);
+
+                flowerPlanted = true;
             }
-            else if (grave.flowerHates.Length > i && grave.flowerHates[i] == flowers[flowerNum].GetComponent<Flower>().flowerType)
+        }
+        for (int i = 0; i < grave.flowerHates.Length; i++)
+        {
+            if (grave.flowerHates.Length > i && grave.flowerHates[i] == flowers[flowerNum].GetComponent<Flower>().flowerType && !flowerPlanted)
             {
                 Debug.Log("grave hates this");
                 Destroy(grave.GetComponent<GraveReaction>());
@@ -43,16 +55,21 @@ public class PlotOfDirt : MonoBehaviour
 
                 grave.flowerLovedIndicator.SetActive(false);
                 grave.flowerHatedIndicator.SetActive(true);
-            }
-            else
-            {
-                Destroy(grave.GetComponent<GraveReaction>());
-                grave.reaction = grave.gameObject.AddComponent<Neutral>();
 
-                grave.flowerLovedIndicator.SetActive(false);
-                grave.flowerHatedIndicator.SetActive(false);
+                flowerPlanted = true;
             }
         }
+        if (!flowerPlanted)
+        {
+            Destroy(grave.GetComponent<GraveReaction>());
+            grave.reaction = grave.gameObject.AddComponent<Neutral>();
+
+            grave.flowerLovedIndicator.SetActive(false);
+            grave.flowerHatedIndicator.SetActive(false);
+
+            flowerPlanted = true;
+        }
+           
         if (grave.rememberance >= 100 - grave.reaction.UpdateRemembrance())
         {
             if (grave.reaction.UpdateRemembrance() > 0)
@@ -73,5 +90,7 @@ public class PlotOfDirt : MonoBehaviour
             grave.rememberance += grave.reaction.UpdateRemembrance();
         }
 
+
     }
+
 }
