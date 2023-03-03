@@ -73154,10 +73154,6 @@ PrefabInstance:
       propertyPath: inivisWallCurrency
       value: 
       objectReference: {fileID: 444646752}
-    - target: {fileID: 2211139130944614469, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2211139131509885183, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -73165,10 +73161,6 @@ PrefabInstance:
     - target: {fileID: 2211139131509885183, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2211139132503741151, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2211139132515190461, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -73188,10 +73180,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211139132515190461, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5829274648778559600, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6966447067169661536, guid: c9795639901cf6b4286cb51886c742f7, type: 3}

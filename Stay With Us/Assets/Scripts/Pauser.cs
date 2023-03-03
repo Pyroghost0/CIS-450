@@ -35,8 +35,8 @@ public class Pauser : MonoBehaviour, ISubject
         if (canTimeScale)
         {
             Time.timeScale = 1f;
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().cameraLUT.enabled = true;
         }
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().cameraLUT.enabled = true;
         NotifyObservers(false);
     }
 
@@ -50,8 +50,8 @@ public class Pauser : MonoBehaviour, ISubject
             if (canTimeScale)
             {
                 Time.timeScale = isPaused ? 0f : 1f;
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().cameraLUT.enabled = !isPaused;
             }
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().cameraLUT.enabled = !isPaused;
             NotifyObservers(isPaused);
         }
     }
