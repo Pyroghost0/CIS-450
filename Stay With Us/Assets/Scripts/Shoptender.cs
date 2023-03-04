@@ -65,6 +65,17 @@ public class Shoptender : MonoBehaviour
         inShop = true;
         AsyncOperation ao = SceneManager.LoadSceneAsync("Shop", LoadSceneMode.Additive);
         yield return new WaitUntil(() => ao.isDone);
+        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isTutorial)
+        {
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventorySelection = 1;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().UseItem();
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventorySelection = 0;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().UseItem();
+            GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().talkTexts = new string[1];
+            GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().talkTexts[0] = "Click on the poppy seeds to buy it";
+            GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().itemDescriptions[0] = "Click on the poppy seeds to buy it";
+            GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().itemDescriptions[5] = "Click the poppy seeds to select it, specify the amount, and buy it with the bottom button";
+        }
         GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().StartShop(this);
     }
 

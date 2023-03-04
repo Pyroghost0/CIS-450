@@ -1,3 +1,8 @@
+/* Anna Breuker
+ * PlotOfDirt
+ * Project 1
+ * Plants flowers for a grave
+ */
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;

@@ -1,7 +1,7 @@
 /* Caleb Kahn, Anna Breuker
  * GameController
  * Project 1
- * Controls some aspects of the game like pausing
+ * Controls some aspects of the game like game timer and random spawning
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
     public PlayerInventory playerInventory;
     public GameObject inivisWall;
     public GameObject inivisWallCurrency;
+    public GameObject invisShopWall;
     public GameObject inivisWallSeeds;
     public GameObject lorePanel;
     public GameObject tutorialPanel;
@@ -142,13 +143,17 @@ public class GameController : MonoBehaviour
         tutorialText.text = "To move, use WASD or arrow keys.";
         yield return new WaitUntil(() => (player.transform.position.x > -7));
         tutorialText.text = "Great job! You can use SPACE or SHIFT to sprint.";
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift));
+        yield return new WaitUntil(() => Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
         inivisWall.SetActive(false);
         tutorialText.text = "You can pick up ectoplasm to use as currency in the shop.\nYou can see how much you have in the top right.";
         yield return new WaitUntil(() => (playerInventory.money > 5));
         inivisWallCurrency.SetActive(false);
 
-        //insert shop tutorial
+        //Shop tutorial
+        tutorialText.text = "Now lets look at the shop. Walk over to the grim reaper to buy and sell seeds & special items";
+        yield return new WaitUntil(() => !textRead);
+        invisShopWall.SetActive(false);
+        GameObject.FindGameObjectWithTag("Shoptender").GetComponent<Shoptender>().enabled = false;
 
         tutorialText.text = "You can pick up flower seeds and plant them to keep ghosts happy.";
         yield return new WaitUntil(() => (poppySeed == null && sunflowerSeed == null));
@@ -158,7 +163,7 @@ public class GameController : MonoBehaviour
         tutorialText.text = "This is Elam. He likes poppies. Press Q when on the plot of dirt in front of the grave to plant seeds.";
         yield return new WaitUntil(() => tutorialGrave.reaction != null);
         Debug.Log(tutorialGrave.reaction);
-        if (tutorialGrave.reaction.UpdateRemembrance() > 0)
+        if (tutorialGrave.reaction is Loved)
         {
             tutorialText.text = "Elam loves this flower! That made his remembrance bar go up a little bit. If the ghosts are happy they will gift you ectoplasm!\n[press ENTER to continue]";
         }

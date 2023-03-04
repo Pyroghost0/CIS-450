@@ -94,7 +94,7 @@ public class Shop : MonoBehaviour
             else if (itemAmount[i] != -1)
             {
                 shopItemAmountTexts[i].gameObject.SetActive(true);
-                shopItemAmountTexts[i].text = "x" + itemAmount[i];
+                shopItemAmountTexts[i].text = "/" + itemAmount[i];
             }
             //else if (itemPriceTypes[i] == MoneyType.Money)
             //{//Normally images are money sprite
@@ -120,7 +120,7 @@ public class Shop : MonoBehaviour
             else
             {
                 inventoryItemAmountTexts[i].gameObject.SetActive(true);
-                inventoryItemAmountTexts[i].text = "x" + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[i];
+                inventoryItemAmountTexts[i].text = "X" + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[i];
             }
             //inventoryButtonPriceTexts[i].text =  "$" + ((int)(itemSellPrices[(int)inventory[i]] / 100)) + "." + (itemSellPrices[(int)inventory[i]] % 100 == 0 ? "00" : itemSellPrices[(int)inventory[i]] / 10 % 10 == 0 ? "0" + (itemSellPrices[(int)inventory[i]] % 100).ToString() : (itemSellPrices[(int)inventory[i]] % 100).ToString());
             inventoryButtonPriceTexts[i].text = "$" + itemSellPrices[(int)inventory[i]];// + " Ectos";
@@ -229,16 +229,23 @@ public class Shop : MonoBehaviour
         //player.moneyText.text = "$" + ((int)(player.money / 100)) + "." + (player.money % 100 == 0 ? "00" : player.money / 10 % 10 == 0 ? "0" + (player.money % 100).ToString() : (player.money % 100).ToString());
         if (inventorySelected)
         {
+            if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isTutorial)
+            {
+                GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().talkTexts[0] = "Good job, now close the shop with the return button";
+            }
             PlayerInventory playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
             playerInventory.UpdateMoney(itemSellPrices[(int)playerInventory.inventory[itemSelected]] * amountBuying);
+            int prevSelected = playerInventory.inventorySelection;
+            playerInventory.inventorySelection = itemSelected;
             for (int i = 0; i < amountBuying; i++)
             {
                 playerInventory.UseItem();
             }
+            playerInventory.inventorySelection = prevSelected;
             inventoryButtons[itemSelected].GetComponent<Image>().sprite = buttonSprites[1];
             inventoryAmountButtons[itemSelected * 2].SetActive(false);
             inventoryAmountButtons[itemSelected * 2 + 1].SetActive(false);
-            inventoryButtonPriceTexts[itemSelected].text = "X" + amountBuying;
+            inventoryButtonPriceTexts[itemSelected].text = "/" + amountBuying;
             if (playerInventory.inventoryAmount[itemSelected] == 0)
             {
                 inventoryItemImages[itemSelected].sprite = itemTypeSprites[0];//Empty
@@ -247,7 +254,7 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                inventoryItemAmountTexts[itemSelected].text = "x" + playerInventory.inventoryAmount[itemSelected];
+                inventoryItemAmountTexts[itemSelected].text = "/" + playerInventory.inventoryAmount[itemSelected];
                 //inventoryButtonPriceTexts[itemSelected].text = "$" + ((int)(itemSellPrices[(int)playerInventory.inventory[itemSelected]] / 100)) + "." + (itemSellPrices[(int)playerInventory.inventory[itemSelected]] % 100 == 0 ? "00" : itemSellPrices[(int)playerInventory.inventory[itemSelected]] / 10 % 10 == 0 ? "0" + (itemSellPrices[(int)playerInventory.inventory[itemSelected]] % 100).ToString() : (itemSellPrices[(int)playerInventory.inventory[itemSelected]] % 100).ToString());
                 inventoryButtonPriceTexts[itemSelected].text = "$" + itemSellPrices[(int)playerInventory.inventory[itemSelected]];
                 inventoryButtonPriceTexts[itemSelected].gameObject.SetActive(true);
@@ -255,6 +262,12 @@ public class Shop : MonoBehaviour
         }
         else
         {
+            if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isTutorial)
+            {
+                GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().talkTexts[0] = "Click on the poppy seeds to sell it";
+                GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().itemDescriptions[0] = "Click on the poppy seeds to sell it";
+                GameObject.FindGameObjectWithTag("Shop").GetComponent<Shop>().itemDescriptions[5] = "Click the poppy seeds to select it, specify the amount, and sell it with the bottom button";
+            }
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().UpdateMoney(itemPrices[itemSelected] * -amountBuying);
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().AddInventory(items[itemSelected], amountBuying);
             ItemType[] inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory;
@@ -270,7 +283,7 @@ public class Shop : MonoBehaviour
                 {
                     inventoryButtonPriceTexts[i].gameObject.SetActive(true);
                     inventoryItemAmountTexts[i].gameObject.SetActive(true);
-                    inventoryItemAmountTexts[i].text = "x" + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[i];
+                    inventoryItemAmountTexts[i].text = "/" + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[i];
                 }
                 //inventoryButtonPriceTexts[i].text = "$" + ((int)(itemSellPrices[(int)inventory[i]] / 100)) + "." + (itemSellPrices[(int)inventory[i]] % 100 == 0 ? "00" : itemSellPrices[(int)inventory[i]] / 10 % 10 == 0 ? "0" + (itemSellPrices[(int)inventory[i]] % 100).ToString() : (itemSellPrices[(int)inventory[i]] % 100).ToString());
                 inventoryButtonPriceTexts[i].text = "$" + itemSellPrices[(int)inventory[i]];
@@ -293,7 +306,7 @@ public class Shop : MonoBehaviour
             }
             else
             {
-                shopItemAmountTexts[itemSelected].text = "x" + itemAmount[itemSelected];
+                shopItemAmountTexts[itemSelected].text = "/" + itemAmount[itemSelected];
                 //buttonPriceTexts[itemSelected].text = "$" + ((int)(itemPrices[itemSelected] / 100)) + "." + (itemPrices[itemSelected] % 100 == 0 ? "00" : itemPrices[itemSelected] / 10 % 10 == 0 ? "0" + (itemPrices[itemSelected] % 100).ToString() : (itemPrices[itemSelected] % 100).ToString());
                 buttonPriceTexts[itemSelected].text = "$" + itemPrices[itemSelected];
                 buttonPriceTexts[itemSelected].gameObject.SetActive(true);
@@ -361,10 +374,17 @@ public class Shop : MonoBehaviour
     {
         if (itemSelected == -1)
         {
+            if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isTutorial && GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[0] == ItemType.Empty && itemAmount[0] == 0)
+            {
+                //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().AddInventory(ItemType.PoppySeed);
+                //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().AddInventory(ItemType.SunflowerSeed);
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().textRead = false;
+            }
             GameObject.FindGameObjectWithTag("GameController").GetComponent<Pauser>().canTimeScale = true;
             shoptender.items = items;
             shoptender.itemPrices = itemPrices;
             shoptender.CloseShop();
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().cameraLUT.enabled = true;
         }
         else
         {
@@ -403,7 +423,6 @@ public class Shop : MonoBehaviour
             buyButton.SetActive(false);
             SlowText(talkTexts[Random.Range(0, talkTexts.Length)]);
         }
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().cameraLUT.enabled = true;
     }
 
     public void SlowText(string newText)
@@ -421,7 +440,7 @@ public class Shop : MonoBehaviour
         for (int i = 0; i < newText.Length; i++)
         {
             //yield return new WaitForSecondsRealtime(textSpeeds[(int)shopType]);
-            yield return new WaitForSecondsRealtime(.02f);
+            yield return new WaitForSecondsRealtime(.0075f);
             shopMainText.text += newText[i];
         }
     }

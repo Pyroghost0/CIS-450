@@ -1,3 +1,8 @@
+/* Anna Breuker
+ * Grave
+ * Project 1
+ * Grave that slowly decrases rememberance over time
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

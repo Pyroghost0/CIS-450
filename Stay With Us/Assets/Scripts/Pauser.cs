@@ -1,3 +1,8 @@
+/* Caleb Kahn
+ * Pauser
+ * Project 1
+ * Pauses the game
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

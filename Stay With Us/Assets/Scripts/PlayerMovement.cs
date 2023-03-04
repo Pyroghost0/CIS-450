@@ -1,3 +1,8 @@
+/* Caleb Kahn, Cooper Denault
+ * PlayerMovement
+ * Project 1
+ * Player moves according to controls and some other features like calling the plant function
+ */
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && Time.timeScale != 0f)
         {
             //interaction or abilities?
             //Debug.Log("Q button was pressed");

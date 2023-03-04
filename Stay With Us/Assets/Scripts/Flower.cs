@@ -1,3 +1,8 @@
+/* Anna Breuker
+ * Flower
+ * Project 1
+ * Flower that slowly grows over time
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

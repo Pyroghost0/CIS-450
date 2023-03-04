@@ -1,3 +1,8 @@
+/* Anna Breuker
+ * Neutral
+ * Project 1
+ * Neutral reaction to a flower
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
