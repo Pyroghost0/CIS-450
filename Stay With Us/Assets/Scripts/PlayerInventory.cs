@@ -81,7 +81,7 @@ public class PlayerInventory : MonoBehaviour, IObserver
             {
                 scrollAmount += Input.GetAxis("Mouse ScrollWheel");
                 //Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
-                if (scrollAmount > PlayerPrefs.GetFloat("Inventory Scroll"))
+                if (scrollAmount > .5f)
                 {
                     invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
                     inventorySelection++;
@@ -92,7 +92,7 @@ public class PlayerInventory : MonoBehaviour, IObserver
                     invFrames[inventorySelection].color = Color.white;
                     scrollAmount = 0f;
                 }
-                else if (scrollAmount < -PlayerPrefs.GetFloat("Inventory Scroll"))
+                else if (scrollAmount < -.5f)
                 {
                     invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
                     inventorySelection--;
@@ -161,7 +161,7 @@ public class PlayerInventory : MonoBehaviour, IObserver
             else if (inventory[i] == item)
             {
                 inventoryAmount[i] += amount;
-                amountTexts[i].gameObject.SetActive(true);
+                //amountTexts[i].gameObject.SetActive(true);
                 amountTexts[i].text = "x" + inventoryAmount[i];
                 return true;
             }
@@ -171,11 +171,11 @@ public class PlayerInventory : MonoBehaviour, IObserver
             inventory[firstEmpty] = item;
             invItems[firstEmpty].sprite = itemSprites[(int)item];
             inventoryAmount[firstEmpty] = amount;
-            if (amount > 1)
-            {
+            //if (amount > 1)
+            //{
                 amountTexts[firstEmpty].gameObject.SetActive(true);
                 amountTexts[firstEmpty].text = "x" + inventoryAmount[firstEmpty];
-            }
+            //}
             return true;
         }
         return false;
@@ -188,9 +188,9 @@ public class PlayerInventory : MonoBehaviour, IObserver
         {
             inventory[inventorySelection] = ItemType.Empty;
             invItems[inventorySelection].sprite = itemSprites[0];//Empty sprite
-        }
-        else if (inventoryAmount[inventorySelection] == 1)
-        {
+        //}
+        //else if (inventoryAmount[inventorySelection] == 1)
+        //{
             amountTexts[inventorySelection].gameObject.SetActive(false);
         }
         else

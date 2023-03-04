@@ -120,7 +120,7 @@ public class Shop : MonoBehaviour
             else
             {
                 inventoryItemAmountTexts[i].gameObject.SetActive(true);
-                inventoryItemAmountTexts[i].text = "X" + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[i];
+                inventoryItemAmountTexts[i].text = "/" + GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[i];
             }
             //inventoryButtonPriceTexts[i].text =  "$" + ((int)(itemSellPrices[(int)inventory[i]] / 100)) + "." + (itemSellPrices[(int)inventory[i]] % 100 == 0 ? "00" : itemSellPrices[(int)inventory[i]] / 10 % 10 == 0 ? "0" + (itemSellPrices[(int)inventory[i]] % 100).ToString() : (itemSellPrices[(int)inventory[i]] % 100).ToString());
             inventoryButtonPriceTexts[i].text = "$" + itemSellPrices[(int)inventory[i]];// + " Ectos";
@@ -208,7 +208,7 @@ public class Shop : MonoBehaviour
             itemSelected = buttonNum;
             amountBuying = 1;
             buyButton.SetActive(true);
-            shopBuyButtonText.text = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[itemSelected] + "[" + amountBuying + "] $" + itemPrices[itemSelected];
+            shopBuyButtonText.text = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[itemSelected] + "[" + amountBuying + "] $" + itemSellPrices[(int)GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory[itemSelected]];
             returnButtonText.text = "Cancel";
             inventoryButtons[itemSelected].GetComponent<Image>().sprite = buttonSprites[0];
             inventoryAmountButtons[itemSelected * 2].SetActive(true);
@@ -336,7 +336,7 @@ public class Shop : MonoBehaviour
     {
         if (inventorySelected)
         {
-            if (amountBuying < GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventorySelection])
+            if (amountBuying < GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventoryAmount[itemSelected])
             {
                 amountBuying++;
                 inventoryButtonPriceTexts[itemSelected].text = "X" + amountBuying;

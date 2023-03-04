@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer sprite;
 
     public AudioSource audioSource;
+    public ProgressBar staminaBar;
     public float stamina = 4f;
     public bool talking = false;
     public Ghost talkingGhost;
@@ -108,6 +109,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = initSpeed * 2;
                 stamina -= Time.deltaTime;
+                if (stamina < 0f)
+                {
+                    stamina = 0f;
+                }
+                staminaBar.current = (stamina / 4f) * 100f;
             }
             else
             {
@@ -128,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 stamina = 4f;
             }
+            staminaBar.current = (stamina / 4f) * 100f;
         }
         /*if (Input.GetKeyUp(KeyCode.Space))
         {

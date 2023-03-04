@@ -109,6 +109,17 @@ public class GameController : MonoBehaviour
 
     IEnumerator RandomItemSummon()
     {
+        for (float i = 30f; i > 0f; i-= Random.Range(1f, 3f))
+        {
+            if (Random.value < .3f)
+            {
+                GameObject.FindGameObjectWithTag("ItemCreator").GetComponent<ItemCreator>().SpawnItem(ItemType.Ectoplasm, RanddomSpawnPosition(), true, i);
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("ItemCreator").GetComponent<ItemCreator>().SpawnItem(summonableObjectTypes[Random.Range(0, summonableObjectTypes.Length)], RanddomSpawnPosition(), true, i);
+            }
+        }
         while (timeRemaining < levelLength)
         {
             yield return new WaitForSeconds(Random.Range(1f, 3f));
@@ -133,8 +144,8 @@ public class GameController : MonoBehaviour
         //LORE
         loreText.text = "Unfortunately, you have died." +
             "\nSurprisingly, your death is of use!" +
-            "\nDeath has tasked you with overseeing the graves of those who have also passed." +
-            "\nThey deserve happiness. You will give it to them.";
+            "\n\nDeath has tasked you with overseeing the graves of those who have also passed." +
+            "\n\nThey deserve happiness. You will give it to them.";
         
         yield return new WaitUntil(() => textRead);
         lorePanel.SetActive(false);
@@ -160,7 +171,7 @@ public class GameController : MonoBehaviour
         tutorialText.text = "In the lower lefthand corner is your inventory. Press the number keys to change your active item.";
         yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Alpha2)));
         inivisWallSeeds.SetActive(false);
-        tutorialText.text = "This is Elam. He likes poppies. Press Q when on the plot of dirt in front of the grave to plant seeds.";
+        tutorialText.text = "This is Elam.\nYou can talk to ghosts like them by pressing E to find their out ther interests.\nElam likes poppies. Press Q to plant seeds in front of graves.";
         yield return new WaitUntil(() => tutorialGrave.reaction != null);
         Debug.Log(tutorialGrave.reaction);
         if (tutorialGrave.reaction is Loved)
@@ -199,7 +210,7 @@ public class GameController : MonoBehaviour
             Debug.Log("Ray " + i + ": " + rays[i].collider.name + " at " + rays[i].point);
         }
         return Vector3.zero;*/
-        return new Vector2(Random.Range(rays[0].point.x, rays[1].point.x), Random.Range(rays[0].point.y, rays[1].point.y));
+        return new Vector2(Random.Range(rays[rays.Length-2].point.x, rays[rays.Length-1].point.x), Random.Range(rays[0].point.y, rays[1].point.y));//No longer rays[0] and rays[1] because it can hit a ray into the 1st wall then the 1st wall again
     }
 
     public void Retry()
