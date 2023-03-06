@@ -473,6 +473,11 @@ MonoBehaviour:
   player: {fileID: 0}
   playerInventory: {fileID: 0}
   sprite: {fileID: 6614593540238525512}
+  ghostSpriteRenderer: {fileID: 5677829233419731885}
+  ghostSprites:
+  - {fileID: -35311278, guid: 554eb76bee8c41643a05fe2afb876cf3, type: 3}
+  - {fileID: -1292898803, guid: eb745707fa8e0264684e7b71a6e97115, type: 3}
+  - {fileID: 2006760913, guid: 110be9e16256e574084a68c6c4acda1b, type: 3}
   reaction: {fileID: 0}
   flowerPreferences:
   - poppy
@@ -764,6 +769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+--- !u!212 &5677829233419731885 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1735055062626403959, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+  m_PrefabInstance: {fileID: 6259885808411002330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5677829233419731886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1735055062626403956, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}

@@ -22,6 +22,8 @@ public class Grave : MonoBehaviour
     public PlayerMovement player;
     public PlayerInventory playerInventory;
     public SpriteRenderer sprite;
+    public SpriteRenderer ghostSpriteRenderer;
+    public Sprite[] ghostSprites;
 
     public GraveReaction reaction;
 
@@ -53,6 +55,18 @@ public class Grave : MonoBehaviour
     void Update()
     {
         rememberance -= Time.deltaTime*rememberanceRate;
+        if (rememberance < 33.3f)
+        {
+            ghostSpriteRenderer.sprite = ghostSprites[2];
+        }
+        else if (rememberance < 66.6f)
+        {
+            ghostSpriteRenderer.sprite = ghostSprites[1];
+        }
+        else
+        {
+            ghostSpriteRenderer.sprite = ghostSprites[0];
+        }
         if (rememberance <= 0)
         {
             rememberanceBar.current = 0;

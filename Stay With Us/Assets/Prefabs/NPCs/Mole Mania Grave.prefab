@@ -473,6 +473,11 @@ MonoBehaviour:
   player: {fileID: 0}
   playerInventory: {fileID: 0}
   sprite: {fileID: 6641331322704823694}
+  ghostSpriteRenderer: {fileID: 5272252792108614251}
+  ghostSprites:
+  - {fileID: 355428026, guid: 554eb76bee8c41643a05fe2afb876cf3, type: 3}
+  - {fileID: 1210150228, guid: eb745707fa8e0264684e7b71a6e97115, type: 3}
+  - {fileID: -1647927758, guid: 110be9e16256e574084a68c6c4acda1b, type: 3}
   reaction: {fileID: 0}
   flowerPreferences:
   - forgotMeNot
@@ -925,6 +930,11 @@ MonoBehaviour:
 --- !u!4 &5272252792108614248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1735055062626403956, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+  m_PrefabInstance: {fileID: 5854374504555676700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5272252792108614251 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1735055062626403959, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
   m_PrefabInstance: {fileID: 5854374504555676700}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6748642658916797449

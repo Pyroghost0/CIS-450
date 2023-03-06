@@ -257,6 +257,11 @@ MonoBehaviour:
   player: {fileID: 0}
   playerInventory: {fileID: 0}
   sprite: {fileID: 954657393306708690}
+  ghostSpriteRenderer: {fileID: 1747376361044061495}
+  ghostSprites:
+  - {fileID: 1821842302, guid: 554eb76bee8c41643a05fe2afb876cf3, type: 3}
+  - {fileID: 554070283, guid: eb745707fa8e0264684e7b71a6e97115, type: 3}
+  - {fileID: 1567493381, guid: 110be9e16256e574084a68c6c4acda1b, type: 3}
   reaction: {fileID: 0}
   flowerPreferences:
   - sunflower
@@ -774,6 +779,11 @@ PrefabInstance:
 --- !u!4 &1747376361044061492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1735055062626403956, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+  m_PrefabInstance: {fileID: 12326529722035008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1747376361044061495 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1735055062626403959, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
   m_PrefabInstance: {fileID: 12326529722035008}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1747376361076381725 stripped
