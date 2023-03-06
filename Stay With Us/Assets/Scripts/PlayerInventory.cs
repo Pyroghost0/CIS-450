@@ -19,6 +19,7 @@ public class PlayerInventory : MonoBehaviour, IObserver
             return inventory[inventorySelection];
         }
     }
+    public string[] itemTexts = { "", "?", "Daisy Seed", "Sunflower Seed", "Forget-Me-Not Seed", "Poppy Seed", "Rose Seed" };
     public int[] inventoryAmount;
     public int inventorySize = 6;
     public Sprite[] itemSprites;
@@ -140,7 +141,7 @@ public class PlayerInventory : MonoBehaviour, IObserver
                 scrollAmount = 0f;
             }
         }
-        itemNameText.text = inventory[inventorySelection].ToString();
+        itemNameText.text = itemTexts[(int)inventory[inventorySelection]];
     }
 
     public void UpdateMoney(int difference)

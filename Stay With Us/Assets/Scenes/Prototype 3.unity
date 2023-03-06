@@ -758,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Points.Array.data[24].y
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 1951824843015449518, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
+      propertyPath: sceneName
+      value: Prototype 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2211139131509885183, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
