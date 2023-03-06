@@ -34,10 +34,10 @@ public class Flower : MonoBehaviour
         if (timer > growthStageTime && (stageOfGrowth != stagesOfGrowth.Length -1 || timer > growthStageTime * 2f))// && stageOfGrowth < stagesOfGrowth.Length - 1)
         { 
             stageOfGrowth++;
-            if (stageOfGrowth == stagesOfGrowth.Length)
+            if (stageOfGrowth >= stagesOfGrowth.Length -1)
             {
                 gameObject.SetActive(false);
-                //plotOfDirt.FlowerDied();
+                plotOfDirt.FlowerDied();
                 Debug.Log("flowerdied");
             }
             else

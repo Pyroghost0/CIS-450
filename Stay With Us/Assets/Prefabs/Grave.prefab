@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: -336601466, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 1451789065, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 1812286849, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: -515813488, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 1185185775286790096}
   stageOfGrowth: 0
   timer: 0
@@ -209,6 +210,7 @@ MonoBehaviour:
   - {fileID: 209313815, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: -688400075, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 1825261939, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: -367096297, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 605575803582218541}
   stageOfGrowth: 0
   timer: 0
@@ -316,7 +318,7 @@ MonoBehaviour:
   - {fileID: -910641647, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 512615409, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 1141034762, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
-  - {fileID: 1202709637, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: -625274760, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 2395282969017074646}
   stageOfGrowth: 0
   timer: 0
@@ -583,6 +585,7 @@ MonoBehaviour:
   - {fileID: 1681083443, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: -1256062744, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: -1740552048, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: 1844858095, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 7061292312475403058}
   stageOfGrowth: 0
   timer: 0
@@ -690,6 +693,7 @@ MonoBehaviour:
   - {fileID: 1467310624, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: -2118422701, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 245957792, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: 1367402322, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 754837115193710225}
   stageOfGrowth: 0
   timer: 0

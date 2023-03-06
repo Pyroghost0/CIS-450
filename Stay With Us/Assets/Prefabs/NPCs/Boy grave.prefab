@@ -102,10 +102,11 @@ MonoBehaviour:
   - {fileID: 1467310624, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: -2118422701, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 245957792, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: 1367402322, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 7691795470027004715}
   stageOfGrowth: 0
   timer: 0
-  plotOfDirt: {fileID: 0}
+  plotOfDirt: {fileID: 4667164791323598759}
   flowerType: sunflower
 --- !u!1 &4452673221052622229
 GameObject:
@@ -209,10 +210,11 @@ MonoBehaviour:
   - {fileID: 1681083443, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: -1256062744, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: -1740552048, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: 1844858095, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 88304610917666440}
   stageOfGrowth: 0
   timer: 0
-  plotOfDirt: {fileID: 0}
+  plotOfDirt: {fileID: 4667164791323598759}
   flowerType: forgetMeNot
 --- !u!1 &4756852948973175132
 GameObject:
@@ -316,11 +318,11 @@ MonoBehaviour:
   - {fileID: -910641647, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 512615409, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 1141034762, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
-  - {fileID: 1202709637, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: -625274760, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 4754330378465152620}
   stageOfGrowth: 0
   timer: 0
-  plotOfDirt: {fileID: 0}
+  plotOfDirt: {fileID: 4667164791323598759}
   flowerType: poppy
 --- !u!1 &5533686449743554516
 GameObject:
@@ -585,10 +587,11 @@ MonoBehaviour:
   - {fileID: -336601466, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 1451789065, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 1812286849, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: -515813488, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 8121581463618284138}
   stageOfGrowth: 0
   timer: 0
-  plotOfDirt: {fileID: 0}
+  plotOfDirt: {fileID: 4667164791323598759}
   flowerType: daisy
 --- !u!1 &8829670693129401281
 GameObject:
@@ -692,10 +695,11 @@ MonoBehaviour:
   - {fileID: 209313815, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: -688400075, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
   - {fileID: 1825261939, guid: 2e5cbff9f37475c40bf4772c27be4721, type: 3}
+  - {fileID: -367096297, guid: 6092f1c7ae2b6d74891831a3f3df15dc, type: 3}
   spriteRenderer: {fileID: 7539140801358122135}
   stageOfGrowth: 0
   timer: 0
-  plotOfDirt: {fileID: 0}
+  plotOfDirt: {fileID: 4667164791323598759}
   flowerType: roses
 --- !u!1001 &3413118974354953221
 PrefabInstance:
@@ -1067,6 +1071,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 973835521319072244, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
   m_PrefabInstance: {fileID: 5568379440992153170}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4667164791323598759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 973835521319072245, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}
+  m_PrefabInstance: {fileID: 5568379440992153170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fed99679718e81419b9dcfe7142fa84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &8346018739506996052 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4509748415495507206, guid: b94dca9c799d7f54c928dd0b00c0e84a, type: 3}

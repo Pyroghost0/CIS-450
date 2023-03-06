@@ -27966,7 +27966,7 @@ TilemapRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.13999999, y: 0.13999999, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -89947,6 +89947,10 @@ PrefabInstance:
       propertyPath: plantingSeed
       value: 
       objectReference: {fileID: 8300000, guid: 6332c9a41602a714081d441cbfadd4c0, type: 3}
+    - target: {fileID: 4149410624488996087, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 229.29999
+      objectReference: {fileID: 0}
     - target: {fileID: 6379450966965090117, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
       value: -15
