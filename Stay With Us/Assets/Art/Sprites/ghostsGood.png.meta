@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f9619d24139271f4ab829d9e70c81b06
+guid: 554eb76bee8c41643a05fe2afb876cf3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ghosts_0
+      name: ghostsGood_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51d7eb57d569bfa4b8bc985e5c383b0c
-      internalID: 2114278062
+      spriteID: 22d2d2f96231f144bbd97ec89b9621b8
+      internalID: -35311278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_1
+      name: ghostsGood_1
       rect:
         serializedVersion: 2
         x: 128
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e03bfc3e23d92e48988522c46be77c6
-      internalID: 226191858
+      spriteID: 26c9392b44411c54c983c8f41e9e8c8d
+      internalID: -1486960877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_2
+      name: ghostsGood_2
       rect:
         serializedVersion: 2
         x: 0
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6d5499798d0ac644b1e7b836266f79b
-      internalID: -529326536
+      spriteID: ddee09cb9fbc6704b9b24625a5957e4f
+      internalID: 1115332037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_3
+      name: ghostsGood_3
       rect:
         serializedVersion: 2
         x: 128
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a689338fe76f4d649a5fe73f8a4da0f1
-      internalID: 1660869929
+      spriteID: f6a5e79258ad43d4283ff91e64dfd625
+      internalID: 355428026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_4
+      name: ghostsGood_4
       rect:
         serializedVersion: 2
         x: 0
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bb7109fcd5610a4aa091b3a95894318
-      internalID: -1907787430
+      spriteID: 5a9bee35c3e8fd54aa94463369e08bb1
+      internalID: 1053086945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_5
+      name: ghostsGood_5
       rect:
         serializedVersion: 2
         x: 128
@@ -236,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e125106413c68074a84a9f04cc07cf35
-      internalID: -292932863
+      spriteID: b90c0194de31168409035db5a894c927
+      internalID: -1686236072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_6
+      name: ghostsGood_6
       rect:
         serializedVersion: 2
         x: 0
@@ -257,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de4dd477c0ac9f84c8d602d1935deaeb
-      internalID: 1554290384
+      spriteID: 0f62ea56718e2c847b334e61b61e0c82
+      internalID: 963609655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_7
+      name: ghostsGood_7
       rect:
         serializedVersion: 2
         x: 128
@@ -278,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f65234bd28cebd4d969a0afdf7845b5
-      internalID: 740516224
+      spriteID: 25b755e45b65c0745884ccb6a27544dd
+      internalID: 441808692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_8
+      name: ghostsGood_8
       rect:
         serializedVersion: 2
         x: 0
@@ -299,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8a339c961e79484b8c2145dab1cf9bc
-      internalID: -363568414
+      spriteID: 8f2e04c0f24a9144fb97381fb06e05ba
+      internalID: -1163686417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_9
+      name: ghostsGood_9
       rect:
         serializedVersion: 2
         x: 128
@@ -320,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cdb65a459649084bbd58cc231b8ea92
-      internalID: 520627149
+      spriteID: 64895fc1af0011246bab625c4530eff9
+      internalID: 1821842302
       vertices: []
       indices: 
       edges: []
@@ -337,16 +337,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ghosts_7: 740516224
-      ghosts_4: -1907787430
-      ghosts_6: 1554290384
-      ghosts_5: -292932863
-      ghosts_0: 2114278062
-      ghosts_8: -363568414
-      ghosts_2: -529326536
-      ghosts_1: 226191858
-      ghosts_3: 1660869929
-      ghosts_9: 520627149
+      ghostsGood_1: -1486960877
+      ghostsGood_6: 963609655
+      ghostsGood_3: 355428026
+      ghostsGood_0: -35311278
+      ghostsGood_2: 1115332037
+      ghostsGood_4: 1053086945
+      ghostsGood_5: -1686236072
+      ghostsGood_7: 441808692
+      ghostsGood_9: 1821842302
+      ghostsGood_8: -1163686417
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

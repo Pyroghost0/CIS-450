@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f9619d24139271f4ab829d9e70c81b06
+guid: eb745707fa8e0264684e7b71a6e97115
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ghosts_0
+      name: ghostsNeutral_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51d7eb57d569bfa4b8bc985e5c383b0c
-      internalID: 2114278062
+      spriteID: d2ef3453b377f8949967c19fa36f80ec
+      internalID: -1292898803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_1
+      name: ghostsNeutral_1
       rect:
         serializedVersion: 2
         x: 128
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e03bfc3e23d92e48988522c46be77c6
-      internalID: 226191858
+      spriteID: b74fb4d9d00483c4c977130454dafd59
+      internalID: -1766252325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_2
+      name: ghostsNeutral_2
       rect:
         serializedVersion: 2
         x: 0
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6d5499798d0ac644b1e7b836266f79b
-      internalID: -529326536
+      spriteID: 7e4608881f130bd418bfe4404a90a77e
+      internalID: 903646403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_3
+      name: ghostsNeutral_3
       rect:
         serializedVersion: 2
         x: 128
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a689338fe76f4d649a5fe73f8a4da0f1
-      internalID: 1660869929
+      spriteID: efe6f11c04210ef4ba636b075d0f3592
+      internalID: 1210150228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_4
+      name: ghostsNeutral_4
       rect:
         serializedVersion: 2
         x: 0
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bb7109fcd5610a4aa091b3a95894318
-      internalID: -1907787430
+      spriteID: 6810e6b87b482054e8277bbd7bab25f2
+      internalID: 194721048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_5
+      name: ghostsNeutral_5
       rect:
         serializedVersion: 2
         x: 128
@@ -236,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e125106413c68074a84a9f04cc07cf35
-      internalID: -292932863
+      spriteID: e7fdea3248c1fa745b7a974008374256
+      internalID: 1267249027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_6
+      name: ghostsNeutral_6
       rect:
         serializedVersion: 2
         x: 0
@@ -257,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de4dd477c0ac9f84c8d602d1935deaeb
-      internalID: 1554290384
+      spriteID: 434f8c6be3a0f1947b9314fec691bc01
+      internalID: -1420624691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_7
+      name: ghostsNeutral_7
       rect:
         serializedVersion: 2
         x: 128
@@ -278,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f65234bd28cebd4d969a0afdf7845b5
-      internalID: 740516224
+      spriteID: f8d54663131de3a47bcb01fb3bdc0a89
+      internalID: -1561291798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_8
+      name: ghostsNeutral_8
       rect:
         serializedVersion: 2
         x: 0
@@ -299,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8a339c961e79484b8c2145dab1cf9bc
-      internalID: -363568414
+      spriteID: e20b44a453c122641a6a703911c2d897
+      internalID: -1369735937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ghosts_9
+      name: ghostsNeutral_9
       rect:
         serializedVersion: 2
         x: 128
@@ -320,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cdb65a459649084bbd58cc231b8ea92
-      internalID: 520627149
+      spriteID: e006f33fb4377574497f01e92eb91712
+      internalID: 554070283
       vertices: []
       indices: 
       edges: []
@@ -337,16 +337,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ghosts_7: 740516224
-      ghosts_4: -1907787430
-      ghosts_6: 1554290384
-      ghosts_5: -292932863
-      ghosts_0: 2114278062
-      ghosts_8: -363568414
-      ghosts_2: -529326536
-      ghosts_1: 226191858
-      ghosts_3: 1660869929
-      ghosts_9: 520627149
+      ghostsNeutral_5: 1267249027
+      ghostsNeutral_7: -1561291798
+      ghostsNeutral_1: -1766252325
+      ghostsNeutral_3: 1210150228
+      ghostsNeutral_4: 194721048
+      ghostsNeutral_2: 903646403
+      ghostsNeutral_8: -1369735937
+      ghostsNeutral_0: -1292898803
+      ghostsNeutral_9: 554070283
+      ghostsNeutral_6: -1420624691
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

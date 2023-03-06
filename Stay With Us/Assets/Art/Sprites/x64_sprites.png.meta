@@ -1955,6 +1955,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: x64_sprites_87
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a96f2707ec5f5e42b0b24dc4af6d893
+      internalID: -1082508184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x64_sprites_88
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a38ad786125a6bf488a92fbaa9d5eefd
+      internalID: 2056063145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: x64_sprites_89
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a80e2ba0aa557a64894c195995614a3d
+      internalID: -1545826935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1985,6 +2048,7 @@ TextureImporter:
       x64_sprites_74: -132547483
       x64_sprites_8: 1452921611
       x64_sprites_60: 90443719
+      x64_sprites_88: 2056063145
       x64_sprites_43: 443393808
       x64_sprites_71: 900104541
       x64_sprites_65: -53506215
@@ -2010,6 +2074,7 @@ TextureImporter:
       x64_sprites_3: -1949323552
       x64_sprites_30: 201667032
       x64_sprites_79: -480699981
+      x64_sprites_89: -1545826935
       x64_sprites_36: -1311262039
       x64_sprites_40: -1455094430
       x64_sprites_7: -232594836
@@ -2048,6 +2113,7 @@ TextureImporter:
       x64_sprites_10: 535827789
       x64_sprites_58: -439309012
       x64_sprites_31: -860957858
+      x64_sprites_87: -1082508184
       x64_sprites_32: -1547768114
       x64_sprites_63: -1198696945
       x64_sprites_42: -210640684
