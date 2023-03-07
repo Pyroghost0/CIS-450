@@ -763,6 +763,43 @@ PrefabInstance:
       propertyPath: grave
       value: 
       objectReference: {fileID: 2901121979614214136}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: initialText
+      value: Hi, I'm Rose! I lo----ve roses sksksksksk!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[0]
+      value: Zawazawa is having a hard time. Could you plant him some sunflowers
+        for me?
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[1]
+      value: Ever since the trench warfare in the poppy fields of Flanders during
+        WWI, poppies have symbolized remembrance for soldiers lost in wartime. These
+        flowers are also used to make opium...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[2]
+      value: I want Zawazawa to know that somebody cares about him.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[3]
+      value: Every ghost in this graveyard likes at least one type of flower. What
+        do I like? Roses, of course.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.data[0]
+      value: He tries to act tough, but QuizMaster McEvilGuy has a soft spot for
+        forget-me-nots.
+      objectReference: {fileID: 0}
     - target: {fileID: 1735055062662280029, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
       propertyPath: m_text
       value: Rose

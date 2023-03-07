@@ -763,6 +763,14 @@ PrefabInstance:
       propertyPath: grave
       value: 
       objectReference: {fileID: 3293670656280478495}
+    - target: {fileID: 2982528717422345263, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6545669548919846991, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
 --- !u!4 &4110924155381853577 stripped

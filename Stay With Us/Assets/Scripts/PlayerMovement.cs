@@ -185,8 +185,8 @@ public class PlayerMovement : MonoBehaviour
             horizontalInput *= Mathf.Abs(horizontalInput) / magnitude;
             verticalInput *= Mathf.Abs(verticalInput) / magnitude;
         }
-        playerAnimation.SetFloat("X", horizontalInput);
-        playerAnimation.SetFloat("Y", verticalInput);
+        playerAnimation.SetFloat("X", Input.GetAxisRaw("Horizontal"));
+        playerAnimation.SetFloat("Y", Input.GetAxisRaw("Vertical"));
         playerRb.velocity = new Vector2(horizontalInput, verticalInput) * speed;
 
 

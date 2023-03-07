@@ -29,11 +29,33 @@ public class Ghost : MonoBehaviour
     public bool alreadyTalked = false;
     private int previousPromptNumber = 0;
     public string initialText;
-    public string[] ghostTexts;
-
+    public List<string> ghostTexts;
+    [Tooltip("Text that is only used in level2 and level3")]
+    public string[] level2NewTexts;
+    [Tooltip("Text that is only used in level3")]
+    public string[] level3NewTexts;
     // Start is called before the first frame update
     void Start()
     {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.EndsWith("2"))
+		{
+            foreach(string s in level2NewTexts)
+			{
+                ghostTexts.Add(s);
+			}
+		}
+        else if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.EndsWith("3"))
+        {
+            foreach (string s in level2NewTexts)
+            {
+                ghostTexts.Add(s);
+            }
+            foreach (string s in level3NewTexts)
+            {
+                ghostTexts.Add(s);
+            }
+        }
+        talkingComponent.GetComponent<Canvas>().worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         walkableZone = GameObject.FindGameObjectWithTag("GameController").GetComponent<PolygonCollider2D>();
         StartCoroutine(GhostBehavior());
     }
@@ -42,7 +64,7 @@ public class Ghost : MonoBehaviour
     {
         if (alreadyTalked)
         {
-            previousPromptNumber = (Random.Range(1, ghostTexts.Length) + previousPromptNumber) % ghostTexts.Length;
+            previousPromptNumber = (Random.Range(1, ghostTexts.Count) + previousPromptNumber) % ghostTexts.Count;
             talkingText.text = ghostTexts[previousPromptNumber];
         }
         else

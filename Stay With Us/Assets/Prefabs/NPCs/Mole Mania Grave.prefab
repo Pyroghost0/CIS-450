@@ -480,7 +480,7 @@ MonoBehaviour:
   - {fileID: -1647927758, guid: 110be9e16256e574084a68c6c4acda1b, type: 3}
   reaction: {fileID: 0}
   flowerPreferences:
-  - forgotMeNot
+  - forgetMeNot
   flowerHates:
   - poppy
   - roses
