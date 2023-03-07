@@ -371,7 +371,8 @@ MonoBehaviour:
   - {fileID: 903646403, guid: eb745707fa8e0264684e7b71a6e97115, type: 3}
   - {fileID: -421526894, guid: 110be9e16256e574084a68c6c4acda1b, type: 3}
   reaction: {fileID: 0}
-  flowerPreferences: []
+  flowerPreferences:
+  - daisy
   flowerHates:
   - roses
   - forgetMeNot

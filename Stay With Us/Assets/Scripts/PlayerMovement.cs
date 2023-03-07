@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     public SpriteRenderer sprite;
 
+    private bool sandsActive = false;
     public AudioSource audioSource;
     public ProgressBar staminaBar;
     public float stamina = 4f;
@@ -91,7 +92,12 @@ public class PlayerMovement : MonoBehaviour
         {
             //interaction or abilities?
             //Debug.Log("Q button was pressed");
-            if (plotOfDirt != null)
+            if (playerInventory.item == ItemType.SandsOfTime && !sandsActive)
+            {
+                playerInventory.UseItem();
+                StartCoroutine(SandsOfTime());
+            }
+            else if (plotOfDirt != null)
             {
                 if ((int)playerInventory.item >= 2 && (int)playerInventory.item <= 6 && plotOfDirt.newFlowerCanBePlanted)
                 {
@@ -105,7 +111,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            if (stamina > 0f)
+            if (sandsActive)
+            {
+                speed = initSpeed * 2;
+            }
+            else if (stamina > 0f)
             {
                 speed = initSpeed * 2;
                 stamina -= Time.deltaTime;
@@ -145,6 +155,15 @@ public class PlayerMovement : MonoBehaviour
         }*/
 
         sprite.sortingOrder = (int)(transform.position.y * -10);
+    }
+
+    IEnumerator SandsOfTime()
+    {
+        sandsActive = true;
+        stamina = 4f;
+        staminaBar.current = 100f;
+        yield return new WaitForSeconds(30f);
+        sandsActive = false;
     }
 
     /*IEnumerator Stamia()

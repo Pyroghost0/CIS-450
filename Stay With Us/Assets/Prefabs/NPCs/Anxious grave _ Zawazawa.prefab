@@ -766,6 +766,32 @@ PrefabInstance:
       propertyPath: grave
       value: 
       objectReference: {fileID: 902543144029012898}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: initialText
+      value: Ohh... Hello. My name is Zawazawa... Hopefully I don't bother you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[0]
+      value: Every girl I talk to is scared of me... It's probably too late to find
+        a girlfriend...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[1]
+      value: Ghosts can't exist in sunlight... Will I ever see the sun again?
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[2]
+      value: AHH! You scared me there... Everyone is probably just as surprised when
+        they see me since I'm barely noticeable...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[3]
+      value: You're actually talking to me again! That must be a coincidence.
+      objectReference: {fileID: 0}
     - target: {fileID: 1735055062626403959, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
       propertyPath: m_Sprite
       value: 

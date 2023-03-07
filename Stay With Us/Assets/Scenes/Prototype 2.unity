@@ -59915,7 +59915,7 @@ TilemapRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.13999999, y: 0.13999999, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -92923,6 +92923,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1712594217906618544, guid: 1817509b3dd3119439e0178feaf850e6, type: 3}
+      propertyPath: items.Array.data[5]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712594217906618544, guid: 1817509b3dd3119439e0178feaf850e6, type: 3}
       propertyPath: itemAmount.Array.data[0]
       value: 5
       objectReference: {fileID: 0}
@@ -92961,6 +92965,10 @@ PrefabInstance:
     - target: {fileID: 1712594217906618544, guid: 1817509b3dd3119439e0178feaf850e6, type: 3}
       propertyPath: itemPrices.Array.data[4]
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712594217906618544, guid: 1817509b3dd3119439e0178feaf850e6, type: 3}
+      propertyPath: itemPrices.Array.data[5]
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1712594217906618551, guid: 1817509b3dd3119439e0178feaf850e6, type: 3}
       propertyPath: m_Name

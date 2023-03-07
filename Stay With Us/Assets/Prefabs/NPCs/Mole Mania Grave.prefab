@@ -906,6 +906,31 @@ PrefabInstance:
       propertyPath: grave
       value: 
       objectReference: {fileID: 6742832319118208254}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: initialText
+      value: He He Hehh... Fear me, for I am QuizMaster McEvilGuy, your new ruler.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[0]
+      value: Now all you need to do is smash these moles... Wait! Wrong game.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[1]
+      value: When I was alive, you foolish mortals did whatever I said...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[2]
+      value: I am unforgettable, I am the inevitable, I am QuizMaster McEvilGuy...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[3]
+      value: It is undeniable that I am the grimm reaper's favorite after how many
+        souls I brought him. Now, bow down to me.
+      objectReference: {fileID: 0}
     - target: {fileID: 1735055062626403959, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -16,6 +16,7 @@ public enum ItemType
     ForgetMeNotSeed = 4,
     PoppySeed = 5,
     RoseSeed = 6,
+    SandsOfTime = 7
 }
 
 public abstract class Item : MonoBehaviour

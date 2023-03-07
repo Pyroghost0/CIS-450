@@ -45,9 +45,9 @@ public class Shop : MonoBehaviour
 
     //private float[] textSpeeds = { .03f, .02f, .016f, .025f };
     //private string[] shopNames = { "The Bar", "Gun Shop", "Black Market", "Tailor" };
-    [System.NonSerialized] public int[] itemSellPrices = { 0, 1, 5, 5, 5, 5, 10};
-    [System.NonSerialized] public string[] itemDescriptions = { "Sold out, read the sign...", "Wait how are you selling that?...", "Daisy seeds, I hear cats like them...", "Sunflower seeds, I hear Boy likes them...", "Forget-me-not seeds, I hear it puts anxious people at ease...", 
-    "Poppy seeds, I hear Steve likes them...", "Rose seeds, give them to people who need love..." };
+    [System.NonSerialized] public int[] itemSellPrices = { 0, 1, 5, 5, 5, 5, 10, 10};
+    [System.NonSerialized] public string[] itemDescriptions = { "Sold out, read the sign...", "Wait how are you selling that?...", "Daisy seeds, they'll be great for ghosts who need to start anew...", "Sunflower seeds, would you guess that it reminds ghosts of the sun...", "Forget-me-not seeds... You can proabably guess which ghosts would want a flower named that...", 
+    "Poppy seeds, well poppies are usually given to war heros...", "Rose seeds, plant them for a girl, and they love you till death...", "Sands of time, it gives unlimited stamina for 30 seconds..." };
     [System.NonSerialized] public string[] talkTexts = { "What a fine day to be living... I mean be dead...", "What? Me, a reaper? No... I'm not... Tell anyone and your dead...", "Stories? Yeah I got stories... One time someone died. The End...", "I've taken the soul out of plants before... Don't ask how...",
     "Hurry up and buy something, I might just die from boredom here...", "Yes, yes... dogs go to heaven, and cats go to hell...", "How are the plants growing so fast? Uhh... becuase I said so...", "Why do I need money? I'm just saving up so I can reincarnate into a shrimp...",
     "Are there more reapers? Yes, can't you see the one behind you?...", "Life and death are... who cares about philosophy anyways...", "I have plenty of hobbies killing, reaping souls... I don't have a hobby...", "THIS SCYTHE IS NOT FOR FARMING..."};

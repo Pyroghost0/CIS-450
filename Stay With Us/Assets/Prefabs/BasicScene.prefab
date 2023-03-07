@@ -4790,6 +4790,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: 
+  itemTexts:
+  - 
+  - '?'
+  - Daisy Seed
+  - Sunflower Seed
+  - Forget-Me-Not Seed
+  - Poppy Seed
+  - Rose Seed
+  - Sands Of Time
   inventoryAmount: 
   inventorySize: 6
   itemSprites:
@@ -4800,6 +4809,7 @@ MonoBehaviour:
   - {fileID: -1794974980, guid: 668117fca80282b4da73132857b8500d, type: 3}
   - {fileID: -1692541105, guid: 668117fca80282b4da73132857b8500d, type: 3}
   - {fileID: 1412073621, guid: 668117fca80282b4da73132857b8500d, type: 3}
+  - {fileID: 21300000, guid: 856419907abb4b443ae40b71e4e4e1b2, type: 3}
   inventorySelection: 0
   invFrames:
   - {fileID: 2211139131150421544}
