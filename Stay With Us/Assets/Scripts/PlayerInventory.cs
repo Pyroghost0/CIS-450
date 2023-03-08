@@ -76,7 +76,7 @@ public class PlayerInventory : MonoBehaviour, IObserver
     // Update is called once per frame
     void Update()
     {
-        if (!isPaused)
+        if (!isPaused && Time.timeScale != 0f)//Pause checker
         {
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)
             {
@@ -105,38 +105,45 @@ public class PlayerInventory : MonoBehaviour, IObserver
                     scrollAmount = 0f;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Alpha1) && inventorySize > 0)//Add pause checker
+            if (Input.GetKeyDown(KeyCode.Alpha1))// && inventorySize > 0)
             {
                 invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
                 inventorySelection = 0;
                 invFrames[inventorySelection].color = Color.white;
                 scrollAmount = 0f;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) && inventorySize > 1)
+            else if (Input.GetKeyDown(KeyCode.Alpha2))// && inventorySize > 1)
             {
                 invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
                 inventorySelection = 1;
                 invFrames[inventorySelection].color = Color.white;
                 scrollAmount = 0f;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha3) && inventorySize > 2)
+            else if (Input.GetKeyDown(KeyCode.Alpha3))// && inventorySize > 2)
             {
                 invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
                 inventorySelection = 2;
                 invFrames[inventorySelection].color = Color.white;
                 scrollAmount = 0f;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha4) && inventorySize > 3)
+            else if (Input.GetKeyDown(KeyCode.Alpha4))// && inventorySize > 3)
             {
                 invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
                 inventorySelection = 3;
                 invFrames[inventorySelection].color = Color.white;
                 scrollAmount = 0f;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha5) && inventorySize > 4)
+            else if (Input.GetKeyDown(KeyCode.Alpha5))// && inventorySize > 4)
             {
                 invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
                 inventorySelection = 4;
+                invFrames[inventorySelection].color = Color.white;
+                scrollAmount = 0f;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha6))// && inventorySize > 5)
+            {
+                invFrames[inventorySelection].color = new Color(.75f, .75f, .75f, 1f);
+                inventorySelection = 5;
                 invFrames[inventorySelection].color = Color.white;
                 scrollAmount = 0f;
             }
