@@ -763,6 +763,77 @@ PrefabInstance:
       propertyPath: grave
       value: 
       objectReference: {fileID: 6517311352223935800}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: initialText
+      value: bool talkedTo = true; [updating hard drive]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[0]
+      value: 3 ghosts love forget-me-nots, 3 ghosts hate forget-me-nots.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[1]
+      value: 5 ghosts love sunflowers, 2 ghosts hate sunflowers.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[2]
+      value: 3 ghosts love daisies, 1 ghost hates daisies.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[3]
+      value: if (levelNumber == 1) {numberOfGhosts = 8;}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[4]
+      value: 'BEEP -------- SCREECH$# -- WHIR*: ''Hi, my name is Poppy'''
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[5]
+      value: 'NullReferenceException: Object reference not set to an instance of
+        an object   at Poppy.SetPersonality () [0x0000b]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[6]
+      value: 'NullReferenceException: Object reference not set to an instance of
+        an object   at Poppy.SetPersonality () [0x0000b]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[7]
+      value: 'NullReferenceException: Object reference not set to an instance of
+        an object   at Poppy.SetPersonality () [0x0000b]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[0]
+      value: if (levelNumber == 2) {numberOfGhosts = 10;}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[1]
+      value: 4 ghosts love poppies, 6 ghosts hate poppies.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[2]
+      value: 4 ghosts love roses, 4 ghosts hate roses.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.data[0]
+      value: if (levelNumber == 3) {numberOfGhosts = 12;}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.data[1]
+      value: '''Poppy doesn''t hate any flowers. Poppy loves poppies.'''
+      objectReference: {fileID: 0}
     - target: {fileID: 1735055062662280029, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
       propertyPath: m_text
       value: Poppy
