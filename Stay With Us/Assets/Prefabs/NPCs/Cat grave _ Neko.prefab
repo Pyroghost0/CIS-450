@@ -1068,6 +1068,70 @@ PrefabInstance:
       propertyPath: grave
       value: 
       objectReference: {fileID: 7395944812547266748}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: initialText
+      value: Meow. (New people? Haz flowers? Hello! Am Neko!)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[0]
+      value: Mrow. (Flower look so yum... but some very bad. Poppies? Poison >.<))
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[1]
+      value: Meow! (Tia love all flowers! Pretty garden!)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[2]
+      value: Meow. (Meow.)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[3]
+      value: Meow? (Can haz flower? Please? Now?)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[0]
+      value: Meow... (Being ghost cat sad... no pets.)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[1]
+      value: Mew! (Daisys tasty... and no hurt!)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[2]
+      value: Meow. (Meow. Meow? Meow.)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[3]
+      value: Meeoooww. (Must. Meow. At. Wall.)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.data[0]
+      value: Meow... (Mole man scary.. Me no like.)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.data[1]
+      value: Meow! (Girl gave me sunflower. Me love forever.)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.data[2]
+      value: Meowch! (Rose hurt >:()
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.data[3]
+      value: Meow. (Meow. Meow? Meow.)
+      objectReference: {fileID: 0}
     - target: {fileID: 1735055062626403959, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
       propertyPath: m_Sprite
       value: 

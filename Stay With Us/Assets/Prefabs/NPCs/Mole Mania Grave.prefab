@@ -928,7 +928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
       propertyPath: ghostTexts.Array.data[3]
-      value: It is undeniable that I am the grimm reaper's favorite after how many
+      value: It is undeniable that I am the grim reaper's favorite after how many
         souls I brought him. Now, bow down to me.
       objectReference: {fileID: 0}
     - target: {fileID: 1735055062626403959, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}

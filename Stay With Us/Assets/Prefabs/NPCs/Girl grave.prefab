@@ -764,6 +764,49 @@ PrefabInstance:
       propertyPath: grave
       value: 
       objectReference: {fileID: 1074040856117688438}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: initialText
+      value: Hi there! I'm Girl! You're the new grave keeper? Nice to meetcha!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[0]
+      value: Wanna play warrior cats? I'll be firestar!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[1]
+      value: Being dead isn't all so bad, now Mom can't yell at me for playing in
+        the mud!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: ghostTexts.Array.data[2]
+      value: I love roses! They're so pretty... and magic! Haven't you read any fairytales?
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[0]
+      value: I love grandma Tia! She's so sweet, she promised she'd bake me cookies!
+        If we, ya know, could bake.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level2NewTexts.Array.data[1]
+      value: Poppies make me sad, the house had so many after Dad passed away...
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735055062626403957, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
+      propertyPath: level3NewTexts.Array.data[0]
+      value: That Quiz Master guy is so weird! I'll tell you what though, I won't
+        be forgetting him any time soon!
+      objectReference: {fileID: 0}
     - target: {fileID: 1735055062626403959, guid: 4d3925ff5fc5f0c499d79a879b2e7a66, type: 3}
       propertyPath: m_Sprite
       value: 
