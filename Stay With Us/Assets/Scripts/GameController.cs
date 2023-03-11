@@ -39,6 +39,9 @@ public class GameController : MonoBehaviour
     public GameObject inivisWallSeeds;
     public GameObject lorePanel;
     public GameObject tutorialPanel;
+    public GameObject moneyPannel;
+    public GameObject timerPannel;
+    public GameObject inventoryPannel;
     public TextMeshProUGUI loreText;
     public TextMeshProUGUI tutorialText;
     public bool textRead;
@@ -82,29 +85,33 @@ public class GameController : MonoBehaviour
                 cameraLUT.Saturation += 0.75f * Time.deltaTime / levelLength;
             }
         }
-        gameObject.GetComponent<Pauser>().canPause = false;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().isPaused = true;
         moonlightBar.current = 0f;
-        Time.timeScale = 0f;
-        GameObject[] graveObjects = GameObject.FindGameObjectsWithTag("Grave");
-        float averageLikenessLevel = 0f;
-        for (int i = 0; i < graveObjects.Length; i++)
+        if (!isTutorial)
         {
-            averageLikenessLevel += graveObjects[i].GetComponent<Grave>().rememberance;
+            gameObject.GetComponent<Pauser>().canPause = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().isPaused = true;
+            moonlightBar.current = 0f;
+            Time.timeScale = 0f;
+            GameObject[] graveObjects = GameObject.FindGameObjectsWithTag("Grave");
+            float averageLikenessLevel = 0f;
+            for (int i = 0; i < graveObjects.Length; i++)
+            {
+                averageLikenessLevel += graveObjects[i].GetComponent<Grave>().rememberance;
+            }
+            averageLikenessLevel /= graveObjects.Length;
+            Debug.Log(averageLikenessLevel);
+            if (averageLikenessLevel >= 50f)
+            {
+                winResultText.text = "You Win";//Even though it is that for default
+                winDescriptionText.text = winTexts[Random.Range(0, winTexts.Length)];
+            }
+            else
+            {
+                winResultText.text = "You Lose";
+                winDescriptionText.text = loseTexts[Random.Range(0, loseTexts.Length)];
+            }
+            winPannel.SetActive(true);
         }
-        averageLikenessLevel /= graveObjects.Length;
-        Debug.Log(averageLikenessLevel);
-        if (averageLikenessLevel >= 50f)
-        {
-            winResultText.text = "You Win";//Even though it is that for default
-            winDescriptionText.text = winTexts[Random.Range(0, winTexts.Length)];
-        }
-        else
-        {
-            winResultText.text = "You Lose";
-            winDescriptionText.text = loseTexts[Random.Range(0, loseTexts.Length)];
-        }
-        winPannel.SetActive(true);
     }
 
     IEnumerator RandomItemSummon()
@@ -141,6 +148,8 @@ public class GameController : MonoBehaviour
 
     IEnumerator Tutorial()
     {
+        Time.timeScale = 0f;
+        GetComponent<Pauser>().canTimeScale = false;
         //LORE
         loreText.text = "Unfortunately, you have died." +
             "\nSurprisingly, your death is of use!" +
@@ -148,6 +157,8 @@ public class GameController : MonoBehaviour
             "\n\nThey deserve happiness. You will give it to them.";
         
         yield return new WaitUntil(() => textRead);
+        Time.timeScale = 1f;
+        GetComponent<Pauser>().canTimeScale = true;
         lorePanel.SetActive(false);
         //Move
         tutorialPanel.SetActive(true);
@@ -156,6 +167,7 @@ public class GameController : MonoBehaviour
         tutorialText.text = "Great job! You can use SPACE or SHIFT to sprint.";
         yield return new WaitUntil(() => Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift));
         inivisWall.SetActive(false);
+        moneyPannel.SetActive(true);
         tutorialText.text = "You can pick up ectoplasm to use as currency in the shop.\nYou can see how much you have in the top right.";
         yield return new WaitUntil(() => (playerInventory.money > 5));
         inivisWallCurrency.SetActive(false);
@@ -166,10 +178,12 @@ public class GameController : MonoBehaviour
         invisShopWall.SetActive(false);
         GameObject.FindGameObjectWithTag("Shoptender").GetComponent<Shoptender>().enabled = false;
 
+        inventoryPannel.SetActive(true);
         tutorialText.text = "You can pick up flower seeds and plant them to keep ghosts happy.";
         yield return new WaitUntil(() => (poppySeed == null && sunflowerSeed == null));
-        tutorialText.text = "In the lower lefthand corner is your inventory. Press the number keys to change your active item.";
-        yield return new WaitUntil(() => (Input.GetKeyDown(KeyCode.Alpha2)));
+        tutorialText.text = "In the lower lefthand corner is your inventory. Press the number keys or scroll to change your active item.";
+        int selectedItem = playerInventory.inventorySelection;
+        yield return new WaitUntil(() => (selectedItem != playerInventory.inventorySelection));
         inivisWallSeeds.SetActive(false);
         tutorialText.text = "This is Elam.\nYou can talk to ghosts like them by pressing E to find their out ther interests.\nElam likes poppies. Press Q to plant seeds in front of graves.";
         yield return new WaitUntil(() => tutorialGrave.reaction != null);
@@ -186,6 +200,7 @@ public class GameController : MonoBehaviour
         tutorialText.text = "The blue bar above graves indicates how happy the ghost is. At the end of the night, you want all of these to be as filled as possible.\n[press ENTER to continue]";
         yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        timerPannel.SetActive(true);
         StartCoroutine(LevelTimer());
         tutorialText.text = "The 'Moonlight Remaining' bar shows you how much time is left in the night. You need to make sure to have all the ghosts happy by the end of the night.\n[press ENTER to continue]";
         yield return new WaitForSeconds(0.5f);

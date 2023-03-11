@@ -34,20 +34,21 @@ public class PlotOfDirt : MonoBehaviour
             }
             flowers[flowerNum].SetActive(true);
             flowers[flowerNum].GetComponent<Flower>().stageOfGrowth = 0;
+            flowers[flowerNum].GetComponent<Flower>().Start();
 
-            Debug.Log("flowerNum is " + flowerNum);
+            //Debug.Log("flowerNum is " + flowerNum);
 
             for (int i = 0; i < grave.flowerPreferences.Length; i++)
             {
-                Debug.Log(grave.flowerPreferences[i]);
+                //Debug.Log(grave.flowerPreferences[i]);
                 if (grave.flowerHates.Length > i)
                 {
-                    Debug.Log(grave.flowerPreferences[i]);
+                    //Debug.Log(grave.flowerPreferences[i]);
                 }
-                Debug.Log(flowers[flowerNum]);
+                //Debug.Log(flowers[flowerNum]);
                 if (grave.flowerPreferences[i] == flowers[flowerNum].GetComponent<Flower>().flowerType && !flowerPlanted)
                 {
-                    Debug.Log("grave loves this");
+                    //Debug.Log("grave loves this");
                     Destroy(grave.GetComponent<GraveReaction>());
                     grave.reaction = grave.gameObject.AddComponent<Loved>();
 
@@ -61,7 +62,7 @@ public class PlotOfDirt : MonoBehaviour
             {
                 if (grave.flowerHates.Length > i && grave.flowerHates[i] == flowers[flowerNum].GetComponent<Flower>().flowerType && !flowerPlanted)
                 {
-                    Debug.Log("grave hates this");
+                    //Debug.Log("grave hates this");
                     Destroy(grave.GetComponent<GraveReaction>());
                     grave.reaction = grave.gameObject.AddComponent<Hated>();
 
@@ -94,6 +95,8 @@ public class PlotOfDirt : MonoBehaviour
     {
         grave.rememberanceRate = .5f;
         newFlowerCanBePlanted = true;
+        grave.flowerLovedIndicator.SetActive(false);
+        grave.flowerHatedIndicator.SetActive(false);
     }
 
 }

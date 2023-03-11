@@ -12,14 +12,14 @@ public class Flower : MonoBehaviour
     public Sprite[] stagesOfGrowth;
     public SpriteRenderer spriteRenderer;
     public int stageOfGrowth = 0;
-    private float growthStageTime = 10f;
+    private float growthStageTime = 15f;
     public float timer;
     public PlotOfDirt plotOfDirt;
 
     public string flowerType; // could also be enum
     
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sortingOrder = (int)(transform.position.y * -10);

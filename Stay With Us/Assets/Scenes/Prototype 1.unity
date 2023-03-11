@@ -89921,7 +89921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211139132515190459, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: money
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2211139132515190461, guid: c9795639901cf6b4286cb51886c742f7, type: 3}
       propertyPath: m_LocalPosition.x

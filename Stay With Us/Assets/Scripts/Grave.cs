@@ -58,6 +58,10 @@ public class Grave : MonoBehaviour
         if (rememberance < 33.3f)
         {
             ghostSpriteRenderer.sprite = ghostSprites[2];
+            if (rememberance < 0f)
+            {
+                rememberance = 0f;
+            }
         }
         else if (rememberance < 66.6f)
         {
@@ -66,15 +70,12 @@ public class Grave : MonoBehaviour
         else
         {
             ghostSpriteRenderer.sprite = ghostSprites[0];
+            if (rememberance > 100f)
+            {
+                rememberance = 100f;
+            }
         }
-        if (rememberance <= 0)
-        {
-            rememberanceBar.current = 0;
-        }
-        else
-        {
-            rememberanceBar.current = rememberance;
-        }
+        rememberanceBar.current = rememberance;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class Neutral : GraveReaction
 {
-    private float newRate = 0f;
+    private float newRate = -.15f;
     public override float UpdateRemembrance()
     {
         return newRate;

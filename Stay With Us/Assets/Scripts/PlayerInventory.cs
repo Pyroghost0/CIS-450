@@ -76,7 +76,7 @@ public class PlayerInventory : MonoBehaviour, IObserver
     // Update is called once per frame
     void Update()
     {
-        if (!isPaused && Time.timeScale != 0f)//Pause checker
+        if (!isPaused)// && Time.timeScale != 0f)//Pause checker
         {
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)
             {
