@@ -1,0 +1,80 @@
+/* Caleb Kahn
+ * GameController
+ * Project 5
+ * General functions such as spawning enemies and winning the game
+ */
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+
+public class GameController : MonoBehaviour
+{
+    public Spawner spawner;
+    public TextMeshProUGUI librarianText;
+    public Image libraianOutline;
+    public List<Transform> navGraph = new List<Transform>();
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        for (int i = 0; i < transform.GetChild(0).childCount; i++)
+        {
+            navGraph.Add(transform.GetChild(0).GetChild(i));
+        }
+        StartCoroutine(SpawnEnemies());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void LibrarianInArea()
+    {
+        StartCoroutine(LibrarianInAreaCoroutine());
+    }
+
+    IEnumerator LibrarianInAreaCoroutine()
+    {
+        float timer = 0;
+        Color color = librarianText.color;
+        while (timer < .5f)
+        {
+            color.a = timer / .5f;
+            librarianText.color = color;
+            libraianOutline.color = new Color(.5f, .5f, .5f, timer);
+            //libraianOutline.color = new Color(0f, 0f, 0f, timer / .5f);
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        timer = .5f;
+        color.a = 1f;
+        librarianText.color = color;
+        libraianOutline.color = new Color(.5f, .5f, .5f, .5f);
+        //libraianOutline.color = new Color(0f, 0f, 0f, 0f);
+        yield return new WaitForSeconds(3f);
+        while (timer > 0f)
+        {
+            color.a = timer / .5f;
+            librarianText.color = color;
+            libraianOutline.color = new Color(0f, 0f, 0f, timer);
+            //libraianOutline.color = new Color(0f, 0f, 0f, timer / .5f);
+            timer -= Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        color.a = 0f;
+        librarianText.color = color;
+        libraianOutline.color = new Color(.5f, .5f, .5f, 0f);
+        //libraianOutline.color = new Color(0f, 0f, 0f, 0f);
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        yield return new WaitForSeconds(2f);
+        spawner.SpawnEnemy(new Vector3(0f, 2f, 16f), EnemyType.Librarian);
+    }
+}

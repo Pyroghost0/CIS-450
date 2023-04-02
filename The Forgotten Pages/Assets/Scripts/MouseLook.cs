@@ -1,3 +1,8 @@
+/* Cooper Denault
+ * MouseLook
+ * Project 5
+ * Player can move mouse to look around
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
