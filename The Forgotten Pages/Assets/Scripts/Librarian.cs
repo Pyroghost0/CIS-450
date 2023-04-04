@@ -13,7 +13,7 @@ public class Librarian : Enemy
     public NavMeshAgent navMeshAgent;
     private Transform previousPosition;
     private Position currentPosition;
-    public List<Transform> navGraph;
+    private List<Transform> navGraph;
     private Camera camera;
     private PlayerMovement player;
     private bool foundPlayer = false;
@@ -26,7 +26,8 @@ public class Librarian : Enemy
         navGraph = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().navGraph;
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        StartCoroutine(EnemyActionBehaivior());
+        minDespawnTime = 20f;
+        StartCoroutine(EnemyBehaivior());
     }
 
     protected override IEnumerator EnemyActionBehaivior()
@@ -94,7 +95,7 @@ public class Librarian : Enemy
         while (true)
         {
             RaycastHit[] rayHits = Physics.RaycastAll(transform.position, player.transform.position - transform.position, player.soundRadius);
-            Debug.DrawRay(transform.position, player.transform.position - transform.position);
+            //Debug.DrawRay(transform.position, player.transform.position - transform.position);
             int walls = 0;
             bool found = false;
             for (int i = 0; i < rayHits.Length; i++)
@@ -124,13 +125,13 @@ public class Librarian : Enemy
 
     protected override IEnumerator DespawnBehaivior()
     {
-        Debug.Log("Despawning");
+        //Debug.Log("Despawning");
         yield return new WaitForFixedUpdate();
         //Renderer works with a spriteRender or any type of renderer, but it doesn't work well, and the camera one is munually put in with the CameraSite class which is an added extention to the camera class
         //Debug.Log("Mesh: " + camera.IsObjectVisible(GetComponent<MeshRenderer>()));
         //Debug.Log("Renderer" + GetComponent<MeshRenderer>().isVisible);
         yield return new WaitUntil(() => !camera.IsObjectVisible(GetComponent<MeshRenderer>()));
-        Debug.Log("Out of view");
+        //Debug.Log("Out of view");
         Destroy(gameObject);
     }
 }

@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.81f;
 
     //variables for checking if on ground
+    public Transform behindPosition;
     public Transform groundCheck;
     public float groundDistance = 0.2f;
     public LayerMask groundMask;
