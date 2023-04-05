@@ -43,23 +43,19 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(verticalLookRotation, 0f, 0f);
 
 
-        //!!!!!!!!!!!!!!!!!!!!Make sure the radius in the navAgenst is less than the collider otherwise the detection is inconistant
-
-        //Debug.Log(transform.forward);
-        RaycastHit[] rayHits = Physics.RaycastAll(transform.position, transform.forward);
+        RaycastHit rayHit;
         /*for (int i = 0; i < rayHits.Length; i++)
         {
             Debug.Log(i + ": " + rayHits[0].collider.name + "\t\t" + rayHits[0].point);
-        }
-        Debug.DrawRay(transform.position, transform.forward * 100f, Color.red);*/
-        if (rayHits.Length > 0 && rayHits[0].collider != null)
+        }*/
+        //Debug.DrawRay(transform.position, transform.forward * 100f, Color.red);
+        if (Physics.Raycast(transform.position, transform.forward, out rayHit) && rayHit.collider != null)
         {
-            //Debug.Log(rayHits[0].collider.name);
-            //Debug.Log(rayHits[0].point);
-            if (rayHits[0].collider.CompareTag("Enemy") && rayHits[0].collider.GetComponent<Enemy>().enemyType == EnemyType.ShyMonster)
+            //Debug.Log(rayHit.collider.name + "\n" + rayHit.point);
+            if (rayHit.collider.CompareTag("Enemy") && rayHit.collider.GetComponent<Enemy>().enemyType == EnemyType.ShyMonster)
             {
                 Debug.Log("Was Found");
-                rayHits[0].collider.GetComponent<ShyMonster>().wasFound = true;
+                rayHit.collider.GetComponent<ShyMonster>().wasFound = true;
             }
         }
     }
@@ -72,20 +68,21 @@ public class MouseLook : MonoBehaviour
             //!!!!!!!!!!!!!!!!!!!!Make sure the radius in the navAgenst is less than the collider otherwise the detection is inconistant
 
             //Debug.Log(transform.forward);
-            RaycastHit[] rayHits = Physics.RaycastAll(transform.position, transform.forward);
-            for (int i = 0; i < rayHits.Length; i++)
+            RaycastHit rayHit;
+            
+            /*for (int i = 0; i < rayHits.Length; i++)
             {
                 Debug.Log(i + ": " + rayHits[0].collider.name + "\t\t" + rayHits[0].point);
-            }
+            }*/
             Debug.DrawRay(transform.position, transform.forward * 100f, Color.red);
-            if (rayHits.Length > 0 && rayHits[0].collider != null)
+            if (Physics.Raycast(transform.position, transform.forward, out rayHit) && rayHit.collider != null)
             {
-                //Debug.Log(rayHits[0].collider.name);
+                Debug.Log(rayHit.collider.name + "\n" + rayHit.point);
                 //Debug.Log(rayHits[0].point);
-                if (rayHits[0].collider.CompareTag("Enemy") && rayHits[0].collider.GetComponent<Enemy>().enemyType == EnemyType.ShyMonster)
+                if (rayHit.collider.CompareTag("Enemy") && rayHit.collider.GetComponent<Enemy>().enemyType == EnemyType.ShyMonster)
                 {
                     Debug.Log("Was Found");
-                    rayHits[0].collider.GetComponent<ShyMonster>().wasFound = true;
+                    rayHit.collider.GetComponent<ShyMonster>().wasFound = true;
                 }
             }
         }
