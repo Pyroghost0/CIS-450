@@ -62,8 +62,11 @@ public class MouseLook : MonoBehaviour
 
     IEnumerator Sight()
     {
+        //UnityEngine.AI.NavMeshAgent na;
         while (true)
         {
+            //na.pathPending;
+            //na.updatePosition;
             yield return new WaitForEndOfFrame();
             //!!!!!!!!!!!!!!!!!!!!Make sure the radius in the navAgenst is less than the collider otherwise the detection is inconistant
 

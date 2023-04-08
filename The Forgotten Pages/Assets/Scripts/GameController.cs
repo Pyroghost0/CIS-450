@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI librarianText;
     public Image libraianOutline;
     public List<Transform> navGraph = new List<Transform>();
+    public List<List<Transform>> tunnelGraph = new List<List<Transform>>();
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,15 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
             navGraph.Add(transform.GetChild(0).GetChild(i));
+        }
+        for (int i = 0; i < transform.GetChild(1).childCount; i++)
+        {
+            List<Transform> tunnels = new List<Transform>();
+            for (int j = 0; j < transform.GetChild(1).GetChild(i).childCount; j++)
+            {
+                tunnels.Add(transform.GetChild(1).GetChild(i).GetChild(j));
+            }
+            tunnelGraph.Add(tunnels);
         }
         StartCoroutine(SpawnEnemies());
     }
@@ -75,6 +85,7 @@ public class GameController : MonoBehaviour
     IEnumerator SpawnEnemies()
     {
         yield return new WaitForSeconds(2f);
-        spawner.SpawnEnemy(new Vector3(0f, 2f, 16f), EnemyType.Librarian);
+        //spawner.SpawnEnemy(new Vector3(0f, 2f, 16f), EnemyType.Librarian);
+        spawner.SpawnEnemy(tunnelGraph[0][0].position, EnemyType.TunnelMonster);
     }
 }

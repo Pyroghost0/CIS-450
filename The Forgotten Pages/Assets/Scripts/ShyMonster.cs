@@ -7,7 +7,9 @@ public class ShyMonster : Enemy
 {
     public NavMeshAgent navMeshAgent;
     private List<Transform> navGraph;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     private Camera camera;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     private Transform player;
     public bool wasFound = false;
 

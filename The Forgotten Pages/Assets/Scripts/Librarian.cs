@@ -14,7 +14,9 @@ public class Librarian : Enemy
     private Transform previousPosition;
     private Position currentPosition;
     private List<Transform> navGraph;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     private Camera camera;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     private PlayerMovement player;
     private bool foundPlayer = false;
 
