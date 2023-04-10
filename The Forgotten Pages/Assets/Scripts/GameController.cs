@@ -18,9 +18,12 @@ public class GameController : MonoBehaviour
     public List<Transform> navGraph = new List<Transform>();
     public List<List<Transform>> tunnelGraph = new List<List<Transform>>();
 
+    public bool isInMemory;
+
     // Start is called before the first frame update
     void Start()
     {
+        isInMemory = false;
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
             navGraph.Add(transform.GetChild(0).GetChild(i));
@@ -40,7 +43,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            isInMemory = !isInMemory;
+        }
     }
 
     public void LibrarianInArea()

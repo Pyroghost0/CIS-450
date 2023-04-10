@@ -41,53 +41,56 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //checking if the player is on the ground
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (isGrounded && velocity.y < 0)
+        if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory)
         {
-            velocity.y = -2f;
+            //checking if the player is on the ground
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
+
+
+
+            //Get input
+            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                sprinting = true;
+                speed = initSpeed * 2;
+            }
+            else
+            {
+                sprinting = false;
+                speed = initSpeed;
+            }
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+            float magnitude = Mathf.Sqrt(x * x + z * z);
+            if (magnitude != 0)
+            {
+                x *= Mathf.Abs(x) / magnitude;
+                z *= Mathf.Abs(z) / magnitude;
+                soundRadius = sprinting ? SprintingSoundRadius : walkingSoundRadius;
+            }
+            else
+            {
+                soundRadius = notMovingSoundRadius;
+            }
+            //playerAnimation.SetFloat("X", Input.GetAxisRaw("Horizontal"));
+            //playerAnimation.SetFloat("Y", Input.GetAxisRaw("Vertical"));
+
+            controller.Move((transform.right * x + transform.forward * z) * speed * Time.deltaTime);
+
+
+
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+            //add gravity to velocity
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
         }
-
-
-
-        //Get input
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        {
-            sprinting = true;
-            speed = initSpeed * 2;
-        }
-        else
-        {
-            sprinting = false;
-            speed = initSpeed;
-        }
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        float magnitude = Mathf.Sqrt(x * x + z * z);
-        if (magnitude != 0)
-        {
-            x *= Mathf.Abs(x) / magnitude;
-            z *= Mathf.Abs(z) / magnitude;
-            soundRadius = sprinting ? SprintingSoundRadius : walkingSoundRadius;
-        }
-        else
-        {
-            soundRadius = notMovingSoundRadius;
-        }
-        //playerAnimation.SetFloat("X", Input.GetAxisRaw("Horizontal"));
-        //playerAnimation.SetFloat("Y", Input.GetAxisRaw("Vertical"));
-
-        controller.Move((transform.right * x + transform.forward * z) * speed * Time.deltaTime);
-
-
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-        //add gravity to velocity
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
 }

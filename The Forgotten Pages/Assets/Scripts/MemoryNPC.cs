@@ -18,7 +18,7 @@ public class MemoryNPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveToPosition(-3, 3);
+        MoveToPosition(90, 3);
     }
 
     public void MoveToPosition(float newPos, float speed)

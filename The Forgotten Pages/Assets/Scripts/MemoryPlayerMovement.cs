@@ -19,13 +19,15 @@ public class MemoryPlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //player movement
-        horizontal = Input.GetAxis("Horizontal");
-        if (horizontal != 0)
+        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory)
         {
-            horizontal *= moveLimiter;
+            //player movement
+            horizontal = Input.GetAxis("Horizontal");
+            if (horizontal != 0)
+            {
+                horizontal *= moveLimiter;
+            }
+            body.velocity = new Vector3(horizontal * movementSpeed, 0);
         }
-        body.velocity = new Vector3(horizontal * movementSpeed, 0);
     }
 }
