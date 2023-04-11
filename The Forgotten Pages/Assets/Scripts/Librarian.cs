@@ -23,7 +23,7 @@ public class Librarian : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        enemyType = EnemyType.Librarian;
+        //enemyType = EnemyType.Librarian;
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().LibrarianInArea();
         navGraph = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().navGraph;
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();

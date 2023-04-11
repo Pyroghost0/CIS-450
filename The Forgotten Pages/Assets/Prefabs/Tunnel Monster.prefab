@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2610840636574278280}
   - component: {fileID: 3644009501125420287}
   - component: {fileID: 459245118424796621}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c773f345b637b4f9dcee451223cd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
+  enemyType: 2
   navMeshAgent: {fileID: 6630602607532793915}
   atDespawn: 0
   seesPlayer: 0

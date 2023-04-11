@@ -1,3 +1,8 @@
+/* Caleb Kahn
+ * TunnelMonsterSight
+ * Project 5
+ * The sight mechanism for the tunnel monster
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

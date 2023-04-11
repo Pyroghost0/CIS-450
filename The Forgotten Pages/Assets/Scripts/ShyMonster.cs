@@ -1,3 +1,8 @@
+/* Caleb Kahn
+ * ShyMonster
+ * Project 5
+ * Enemy that can sneaks up on player and will leave once seen
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +21,7 @@ public class ShyMonster : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        enemyType = EnemyType.ShyMonster;
+        //enemyType = EnemyType.ShyMonster;
         navGraph = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().navGraph;
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().behindPosition;

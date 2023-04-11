@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3feaddbcef3a63f49a345a9500d8644b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
+  enemyType: 1
   navMeshAgent: {fileID: 3840289671770924295}
   wasFound: 0
 --- !u!136 &4516409540475736198

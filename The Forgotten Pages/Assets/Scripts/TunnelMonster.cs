@@ -1,3 +1,8 @@
+/* Caleb Kahn
+ * TunnelMonster
+ * Project 5
+ * Enemy that goes through paths and can see the player
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +13,7 @@ public class TunnelMonster : Enemy
     public NavMeshAgent navMeshAgent;
     private List<Transform> tunnelGraph;
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
-    private Camera camera;
+    //private Camera camera;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     private Transform player;
     public bool atDespawn = false;
@@ -18,7 +23,7 @@ public class TunnelMonster : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        enemyType = EnemyType.TunnelMonster;
+        //enemyType = EnemyType.TunnelMonster;
         List<List<Transform>> tunnels = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().tunnelGraph;
         for (int i = 0; i < tunnels.Count; i++)
         {
@@ -47,7 +52,7 @@ public class TunnelMonster : Enemy
                 navMeshAgent.destination = currentPosition.position;
                 //Debug.Log(navMeshAgent.destination);
                 yield return new WaitUntil(() => seesPlayer || Vector3.Distance(currentPosition.position, transform.position) <= 3f);
-                if (currentPosition.GetComponent<Position>().otherPositions.Count == 0)
+                if (!seesPlayer && currentPosition.GetComponent<Position>().otherPositions.Count == 0)
                 {
                     atDespawn = true;
                     yield break;
