@@ -9,30 +9,63 @@ public class MemoryNPC : MonoBehaviour
     public string[] dialouge;
     public GameObject textbox;
     public TextMeshProUGUI text;
+
+    public SpriteRenderer spriteRenderer;
+    public Animator animator;
+
+    public GameObject[] emotes;
+
+    public bool moveToNewPos;
+    public float newPos;
+    public float speed;
+
+    public bool isTalking;
     // Start is called before the first frame update
     void Start()
     {
-        StartDialouge(new string[] {"This is the placeholder text!", "woo!", "woooooo!" });
+        //StartDialouge(new string[] {"This is the placeholder text!", "woo!", "woooooo!" });
+        spriteRenderer= GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveToPosition(90, 3);
+        if (moveToNewPos)
+        {
+            Debug.Log("Moving to new position");
+            MoveToPosition(newPos, speed);
+        }
+    }
+
+    public IEnumerator PlayAnimation(string animationVariable, float playTime)
+    { 
+        animator.SetBool(animationVariable, true);
+        yield return new WaitForSeconds(playTime);
+        animator.SetBool(animationVariable, false);
     }
 
     public void MoveToPosition(float newPos, float speed)
     {
+        Debug.Log("inside move to position");
         if (gameObject.transform.position.x < newPos - .1f || gameObject.transform.position.x > newPos + .1f)
         {
+            animator.SetBool("isMoving", true);
             if (gameObject.transform.position.x < newPos)
             {
                 gameObject.transform.position += new Vector3(Time.deltaTime * speed, 0, 0);
+                spriteRenderer.flipX = false;
             }
             else if (gameObject.transform.position.x > newPos)
             {
                 gameObject.transform.position -= new Vector3(Time.deltaTime * speed, 0, 0);
+                spriteRenderer.flipX = true;
             }
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+            moveToNewPos= false;
         }
     }
 
@@ -49,6 +82,7 @@ public class MemoryNPC : MonoBehaviour
 
     public IEnumerator Talk()
     {
+        isTalking= true;
         textbox.SetActive(true);
         text.text = dialouge[0];
         for (int i = 1; i < dialouge.Length; i++)
@@ -60,9 +94,13 @@ public class MemoryNPC : MonoBehaviour
         }
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         textbox.SetActive(false);
+        isTalking= false;
     }
 
-    //TODO: method for movement, method for talking. 
-    //      should make a controller to be able to script these cutscenes better.
-    //      could use a design pattern to get this done.
+    public IEnumerator Emote(GameObject emote, float waitTime)
+    { 
+        emote.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        emote.SetActive(false);
+    }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class MemoryPlayerMovement : MonoBehaviour
 {
     public Rigidbody2D body;
+    public SpriteRenderer spriteRenderer;
+    public Animator animator;
     public float horizontal;
     public float moveLimiter = 0.7f;
     public float movementSpeed = 3f;
@@ -14,6 +16,8 @@ public class MemoryPlayerMovement : MonoBehaviour
     {
         //assign variables
         body = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,23 @@ public class MemoryPlayerMovement : MonoBehaviour
                 horizontal *= moveLimiter;
             }
             body.velocity = new Vector3(horizontal * movementSpeed, 0);
+            if (horizontal > .01)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (horizontal < -.01)
+            {
+                spriteRenderer.flipX = true;
+            }
+
+            if (horizontal > 0.1 || horizontal < -0.1)
+            {
+                animator.SetBool("isMoving", true);
+            }
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
         }
     }
 }
