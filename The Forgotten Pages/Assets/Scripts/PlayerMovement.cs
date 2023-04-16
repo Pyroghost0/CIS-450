@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 3f;
     public PlayerUpgrade playerUpgrades;
     public Light flashlight;
+
+    public Image sanityBar;
 
 
     private void Start()
@@ -83,6 +86,19 @@ public class PlayerMovement : MonoBehaviour
             //add gravity to velocity
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);*/
+        }
+    }
+
+    public void RemoveSanity(float amount)
+    {
+        if (sanityBar.fillAmount <= amount)
+        {
+            sanityBar.fillAmount = 0;
+            Debug.Log("Dead");
+        }
+        else
+        {
+            sanityBar.fillAmount -= amount;
         }
     }
 }

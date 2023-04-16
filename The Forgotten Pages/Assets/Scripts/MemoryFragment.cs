@@ -1,3 +1,8 @@
+/* Caleb Kahn
+ * MemoryFragment
+ * Project 5
+ * The object that triggers the cutscene
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
