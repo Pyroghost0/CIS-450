@@ -48,7 +48,7 @@ public class Memory1 : MonoBehaviour
         yield return new WaitUntil(() => importantKidCharacter.isTalking == false);
 
         importantKidCharacter.moveToNewPos = true;
-        importantKidCharacter.newPos = 110;
+        importantKidCharacter.newPos = 115;
         importantKidCharacter.speed = 4;
 
         yield return new WaitForSeconds(.25f);
@@ -94,7 +94,7 @@ public class Memory1 : MonoBehaviour
         yield return new WaitUntil(() => motherCharacter.isTalking == false);
 
         motherCharacter.moveToNewPos = true;
-        motherCharacter.newPos = 110f;
+        motherCharacter.newPos = 115f;
         motherCharacter.speed = 3;
 
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
