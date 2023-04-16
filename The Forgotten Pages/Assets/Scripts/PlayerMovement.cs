@@ -11,8 +11,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public float speed = 12f;
-    private float initSpeed;
-    private bool sprinting = false;
+    public bool sprinting = false;
     public float soundRadius = 2f;
     private float notMovingSoundRadius = 2f;
     private float walkingSoundRadius = 6f;
@@ -36,9 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        initSpeed = speed;
         playerUpgrades = new PlayerAbility();
         playerUpgrades = new PlayerFlashlight(playerUpgrades, flashlight);
+        playerUpgrades = new PlayerSprint(playerUpgrades, this);
     }
 
 
@@ -57,16 +56,6 @@ public class PlayerMovement : MonoBehaviour
 
 
             //Get input
-            if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-            {
-                sprinting = true;
-                speed = initSpeed * 2;
-            }
-            else
-            {
-                sprinting = false;
-                speed = initSpeed;
-            }
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
             float magnitude = Mathf.Sqrt(x * x + z * z);
