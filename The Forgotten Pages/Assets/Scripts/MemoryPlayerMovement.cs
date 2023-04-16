@@ -11,9 +11,16 @@ public class MemoryPlayerMovement : MonoBehaviour
     public float moveLimiter = 0.7f;
     public float movementSpeed = 3f;
 
+    public bool canMove;
+    public bool isMoving;
+    public bool sprintUnlocked;
+    public bool isSprinting;
+    public bool hasFallen;
+
     // Start is called before the first frame update
     void Start()
     {
+        canMove = true;
         //assign variables
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -23,7 +30,11 @@ public class MemoryPlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory)
+        if (!canMove)
+        {
+            movementSpeed = 0;
+        }
+        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory && canMove)
         {
             //player movement
             horizontal = Input.GetAxis("Horizontal");
@@ -44,11 +55,47 @@ public class MemoryPlayerMovement : MonoBehaviour
             if (horizontal > 0.1 || horizontal < -0.1)
             {
                 animator.SetBool("isMoving", true);
+                isMoving = true;
             }
             else
             {
                 animator.SetBool("isMoving", false);
+                isMoving = true;
+            }
+
+            if (sprintUnlocked)
+            {
+                if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                {
+                    isSprinting = true;
+                    animator.speed = 2;
+                    movementSpeed = 6;
+                }
+                else
+                {
+                    isSprinting = false;
+                    animator.speed = 1;
+                    movementSpeed = 3;
+                }
             }
         }
+    }
+
+    public void Fall()
+    {
+        canMove = false;
+        isMoving = false;
+        transform.rotation = Quaternion.Euler(0, 0, -90);
+        transform.position += new Vector3(0, -.3f, 0);
+        body.velocity = Vector2.zero;
+        animator.SetBool("isMoving", false);
+    }
+
+    public void GetBackUp()
+    {
+        canMove = true;
+        //isMoving = false;
+        transform.rotation = Quaternion.Euler(0,0,0);
+        transform.position += new Vector3(0, .3f, 0);
     }
 }

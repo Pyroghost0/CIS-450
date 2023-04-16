@@ -1,4 +1,4 @@
-/* Caleb Kahn
+/* Caleb Kahn, Anna Breuker
  * GameController
  * Project 5
  * General functions such as spawning enemies and winning the game
@@ -77,7 +77,7 @@ public class GameController : Singleton<GameController>
         }
         if (!isInMemory)
         { 
-            //pause everything in the 2D scene
+            //play everything in the 3D scene
         }
     }
 
