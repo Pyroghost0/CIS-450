@@ -10,8 +10,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
+    public static GameController instance;
+
     public Spawner spawner;
     public TextMeshProUGUI librarianText;
     public Image libraianOutline;
@@ -19,6 +21,23 @@ public class GameController : MonoBehaviour
     public List<List<Transform>> tunnelGraph = new List<List<Transform>>();
 
     public bool isInMemory;
+
+    private void Awake()
+    {
+
+        if (instance == null)
+        {
+            instance = this;
+            //make sure this persists across scenes
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            Debug.LogError("Trying to instantiate a second" +
+                "instance of singleton GameManager");
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +64,20 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            isInMemory = !isInMemory;
+            SwitchGameMode();
+        }
+    }
+
+    public void SwitchGameMode()
+    { 
+        isInMemory= !isInMemory;
+        if (isInMemory)
+        {
+            //pause everything in the 3D scene
+        }
+        if (!isInMemory)
+        { 
+            //pause everything in the 2D scene
         }
     }
 
