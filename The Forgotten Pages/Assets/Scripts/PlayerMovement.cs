@@ -30,12 +30,15 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
 
     public float jumpHeight = 3f;
-
+    public PlayerUpgrade playerUpgrades;
+    public Light flashlight;
 
 
     private void Start()
     {
         initSpeed = speed;
+        playerUpgrades = new PlayerAbility();
+        playerUpgrades = new PlayerFlashlight(playerUpgrades, flashlight);
     }
 
 
@@ -82,15 +85,15 @@ public class PlayerMovement : MonoBehaviour
 
             controller.Move((transform.right * x + transform.forward * z) * speed * Time.deltaTime);
 
+            playerUpgrades.UseAbillity();
 
-
-            if (Input.GetButtonDown("Jump") && isGrounded)
+            /*if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
             //add gravity to velocity
             velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
+            controller.Move(velocity * Time.deltaTime);*/
         }
     }
 }

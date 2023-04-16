@@ -11,14 +11,18 @@ using UnityEngine.AI;
 public class TunnelMonster : Enemy
 {
     public NavMeshAgent navMeshAgent;
-    private List<Transform> tunnelGraph;
+    public List<Transform> tunnelGraph;
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     //private Camera camera;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
-    private Transform player;
+    public Transform player;
     public bool atDespawn = false;
     public bool seesPlayer = false;
     public Transform head;
+
+    public EnemyState currentState;
+    public EnemyState walkingState;
+    public EnemyState seePlayerState;
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +42,27 @@ public class TunnelMonster : Enemy
         StartCoroutine(EnemyBehaivior());
     }
 
+    public void Walk()
+    {
+        currentState = walkingState;
+        currentState.StartWalking();
+    }
+
+    public void Sighted()
+    {
+        currentState = seePlayerState;
+        currentState.FoundPlayer();
+    }
+
     protected override IEnumerator EnemyActionBehaivior()
     {
+        walkingState = gameObject.AddComponent<WalkingAroundState>();
+        seePlayerState = gameObject.AddComponent<SeePlayerState>();
         //Animation stuff;
         yield return new WaitForSeconds(2f);
         StartCoroutine(LookAround());
-        Transform currentPosition = tunnelGraph[1];
+        Walk();
+        /*Transform currentPosition = tunnelGraph[1];
         while (true)
         {
             //Walking in path
@@ -104,7 +123,7 @@ public class TunnelMonster : Enemy
                     eval = newEval;
                 }
             }
-        }
+        }*/
     }
 
     IEnumerator LookAround()
