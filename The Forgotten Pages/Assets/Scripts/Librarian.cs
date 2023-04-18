@@ -13,7 +13,7 @@ public class Librarian : Enemy
     public NavMeshAgent navMeshAgent;
     private Transform previousPosition;
     private Position currentPosition;
-    private List<Transform> navGraph;
+    public List<Transform> navGraph;
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     private Camera camera;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
@@ -24,8 +24,11 @@ public class Librarian : Enemy
     void Start()
     {
         //enemyType = EnemyType.Librarian;
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().LibrarianInArea();
-        navGraph = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().navGraph;
+        GameController.instance.LibrarianInArea();
+        if (navGraph == null)
+        {
+            navGraph = GameController.instance.navGraph;
+        }
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         minDespawnTime = 20f;
@@ -35,7 +38,6 @@ public class Librarian : Enemy
     protected override IEnumerator EnemyActionBehaivior()
     {
         StartCoroutine(DetectSound());
-
         while (true)
         {
             //Sets initial desitination to closest position
