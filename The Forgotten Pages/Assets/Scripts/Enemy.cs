@@ -19,7 +19,7 @@ public abstract class Enemy : MonoBehaviour
 {
     protected float minDespawnTime = 20f;
     public EnemyType enemyType;
-
+    public float sanityDamage = .25f;
 
     protected IEnumerator EnemyBehaivior() {
         StartCoroutine(EnemyActionBehaivior());

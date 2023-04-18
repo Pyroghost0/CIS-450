@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 3
+  sanityDamage: 0.25
   stareAmount: 0
   body: {fileID: 1529245300552356388}
   bodyMesh: {fileID: 1529245300552356390}

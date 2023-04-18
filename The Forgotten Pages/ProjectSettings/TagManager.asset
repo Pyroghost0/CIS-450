@@ -9,6 +9,7 @@ TagManager:
   - Spawner
   - Floor
   - 2DPlayer
+  - Fragment
   layers:
   - Default
   - TransparentFX

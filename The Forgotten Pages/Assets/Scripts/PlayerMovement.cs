@@ -89,6 +89,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            RemoveSanity(other.GetComponent<Enemy>().sanityDamage);
+            Debug.Log("JumpScare");
+            Destroy(other.gameObject);
+        }
+    }
+
     public void RemoveSanity(float amount)
     {
         if (sanityBar.fillAmount <= amount)

@@ -31,6 +31,7 @@ public class ShyMonster : Enemy
 
     protected override IEnumerator EnemyActionBehaivior()
     {
+        StartCoroutine(PlayerSightBug());
         while (!(wasFound || Vector3.Distance(player.parent.position, transform.position) < 5f))
         {
             //Debug.Log(Vector3.Distance(player.parent.position, transform.position));
@@ -98,6 +99,39 @@ public class ShyMonster : Enemy
             }
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    IEnumerator PlayerSightBug()
+    {
+        float inSightTime = 0f;
+        while (!wasFound)
+        {
+            if (camera.IsObjectVisible(GetComponent<MeshRenderer>()))
+            {
+                RaycastHit rayHit;
+                if (Physics.Raycast(transform.position, player.position - transform.position, out rayHit) && rayHit.collider != null && rayHit.collider.CompareTag("Player"))
+                {
+                    inSightTime += Time.deltaTime;
+                    if (inSightTime >= 3.5f)
+                    {
+                        wasFound = true;
+                    }
+                }
+                else
+                {
+
+                    inSightTime = 0f;
+                }
+            }
+            else
+            {
+                inSightTime = 0f;
+            }
+            //Debug.Log(1);
+            //Debug.DrawRay(transform.position, (player.position - transform.position) * 100f, Color.red);
+            yield return new WaitForFixedUpdate();
+        }
+        //Debug.Log(2);
     }
 
     protected override IEnumerator DespawnBehaivior()
