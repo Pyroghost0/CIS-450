@@ -22,6 +22,14 @@ public class GameController : Singleton<GameController>
 
     public bool isInMemory;
 
+    public GameObject tutorialPannel;
+    public TextMeshProUGUI mainTutorialText;
+    public TextMeshProUGUI descriptionTutorialText;
+    public List<Transform> tutorialNavGraph;
+    private string[] tutorialMainTexts = { "Movement", "The Librarian", "Memory Fragments" };
+    private string[] tutorialDescriptionTexts = { "To move, press the WASD or arrow keys.", "The Librarian is near you, and can hear your movements. Walking will make more noice, but you can hide from her if you stop moving and get out of her path.", 
+        "These books are fragments of your memeory. Collect all 5 memory fragments to be able to escape. NOTE only 2 fragments are in the game demo." };
+
     private void Awake()
     {
 
@@ -56,7 +64,8 @@ public class GameController : Singleton<GameController>
             }
             tunnelGraph.Add(tunnels);
         }
-        StartCoroutine(SpawnEnemies());
+        SetUpTutorialPannel(0);
+        //StartCoroutine(SpawnEnemies());
     }
 
     // Update is called once per frame
@@ -69,14 +78,14 @@ public class GameController : Singleton<GameController>
     }
 
     public void SwitchGameMode()
-    { 
-        isInMemory= !isInMemory;
+    {
+        isInMemory = !isInMemory;
         if (isInMemory)
         {
             //pause everything in the 3D scene
         }
         if (!isInMemory)
-        { 
+        {
             //play everything in the 3D scene
         }
     }
@@ -125,5 +134,58 @@ public class GameController : Singleton<GameController>
         yield return new WaitForSeconds(2f);
         //spawner.SpawnEnemy(new Vector3(0f, 2f, 16f), EnemyType.Librarian);
         spawner.SpawnEnemy(tunnelGraph[0][0].position, EnemyType.TunnelMonster);
+    }
+
+    public void SetUpTutorialPannel(int num)
+    {
+        if (num == 1)
+        {
+            StartCoroutine(DelayForLibrarian());
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            tutorialPannel.SetActive(true);
+            mainTutorialText.text = tutorialMainTexts[num];
+            descriptionTutorialText.text = tutorialDescriptionTexts[num];
+        }
+    }
+
+    IEnumerator DelayForLibrarian()
+    {
+        spawner.SpawnEnemy(tutorialNavGraph[0].position, EnemyType.Librarian);
+        GameObject.FindGameObjectWithTag("Enemy").GetComponent<Librarian>().navGraph = tutorialNavGraph;
+        yield return new WaitForSeconds(2.25f);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        tutorialPannel.SetActive(true);
+        mainTutorialText.text = tutorialMainTexts[1];
+        descriptionTutorialText.text = tutorialDescriptionTexts[1];
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        tutorialPannel.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        Destroy(gameObject);//Perissting across games causes referance issues like button UI
+        SceneManager.LoadScene("Game");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void Quit()
+    {
+        Debug.Log("Quitting Game");
+        Application.Quit();
+
     }
 }
