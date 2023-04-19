@@ -1,18 +1,23 @@
+using Cinemachine;
 using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
+//using UnityEditor.Build.Content;
 using UnityEngine;
 
-public class Memory1 : MonoBehaviour
+public class Memory1 : MonoBehaviour, Memory
 {
     public MemoryNPC motherCharacter;
     public MemoryNPC importantKidCharacter;
     public MemoryNPC[] otherChildren;
-    public GameObject tutorialBox;
+    public MemoryTutorialBox tutorialBox;
     public MemoryExitDoor exitDoor;
 
     public GameObject player;
+    public Vector3 playerStartPos;
+
+    public PolygonCollider2D memoryConfiner;
+    public CinemachineVirtualCamera cmCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +33,9 @@ public class Memory1 : MonoBehaviour
 
     public void StartCutscene()
     { 
-        StartCoroutine(Cutscene()); 
+        StartCoroutine(Cutscene());
+        cmCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = memoryConfiner;
+        player.transform.position = playerStartPos;
     }
 
     public IEnumerator Cutscene()
@@ -54,14 +61,14 @@ public class Memory1 : MonoBehaviour
         yield return new WaitForSeconds(.25f);
 
         //prompt player to sprint.
-        tutorialBox.SetActive(true);
+        tutorialBox.gameObject.SetActive(true);
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
         player.GetComponent<MemoryPlayerMovement>().sprintUnlocked = true;
         //wait until player sprints
         yield return new WaitUntil(() => player.GetComponent<MemoryPlayerMovement>().isSprinting);
         
         //deactivate prompt
-        tutorialBox.SetActive(false);
+        tutorialBox.gameObject.SetActive(false);
 
         //wait until player hits trigger to fall (possibly put animation here)
         yield return new WaitUntil(() => player.transform.position.x > 105);
@@ -78,7 +85,7 @@ public class Memory1 : MonoBehaviour
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
 
         //dialouge
-        motherCharacter.StartDialouge(new string[] {"Oh dear, that was quite the fall!", "Shhh, shhh. Don't cry! I've got just the thing.", "It's nothing a bandaid can't fix."});
+        motherCharacter.StartDialouge(new string[] {"Oh dear, that was quite the fall!", "Shhh, shhh. Don't cry! I've got just the thing.", "It's nothing a band-aid can't fix."});
         //a lot of motherCharacter.isTalking == false
         yield return new WaitUntil(() => motherCharacter.isTalking == false);
 
@@ -89,7 +96,7 @@ public class Memory1 : MonoBehaviour
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
         player.GetComponent<MemoryPlayerMovement>().GetBackUp();
 
-        motherCharacter.StartDialouge(new string[] { "See? There you go.", "You want to go home? We can pick up some icecream on the way!" });
+        motherCharacter.StartDialouge(new string[] { "See? There you go. All better.", "You want to go home?", "We can pick up some icecream on the way!" });
 
         yield return new WaitUntil(() => motherCharacter.isTalking == false);
 

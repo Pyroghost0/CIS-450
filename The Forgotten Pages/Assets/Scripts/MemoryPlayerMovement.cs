@@ -17,6 +17,11 @@ public class MemoryPlayerMovement : MonoBehaviour
     public bool isSprinting;
     public bool hasFallen;
 
+    public bool flashlightUnlocked;
+    public bool flashlightOn;
+    public GameObject flashlight;
+    public GameObject flashlightLight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +38,7 @@ public class MemoryPlayerMovement : MonoBehaviour
         if (!canMove)
         {
             movementSpeed = 0;
+            body.velocity = Vector2.zero;
         }
         if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory && canMove)
         {
@@ -76,6 +82,20 @@ public class MemoryPlayerMovement : MonoBehaviour
                     isSprinting = false;
                     animator.speed = 1;
                     movementSpeed = 3;
+                }
+            }
+
+            if (flashlightUnlocked)
+            {
+                if (Input.GetKeyDown(KeyCode.F) && !flashlightOn)
+                {
+                    flashlightLight.SetActive(true);
+                    flashlightOn = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.F) && flashlightOn)
+                {
+                    flashlightLight.SetActive(false);
+                    flashlightOn = false;
                 }
             }
         }
