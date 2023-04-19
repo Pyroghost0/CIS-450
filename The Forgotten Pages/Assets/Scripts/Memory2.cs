@@ -21,13 +21,13 @@ public class Memory2 : MonoBehaviour, Memory
     // Start is called before the first frame update
     void Start()
     {
-        //StartCutscene();
+        StartCutscene();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void StartCutscene()
@@ -40,23 +40,30 @@ public class Memory2 : MonoBehaviour, Memory
     public IEnumerator Cutscene()
     {
         yield return new WaitUntil(() => GameController.instance.isInMemory);
-        player.GetComponent<MemoryPlayerMovement>().canMove = false;
-        motherCharacter.StartDialouge(new string[] {"Okay honey, now it's your turn.", "Try and come up with a spooky story!", });
 
-        yield return new WaitUntil(() => motherCharacter.isTalking = false);
+        player.GetComponent<MemoryPlayerMovement>().canMove = false;
+        yield return new WaitForSeconds(1);
+
+        motherCharacter.StartDialouge(new string[] {"Okay honey, now it's your turn.", "Try and come up with a spooky story!"});
+        Debug.Log("waiting for mom to stop talking");
+        yield return new WaitUntil(() => !motherCharacter.isTalking);
+
+        Debug.Log("should be setting flashlight to active");
         player.GetComponent<MemoryPlayerMovement>().flashlight.SetActive(true);
+        yield return new WaitForSeconds(.5f);
 
         motherCharacter.StartDialouge(new string[] { "Don't forget to flip on the flashlight!" });
-        yield return new WaitUntil(() => motherCharacter.isTalking = false);
+        yield return new WaitUntil(() => !motherCharacter.isTalking);
 
-        tutorialBox.GetComponent<TextMeshProUGUI>().text = "Flip on the flashlight by pressing [F]";
+        tutorialBox.description = "Flip on the flashlight by pressing [F]";
         tutorialBox.gameObject.SetActive(true);
         player.GetComponent<MemoryPlayerMovement>().flashlightUnlocked = true;
-
         yield return new WaitUntil(() => player.GetComponent<MemoryPlayerMovement>().flashlightOn);
 
+        tutorialBox.gameObject.SetActive(false);
         motherCharacter.StartDialouge(new string[] { "..." });
-        yield return new WaitUntil(() => motherCharacter.isTalking = false);
+        yield return new WaitUntil(() => !motherCharacter.isTalking);
+
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
 
     }

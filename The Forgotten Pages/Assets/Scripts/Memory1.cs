@@ -22,7 +22,7 @@ public class Memory1 : MonoBehaviour, Memory
     // Start is called before the first frame update
     void Start()
     {
-        StartCutscene();
+        //StartCutscene();
     }
 
     // Update is called once per frame

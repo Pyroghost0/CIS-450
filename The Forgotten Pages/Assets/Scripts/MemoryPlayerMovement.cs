@@ -37,7 +37,7 @@ public class MemoryPlayerMovement : MonoBehaviour
     {
         if (!canMove)
         {
-            movementSpeed = 0;
+            //movementSpeed = 0;
             body.velocity = Vector2.zero;
         }
         if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory && canMove)
@@ -84,19 +84,19 @@ public class MemoryPlayerMovement : MonoBehaviour
                     movementSpeed = 3;
                 }
             }
-
-            if (flashlightUnlocked)
+        }
+        if (flashlightUnlocked)
+        {
+            Debug.Log("flashlight should be unlocked");
+            if (Input.GetKey(KeyCode.F))
             {
-                if (Input.GetKeyDown(KeyCode.F) && !flashlightOn)
-                {
-                    flashlightLight.SetActive(true);
-                    flashlightOn = true;
-                }
-                else if (Input.GetKeyDown(KeyCode.F) && flashlightOn)
-                {
-                    flashlightLight.SetActive(false);
-                    flashlightOn = false;
-                }
+                flashlightLight.SetActive(true);
+                flashlightOn = true;
+            }
+            else
+            {
+                flashlightLight.SetActive(false);
+                flashlightOn = false;
             }
         }
     }
