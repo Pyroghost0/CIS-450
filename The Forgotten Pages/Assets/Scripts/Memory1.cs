@@ -125,6 +125,7 @@ public class Memory1 : MonoBehaviour, Memory
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
         //let the player move around, once they leave the screen or hit a door they're back to the horror game.
         player3D.playerUpgrades = new PlayerSprint(player3D.playerUpgrades, player3D);
+        GameController.instance.memoriesCollected++;
 
     }
 

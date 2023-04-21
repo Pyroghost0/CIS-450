@@ -78,8 +78,13 @@ public class Memory2 : MonoBehaviour, Memory
         motherCharacter.StartDialouge(new string[] {"I think your Dad's waiting for us back by the tent.", "We can bring him some smores as a treat!"});
         yield return new WaitUntil(() => !motherCharacter.isTalking);
 
+        motherCharacter.moveToNewPos = true;
+        motherCharacter.newPos = 115f;
+        motherCharacter.speed = 3;
+
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
         player3D.playerUpgrades = new PlayerFlashlight(player3D.playerUpgrades, player3D.flashlight);
+        GameController.instance.memoriesCollected++;
 
     }
 

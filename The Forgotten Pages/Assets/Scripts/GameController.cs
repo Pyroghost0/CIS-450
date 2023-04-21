@@ -23,6 +23,8 @@ public class GameController : Singleton<GameController>
     public bool isInMemory;
     public GameObject memoryManger;
     public Memory[] memories = new Memory[] {new Memory1(), new Memory2() };
+    public int memoriesCollected;
+    public TextMeshProUGUI memoryText;
 
     public GameObject tutorialPannel;
     public TextMeshProUGUI mainTutorialText;
@@ -56,7 +58,8 @@ public class GameController : Singleton<GameController>
     void Start()
     {
         isInMemory = false;
-        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>() };
+        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>(), memoryManger.gameObject.GetComponent<Memory3>() };
+
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
             navGraph.Add(transform.GetChild(0).GetChild(i));
@@ -77,10 +80,11 @@ public class GameController : Singleton<GameController>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            SwitchGameMode(1);
-        }
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    SwitchGameMode(2);
+        //}
+        memoryText.text = "Memories Collected:\n" + memoriesCollected + "/2";
     }
 
     public void SwitchGameMode(int memoryNumber)
