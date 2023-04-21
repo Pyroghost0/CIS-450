@@ -1,4 +1,4 @@
-/* Caleb Kahn
+/* Caleb Kahn, Anna Breuker
  * MemoryFragment
  * Project 5
  * The object that triggers the cutscene
@@ -18,6 +18,8 @@ public class MemoryFragment : MonoBehaviour
     public AudioSource pickupSound;
 
     public GameController gameController;
+
+    public int memoryNum;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +48,7 @@ public class MemoryFragment : MonoBehaviour
         {
             pickupSound.Play();
 
-            GameController.instance.SwitchGameMode();
+            GameController.instance.SwitchGameMode(memoryNum);
             gameController.breathing.Stop();
             gameController.heartBeat.Stop();
 

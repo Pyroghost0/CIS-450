@@ -4,6 +4,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 
+/* 
+ * Anna Breuker
+ * MemoryInteractableItem.cs
+ * Project 5
+ * Items that the player can interact with in the memory cutscenes.
+ */
 public class MemoryInteractableItem : MonoBehaviour
 {
     public GameObject textbox;

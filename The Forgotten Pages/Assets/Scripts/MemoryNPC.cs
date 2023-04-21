@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.ProBuilder;
 using TMPro;
 
+/*
+ * Anna Breuker
+ * MemoryNPC.cs
+ * Project 5
+ * Code that contains the methods needed to be accessed by the memory cutscenes for each npc.
+ */
 public class MemoryNPC : MonoBehaviour
 {
     public string[] dialouge;

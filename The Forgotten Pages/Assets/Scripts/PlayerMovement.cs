@@ -1,4 +1,4 @@
-/* Cooper Denault, Caleb Kahn
+/* Cooper Denault, Caleb Kahn, Anna Breuker
  * PlayerMovement
  * Project 5
  * Player can move around
@@ -39,8 +39,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         playerUpgrades = new PlayerAbility();
-        playerUpgrades = new PlayerFlashlight(playerUpgrades, flashlight);
-        playerUpgrades = new PlayerSprint(playerUpgrades, this);
+        //playerUpgrades = new PlayerFlashlight(playerUpgrades, flashlight);
+        //playerUpgrades = new PlayerSprint(playerUpgrades, this);
     }
 
 

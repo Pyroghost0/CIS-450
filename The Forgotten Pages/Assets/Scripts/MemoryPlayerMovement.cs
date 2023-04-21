@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 
+ * Anna Breuker
+ * MemoryPlayerMovement.cs
+ * Project 5
+ * 2D specific player movement and abilities.
+ */
 public class MemoryPlayerMovement : MonoBehaviour
 {
     public Rigidbody2D body;

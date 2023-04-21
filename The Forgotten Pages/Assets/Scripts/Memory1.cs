@@ -5,6 +5,13 @@ using System.Collections.Generic;
 //using UnityEditor.Build.Content;
 using UnityEngine;
 
+/*
+ * Anna Breuker
+ * Memory1.cs
+ * Project 5
+ * the cutscene details for memory 1 
+ */
+
 public class Memory1 : MonoBehaviour, Memory
 {
     public MemoryNPC motherCharacter;
@@ -19,10 +26,13 @@ public class Memory1 : MonoBehaviour, Memory
     public PolygonCollider2D memoryConfiner;
     public CinemachineVirtualCamera cmCamera;
 
+    public PlayerMovement player3D;
+
     // Start is called before the first frame update
     void Start()
     {
         //StartCutscene();
+        player3D = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -41,6 +51,7 @@ public class Memory1 : MonoBehaviour, Memory
     public IEnumerator Cutscene()
     {
         yield return new WaitUntil(() => GameController.instance.isInMemory);
+
         player.GetComponent<MemoryPlayerMovement>().canMove = false;
         //player shouldn't be able to move yet.
         Debug.Log("cutscene started");
@@ -61,7 +72,14 @@ public class Memory1 : MonoBehaviour, Memory
         yield return new WaitForSeconds(.25f);
 
         //prompt player to sprint.
+        tutorialBox.description = "Use [A] and [D] or the arrow keys to move.";
         tutorialBox.gameObject.SetActive(true);
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        yield return new WaitForSeconds(.2f);
+
+        tutorialBox.description = "You better catch up with them! Press [SPACE] or [SHIFT] to sprint!";
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
         player.GetComponent<MemoryPlayerMovement>().sprintUnlocked = true;
         //wait until player sprints
@@ -106,6 +124,7 @@ public class Memory1 : MonoBehaviour, Memory
 
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
         //let the player move around, once they leave the screen or hit a door they're back to the horror game.
+        player3D.playerUpgrades = new PlayerSprint(player3D.playerUpgrades, player3D);
 
     }
 

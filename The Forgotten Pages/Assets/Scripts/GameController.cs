@@ -21,6 +21,8 @@ public class GameController : Singleton<GameController>
     public List<List<Transform>> tunnelGraph = new List<List<Transform>>();
 
     public bool isInMemory;
+    public GameObject memoryManger;
+    public Memory[] memories = new Memory[] {new Memory1(), new Memory2() };
 
     public GameObject tutorialPannel;
     public TextMeshProUGUI mainTutorialText;
@@ -54,6 +56,7 @@ public class GameController : Singleton<GameController>
     void Start()
     {
         isInMemory = false;
+        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>() };
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
             navGraph.Add(transform.GetChild(0).GetChild(i));
@@ -76,16 +79,17 @@ public class GameController : Singleton<GameController>
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            SwitchGameMode();
+            SwitchGameMode(1);
         }
     }
 
-    public void SwitchGameMode()
+    public void SwitchGameMode(int memoryNumber)
     {
         isInMemory = !isInMemory;
         if (isInMemory)
         {
             //pause everything in the 3D scene
+            memories[memoryNumber].StartCutscene();
         }
         if (!isInMemory)
         {

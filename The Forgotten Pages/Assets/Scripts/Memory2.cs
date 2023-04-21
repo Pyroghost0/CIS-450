@@ -6,6 +6,13 @@ using TMPro;
 //using UnityEditor.Build.Content;
 using UnityEngine;
 
+/* 
+ * Anna Breuker
+ * Memory2.cs
+ * Project 5
+ * the cutscene details for memory 2
+ */
+
 public class Memory2 : MonoBehaviour, Memory
 {
     public MemoryNPC motherCharacter;
@@ -18,10 +25,13 @@ public class Memory2 : MonoBehaviour, Memory
     public PolygonCollider2D memoryConfiner;
     public CinemachineVirtualCamera cmCamera;
 
+    public PlayerMovement player3D;
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCutscene();
+        //StartCutscene();
+        player3D = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -45,10 +55,10 @@ public class Memory2 : MonoBehaviour, Memory
         yield return new WaitForSeconds(1);
 
         motherCharacter.StartDialouge(new string[] {"Okay honey, now it's your turn.", "Try and come up with a spooky story!"});
-        Debug.Log("waiting for mom to stop talking");
+        //Debug.Log("waiting for mom to stop talking");
         yield return new WaitUntil(() => !motherCharacter.isTalking);
 
-        Debug.Log("should be setting flashlight to active");
+        //Debug.Log("should be setting flashlight to active");
         player.GetComponent<MemoryPlayerMovement>().flashlight.SetActive(true);
         yield return new WaitForSeconds(.5f);
 
@@ -61,10 +71,15 @@ public class Memory2 : MonoBehaviour, Memory
         yield return new WaitUntil(() => player.GetComponent<MemoryPlayerMovement>().flashlightOn);
 
         tutorialBox.gameObject.SetActive(false);
-        motherCharacter.StartDialouge(new string[] { "..." });
+        motherCharacter.StartDialouge(new string[] { "...", ". . .", "Ah, it's alright.", "You always did hate being put on the spot." });
+        yield return new WaitUntil(() => !motherCharacter.isTalking);
+
+        player.GetComponent<MemoryPlayerMovement>().flashlight.SetActive(false);
+        motherCharacter.StartDialouge(new string[] {"I think your Dad's waiting for us back by the tent.", "We can bring him some smores as a treat!"});
         yield return new WaitUntil(() => !motherCharacter.isTalking);
 
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
+        player3D.playerUpgrades = new PlayerFlashlight(player3D.playerUpgrades, player3D.flashlight);
 
     }
 

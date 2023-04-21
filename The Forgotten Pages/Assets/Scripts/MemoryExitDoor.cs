@@ -20,7 +20,7 @@ public class MemoryExitDoor : MonoBehaviour
     {
         if (collision.CompareTag("2DPlayer"))
         {
-            GameController.instance.SwitchGameMode();
+            GameController.instance.SwitchGameMode(0);
         }
     }
 }
