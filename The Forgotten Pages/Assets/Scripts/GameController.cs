@@ -30,6 +30,9 @@ public class GameController : Singleton<GameController>
     private string[] tutorialDescriptionTexts = { "To move, press the WASD or arrow keys.", "The Librarian is near you, and can hear your movements. Walking will make more noice, but you can hide from her if you stop moving and get out of her path.", 
         "These books are fragments of your memeory. Collect all 5 memory fragments to be able to escape. NOTE only 2 fragments are in the game demo." };
 
+    public AudioSource heartBeat;
+    public AudioSource breathing;
+
     private void Awake()
     {
 
@@ -92,15 +95,23 @@ public class GameController : Singleton<GameController>
 
     public void LibrarianInArea()
     {
+    
         StartCoroutine(LibrarianInAreaCoroutine());
+
+
     }
 
     IEnumerator LibrarianInAreaCoroutine()
     {
+        heartBeat.Play();
+        breathing.Play();
+
+
         float timer = 0;
         Color color = librarianText.color;
         while (timer < .5f)
         {
+            
             color.a = timer / .5f;
             librarianText.color = color;
             libraianOutline.color = new Color(.5f, .5f, .5f, timer);
@@ -127,6 +138,10 @@ public class GameController : Singleton<GameController>
         librarianText.color = color;
         libraianOutline.color = new Color(.5f, .5f, .5f, 0f);
         //libraianOutline.color = new Color(0f, 0f, 0f, 0f);
+
+        heartBeat.Stop();
+        breathing.Stop();
+
     }
 
     IEnumerator SpawnEnemies()

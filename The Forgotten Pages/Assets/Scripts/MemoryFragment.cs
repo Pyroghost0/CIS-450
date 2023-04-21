@@ -14,11 +14,16 @@ public class MemoryFragment : MonoBehaviour
     private float curentYpos = 0f;
     private float timer = 0f;
     Transform player;
-    
+
+    public AudioSource pickupSound;
+
+    public GameController gameController;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        gameController = gameController.GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -39,8 +44,14 @@ public class MemoryFragment : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            pickupSound.Play();
+
             GameController.instance.SwitchGameMode();
+            gameController.breathing.Stop();
+            gameController.heartBeat.Stop();
+
             Destroy(gameObject);
+
         }
     }
 }
