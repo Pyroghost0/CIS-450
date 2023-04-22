@@ -19,10 +19,10 @@ public class MouseLook : MonoBehaviour
         StartCoroutine(Sight());
     }*/
 
-    private void OnApplicationFocus(bool focus)
+    /*private void OnApplicationFocus(bool focus)
     {
         Cursor.lockState = CursorLockMode.Locked;
-    }
+    }*/
 
     void FixedUpdate()
     {

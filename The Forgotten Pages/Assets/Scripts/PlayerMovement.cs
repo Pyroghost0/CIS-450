@@ -34,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
     public Light flashlight;
 
     public Image sanityBar;
-
+    public Image jumpscareImage;
+    public AudioSource jumpscareSound;
 
     private void Start()
     {
@@ -89,14 +90,26 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void StartJumpscare(Sprite sprite)
     {
-        if (other.CompareTag("Enemy"))
+        StartCoroutine(Jumpscare(sprite));
+    }
+
+    IEnumerator Jumpscare(Sprite sprite)
+    {
+        jumpscareSound.Play();
+        jumpscareImage.sprite = sprite;
+        jumpscareImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        float timer = 0f;
+        while (timer < .5f)
         {
-            RemoveSanity(other.GetComponent<Enemy>().sanityDamage);
-            Debug.Log("JumpScare");
-            Destroy(other.gameObject);
+            jumpscareImage.color = new Color(1f, 1f, 1f, 1f - (timer*2f));
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
         }
+        jumpscareImage.color = Color.white;
+        jumpscareImage.gameObject.SetActive(false);
     }
 
     public void RemoveSanity(float amount)

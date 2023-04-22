@@ -21,6 +21,8 @@ public abstract class Enemy : MonoBehaviour
     public EnemyType enemyType;
     public float sanityDamage = .25f;
 
+    public Sprite jumpscareSprite;
+
     protected IEnumerator EnemyBehaivior() {
         StartCoroutine(EnemyActionBehaivior());
         yield return new WaitForSeconds(minDespawnTime);
