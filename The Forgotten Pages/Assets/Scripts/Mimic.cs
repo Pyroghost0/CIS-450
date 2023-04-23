@@ -15,7 +15,7 @@ public class Mimic : Enemy
     private Camera camera;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     private Transform player;
-    public MeshRenderer bodyMesh;
+    public SkinnedMeshRenderer bodyMesh;
     private bool foundPlayer = false;
 
     // Start is called before the first frame update
@@ -27,13 +27,13 @@ public class Mimic : Enemy
         minDespawnTime = 20f;
         StartCoroutine(EnemyBehaivior());
     }
-
     protected override IEnumerator EnemyActionBehaivior()
     {
-        while (!foundPlayer)
+        yield return new WaitForEndOfFrame();
+        /*while (!foundPlayer)
         {
             yield return new WaitForFixedUpdate();
-            if (Vector3.Distance(transform.position, player.position) < 4f)
+            if (Vector3.Distance(transform.position, player.position) < 8f)
             {
                 foundPlayer = true;
             }
@@ -42,7 +42,7 @@ public class Mimic : Enemy
         {
             navMeshAgent.SetDestination(player.position);
             yield return new WaitForFixedUpdate();
-        }
+        }*/
     }
 
     protected override IEnumerator DespawnBehaivior()
@@ -56,5 +56,10 @@ public class Mimic : Enemy
             }
             yield return new WaitForSeconds(1f);
         }
+    }
+    public void DestroyEnemy()
+    {
+        player.GetComponent<PlayerMovement>().StartJumpscare(jumpscareSprite);
+        Destroy(gameObject);
     }
 }
