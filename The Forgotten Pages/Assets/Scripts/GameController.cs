@@ -34,7 +34,7 @@ public class GameController : Singleton<GameController>
     public List<Transform> tutorialNavGraph;
     private string[] tutorialMainTexts = { "Movement", "The Librarian", "Memory Fragments" };
     private string[] tutorialDescriptionTexts = { "To move, press the WASD or arrow keys.", "The Librarian is near you, and can hear your movements. Walking will make more noise, but you can hide from her if you get out of her path and stop moving.", 
-        "These books are fragments of your memeory. Collect all 5 memory fragments to be able to escape. NOTE only 2 fragments are in the game demo." };
+        "These books are fragments of your memeory. Collect all 5 memory fragments to be able to escape. NOTE only 3 fragments are in the playtesting build." };
 
     public AudioSource heartBeat;
     public AudioSource breathing;

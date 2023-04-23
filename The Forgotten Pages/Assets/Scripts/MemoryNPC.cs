@@ -39,7 +39,7 @@ public class MemoryNPC : MonoBehaviour
     {
         if (moveToNewPos)
         {
-            Debug.Log("Moving to new position");
+            //Debug.Log("Moving to new position");
             MoveToPosition(newPos, speed);
         }
     }
@@ -53,7 +53,7 @@ public class MemoryNPC : MonoBehaviour
 
     public void MoveToPosition(float newPos, float speed)
     {
-        Debug.Log("inside move to position");
+        //Debug.Log("inside move to position");
         if (gameObject.transform.position.x < newPos - .1f || gameObject.transform.position.x > newPos + .1f)
         {
             animator.SetBool("isMoving", true);
