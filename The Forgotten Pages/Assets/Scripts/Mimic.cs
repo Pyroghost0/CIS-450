@@ -24,7 +24,7 @@ public class Mimic : Enemy
         //enemyType = EnemyType.Mimic;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        minDespawnTime = 20f;
+        minDespawnTime = 40f;
         StartCoroutine(EnemyBehaivior());
     }
     protected override IEnumerator EnemyActionBehaivior()

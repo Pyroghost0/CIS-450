@@ -20,6 +20,7 @@ public class GameController : Singleton<GameController>
     public Image libraianOutline;
     public List<Transform> navGraph = new List<Transform>();
     public List<List<Transform>> tunnelGraph = new List<List<Transform>>();
+    public List<Transform> mimicPositions;
 
     public bool isInMemory;
     public GameObject memoryManger;
@@ -171,6 +172,8 @@ public class GameController : Singleton<GameController>
         float timeSpawnedLibrarian = 0f;
         bool librarianActive = false;
         bool activeTunnel = false;
+        int mimicSpawn1 = -1;
+        int mimicSpawn2 = -1;
         while (true)
         {
             yield return new WaitUntil(() => !isInMemory);
@@ -187,7 +190,7 @@ public class GameController : Singleton<GameController>
                     }
                 }
             }
-            int spawnNum = Time.timeSinceLevelLoad >= timeSpawnedLibrarian ? Random.Range(0, 2) * 2 : 2;
+            int spawnNum = Time.timeSinceLevelLoad >= timeSpawnedLibrarian ? Random.Range(0, 3) * 2 : Random.Range(1, 3) * 2;
             if (spawnNum == 0)
             {
                 Position closestPosition = navGraph[0].GetComponent<Position>();
@@ -209,19 +212,13 @@ public class GameController : Singleton<GameController>
                 librarianActive = true;
                 spawner.SpawnEnemy(farthest.position, EnemyType.Librarian);
             }
-            else//if (spawnNum == 2)
+            else if (spawnNum == 2)
             {
                 activeTunnel = false;
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject enemy in enemies)
                 {
-                    if (enemy.GetComponent<Enemy>().enemyType == EnemyType.Librarian)
-                    {
-                        librarianActive = true;
-                        timeSpawnedLibrarian = Time.timeSinceLevelLoad + 15f;
-                        //break;
-                    }
-                    else if (enemy.GetComponent<Enemy>().enemyType == EnemyType.TunnelMonster)
+                    if (enemy.GetComponent<Enemy>().enemyType == EnemyType.TunnelMonster)
                     {
                         activeTunnel = true;
                         //break;
@@ -243,7 +240,66 @@ public class GameController : Singleton<GameController>
                     spawner.SpawnEnemy(closest.parent.GetChild(0).GetChild(0).position, EnemyType.TunnelMonster);
                 }
             }
-            yield return new WaitForSeconds(Random.Range(2f, 5f));
+            else// if (spawnNum == 4)
+            {
+                activeTunnel = false;
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                bool foundFirst = false;
+                bool foundSecond = false;
+                foreach (GameObject enemy in enemies)
+                {
+                    if (enemy.GetComponent<Enemy>().enemyType == EnemyType.Mimic)
+                    {
+                        if ((mimicSpawn1 != -1 && mimicSpawn2 == -1) ||  foundSecond || (enemy.transform.position - mimicPositions[mimicSpawn1].position).magnitude < (enemy.transform.position - mimicPositions[mimicSpawn2].position).magnitude)
+                        {
+                            foundFirst = true;
+                        }
+                        else
+                        {
+                            foundSecond = true;
+                        }
+                        if (foundFirst && foundSecond)
+                        {
+                            break;
+                        }
+                    }
+                }
+                if (!foundFirst || !foundSecond)
+                {
+                    mimicSpawn1 = foundFirst ? mimicSpawn1 : -1;
+                    mimicSpawn2 = foundSecond ? mimicSpawn2 : -1;
+                    Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                    List<Transform> closestTransforms = new List<Transform>();
+                    List<int> positionNumbers = new List<int>();
+                    for (int i = 0; i < mimicPositions.Count; i++)
+                    {
+                        if (i != mimicSpawn1 && i != mimicSpawn2)
+                        {
+                            int insertInto = 0;
+                            for (int j = 0; j < closestTransforms.Count; j++)
+                            {
+                                if ((player.position - mimicPositions[i].position).magnitude < (player.position - closestTransforms[j].position).magnitude)
+                                {
+                                    insertInto = j;
+                                }
+                            }
+                            closestTransforms.Insert(insertInto, mimicPositions[i]);
+                            positionNumbers.Insert(insertInto, i);
+                        }
+                    }
+                    spawner.SpawnEnemy(closestTransforms[2].position, EnemyType.Mimic);
+                    if (!foundFirst)
+                    {
+                        mimicSpawn1 = positionNumbers[2];
+                    }
+                    else
+                    {
+                        mimicSpawn2 = positionNumbers[2];
+                    }
+                    Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                }
+            }
+            yield return new WaitForSeconds(2f);
         }
     }
 
