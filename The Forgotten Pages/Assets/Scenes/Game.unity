@@ -300,7 +300,6 @@ GameObject:
   - component: {fileID: 17369919}
   - component: {fileID: 17369923}
   - component: {fileID: 17369922}
-  - component: {fileID: 17369921}
   - component: {fileID: 17369920}
   m_Layer: 0
   m_Name: jungle gym
@@ -351,26 +350,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.555542, y: 1.831876}
   m_EdgeRadius: 0
---- !u!95 &17369921
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17369918}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1222df6be1df27349858dc06fa6a4496, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &17369922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14703,7 +14682,6 @@ GameObject:
   - component: {fileID: 677447374}
   - component: {fileID: 677447378}
   - component: {fileID: 677447377}
-  - component: {fileID: 677447376}
   - component: {fileID: 677447375}
   m_Layer: 0
   m_Name: slide
@@ -14754,26 +14732,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4535294, y: 1.4114544}
   m_EdgeRadius: 0
---- !u!95 &677447376
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677447373}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1222df6be1df27349858dc06fa6a4496, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &677447377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47214,7 +47172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -248.76, y: -242.46}
+  m_AnchoredPosition: {x: -248.76, y: -242.84}
   m_SizeDelta: {x: 1.7863, y: 1.0397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1967474496
@@ -50699,7 +50657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -248.76, y: -242.46}
+  m_AnchoredPosition: {x: -248.76, y: -243}
   m_SizeDelta: {x: 1.7863, y: 1.0397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2076484655
