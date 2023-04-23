@@ -83,6 +83,9 @@ public class Memory2 : MonoBehaviour, Memory
         motherCharacter.speed = 3;
 
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
+
+        yield return new WaitUntil(() => GameController.instance.isInMemory == false);
+
         player3D.playerUpgrades = new PlayerFlashlight(player3D.playerUpgrades, player3D.flashlight);
         GameController.instance.memoriesCollected++;
 

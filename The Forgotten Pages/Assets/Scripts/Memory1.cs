@@ -122,7 +122,7 @@ public class Memory1 : MonoBehaviour, Memory
         motherCharacter.newPos = 115f;
         motherCharacter.speed = 3;
 
-        yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
+        yield return new WaitUntil(() => GameController.instance.isInMemory == false);
         //let the player move around, once they leave the screen or hit a door they're back to the horror game.
         GameController.instance.SpawnEnemies();
         player3D.playerUpgrades = new PlayerSprint(player3D.playerUpgrades, player3D);

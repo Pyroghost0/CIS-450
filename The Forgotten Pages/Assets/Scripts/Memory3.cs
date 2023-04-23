@@ -65,6 +65,10 @@ public class Memory3 : MonoBehaviour, Memory
         motherCharacter.speed = 2;
 
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
+
+        yield return new WaitUntil(() => GameController.instance.isInMemory == false);
+
+        
         GameController.instance.memoriesCollected++;
         Debug.Log(GameController.instance.memoriesCollected);
 
