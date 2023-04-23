@@ -39,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject gameOverScreen;
 
+    public AudioSource pickupSound;
+
     private void Start()
     {
         playerUpgrades = new PlayerAbility();

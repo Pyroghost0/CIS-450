@@ -15,17 +15,18 @@ public class MemoryFragment : MonoBehaviour
     private float timer = 0f;
     Transform player;
 
-    public AudioSource pickupSound;
-
     public GameController gameController;
 
     public int memoryNum;
+
+    public PlayerMovement playerMove;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gameController = gameController.GetComponent<GameController>();
+        playerMove = playerMove.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -46,7 +47,7 @@ public class MemoryFragment : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            pickupSound.Play();
+            playerMove.pickupSound.Play();
 
             GameController.instance.SwitchGameMode(memoryNum);
             gameController.breathing.Stop();
