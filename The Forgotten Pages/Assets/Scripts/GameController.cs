@@ -268,19 +268,20 @@ public class GameController : Singleton<GameController>
                 {
                     mimicSpawn1 = foundFirst ? mimicSpawn1 : -1;
                     mimicSpawn2 = foundSecond ? mimicSpawn2 : -1;
-                    Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                    //Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
                     List<Transform> closestTransforms = new List<Transform>();
                     List<int> positionNumbers = new List<int>();
                     for (int i = 0; i < mimicPositions.Count; i++)
                     {
                         if (i != mimicSpawn1 && i != mimicSpawn2)
                         {
-                            int insertInto = 0;
+                            int insertInto = closestTransforms.Count;
                             for (int j = 0; j < closestTransforms.Count; j++)
                             {
                                 if ((player.position - mimicPositions[i].position).magnitude < (player.position - closestTransforms[j].position).magnitude)
                                 {
                                     insertInto = j;
+                                    break;
                                 }
                             }
                             closestTransforms.Insert(insertInto, mimicPositions[i]);
@@ -296,7 +297,7 @@ public class GameController : Singleton<GameController>
                     {
                         mimicSpawn2 = positionNumbers[2];
                     }
-                    Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                    //Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
                 }
             }
             yield return new WaitForSeconds(2f);
