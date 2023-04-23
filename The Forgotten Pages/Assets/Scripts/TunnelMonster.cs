@@ -31,7 +31,7 @@ public class TunnelMonster : Enemy
         List<List<Transform>> tunnels = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().tunnelGraph;
         for (int i = 0; i < tunnels.Count; i++)
         {
-            if (Vector3.Distance(tunnels[i][0].position, transform.position) < 1f)
+            if (Vector3.Distance(tunnels[i][0].position, transform.position) < 2.1f)
             {
                 tunnelGraph = tunnels[i];
                 break;

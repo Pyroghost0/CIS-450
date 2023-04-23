@@ -83,7 +83,7 @@ public class GameController : Singleton<GameController>
             tunnelGraph.Add(tunnels);
         }
         SetUpTutorialPannel(0);
-        SpawnEnemies();
+        //SpawnEnemies();
     }
 
     // Update is called once per frame
@@ -240,7 +240,7 @@ public class GameController : Singleton<GameController>
                             }
                         }
                     }
-                    spawner.SpawnEnemy(closest.parent.GetChild(0).position, EnemyType.TunnelMonster);
+                    spawner.SpawnEnemy(closest.parent.GetChild(0).GetChild(0).position, EnemyType.TunnelMonster);
                 }
             }
             yield return new WaitForSeconds(Random.Range(2f, 5f));
