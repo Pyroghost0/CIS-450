@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource jumpscareSound;
 
     public GameObject gameOverScreen;
+    public GameObject winScreen;
 
     public AudioSource pickupSound;
 
