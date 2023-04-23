@@ -94,7 +94,7 @@ public class GameController : Singleton<GameController>
         {
             SwitchGameMode(0);
         }
-        memoryText.text = "Memories Collected:\n" + memoriesCollected + "/2";
+        memoryText.text = "Memories Collected:\n" + memoriesCollected + "/3";
     }
 
     public void SwitchGameMode(int memoryNumber)
