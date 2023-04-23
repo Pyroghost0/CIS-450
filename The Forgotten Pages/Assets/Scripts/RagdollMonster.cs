@@ -47,6 +47,16 @@ public class RagdollMonster : Enemy
                     if (stareAmount >= 1f)
                     {
                         Debug.Log("Attack");
+                        if (player.GetComponent<PlayerMovement>().jumpscareImage.gameObject.activeSelf)
+                        {
+                            Destroy(gameObject);
+                        }
+                        else
+                        {
+                            player.GetComponent<PlayerMovement>().RemoveSanity(sanityDamage);
+                            player.GetComponent<PlayerMovement>().StartJumpscare(jumpscareSprite);
+                            Destroy(gameObject);
+                        }
                     }
                     else
                     {

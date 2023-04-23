@@ -29,13 +29,15 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     public bool isGrounded;
 
-    public float jumpHeight = 3f;
+    //public float jumpHeight = 3f;
     public PlayerUpgrade playerUpgrades;
     public Light flashlight;
 
     public Image sanityBar;
     public Image jumpscareImage;
     public AudioSource jumpscareSound;
+
+    public GameObject gameOverScreen;
 
     private void Start()
     {
@@ -100,16 +102,32 @@ public class PlayerMovement : MonoBehaviour
         jumpscareSound.Play();
         jumpscareImage.sprite = sprite;
         jumpscareImage.gameObject.SetActive(true);
-        yield return new WaitForSeconds(.5f);
-        float timer = 0f;
-        while (timer < .5f)
+        if (sanityBar.fillAmount == 0)
         {
-            jumpscareImage.color = new Color(1f, 1f, 1f, 1f - (timer*2f));
-            timer += Time.deltaTime;
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForSecondsRealtime(.75f);
+            float timer = 0f;
+            while (timer < 1f)
+            {
+                jumpscareImage.color = new Color(1f, 1f, 1f, 1f - (timer));
+                timer += Time.unscaledTime;
+                yield return new WaitForFixedUpdate();
+            }
+            jumpscareImage.color = Color.white;
+            jumpscareImage.gameObject.SetActive(false);
         }
-        jumpscareImage.color = Color.white;
-        jumpscareImage.gameObject.SetActive(false);
+        else
+        {
+            yield return new WaitForSeconds(.75f);
+            float timer = 0f;
+            while (timer < 1f)
+            {
+                jumpscareImage.color = new Color(1f, 1f, 1f, 1f - (timer));
+                timer += Time.deltaTime;
+                yield return new WaitForFixedUpdate();
+            }
+            jumpscareImage.color = Color.white;
+            jumpscareImage.gameObject.SetActive(false);
+        }
     }
 
     public void RemoveSanity(float amount)
@@ -117,6 +135,8 @@ public class PlayerMovement : MonoBehaviour
         if (sanityBar.fillAmount <= amount)
         {
             sanityBar.fillAmount = 0;
+            Time.timeScale = 0f;
+            gameOverScreen.SetActive(true);
             Debug.Log("Dead");
         }
         else

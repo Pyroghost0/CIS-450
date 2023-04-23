@@ -44594,6 +44594,8 @@ MonoBehaviour:
   - {fileID: 2296790365110158745, guid: 606a9db59901c6e4897743238b760255, type: 3}
   - {fileID: 2135923788701671739, guid: 478ef2df4cdb3b5438cf87c7f8cd6da1, type: 3}
   - {fileID: 8424970131319956487, guid: d28af24ec09bde546af4f105a97d7d65, type: 3}
+  - {fileID: 1529245301920535034, guid: 2ac8065d8fb05434883af1cb565ebb19, type: 3}
+  - {fileID: 2504268563201096777, guid: 69c6f0a6d521b3a4dbc94018af041261, type: 3}
 --- !u!114 &1918549381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49292,6 +49294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c582ac7ec0781ff4b80f1271fd345890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1953086332}
   spawner: {fileID: 1918549381}
   librarianText: {fileID: 2014849159}
   libraianOutline: {fileID: 1836874945}

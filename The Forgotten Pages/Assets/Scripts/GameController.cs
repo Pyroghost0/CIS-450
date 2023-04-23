@@ -14,6 +14,7 @@ public class GameController : Singleton<GameController>
 {
     public static GameController instance;
 
+    public Transform player;
     public Spawner spawner;
     public TextMeshProUGUI librarianText;
     public Image libraianOutline;
@@ -82,7 +83,7 @@ public class GameController : Singleton<GameController>
             tunnelGraph.Add(tunnels);
         }
         SetUpTutorialPannel(0);
-        //StartCoroutine(SpawnEnemies());
+        SpawnEnemies();
     }
 
     // Update is called once per frame
@@ -160,11 +161,90 @@ public class GameController : Singleton<GameController>
 
     }
 
-    IEnumerator SpawnEnemies()
+    public void SpawnEnemies()
     {
-        yield return new WaitForSeconds(2f);
-        //spawner.SpawnEnemy(new Vector3(0f, 2f, 16f), EnemyType.Librarian);
-        spawner.SpawnEnemy(tunnelGraph[0][0].position, EnemyType.TunnelMonster);
+        StartCoroutine(SpawnEnemiesCoroutine());
+    }
+
+    IEnumerator SpawnEnemiesCoroutine()
+    {
+        float timeSpawnedLibrarian = 0f;
+        bool librarianActive = false;
+        bool activeTunnel = false;
+        while (true)
+        {
+            yield return new WaitUntil(() => !isInMemory);
+            if (librarianActive)
+            {
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject enemy in enemies)
+                {
+                    if (enemy.GetComponent<Enemy>().enemyType == EnemyType.Librarian)
+                    {
+                        librarianActive = true;
+                        timeSpawnedLibrarian = Time.timeSinceLevelLoad + 15f;
+                        break;
+                    }
+                }
+            }
+            int spawnNum = Time.timeSinceLevelLoad >= timeSpawnedLibrarian ? Random.Range(0, 2) * 2 : 2;
+            if (spawnNum == 0)
+            {
+                Position closestPosition = navGraph[0].GetComponent<Position>();
+                for (int i = 1; i < navGraph.Count; i++)
+                {
+                    if ((transform.position - closestPosition.transform.position).magnitude > (transform.position - navGraph[i].position).magnitude)
+                    {
+                        closestPosition = navGraph[i].GetComponent<Position>();
+                    }
+                }
+                Transform farthest = closestPosition.otherPositions[0];
+                for (int i = 1; i < closestPosition.otherPositions.Count; i++)
+                {
+                    if ((player.position - farthest.transform.position).magnitude < (player.position - closestPosition.otherPositions[i].position).magnitude)
+                    {
+                        farthest = closestPosition.otherPositions[i];
+                    }
+                }
+                librarianActive = true;
+                spawner.SpawnEnemy(farthest.position, EnemyType.Librarian);
+            }
+            else//if (spawnNum == 2)
+            {
+                activeTunnel = false;
+                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach (GameObject enemy in enemies)
+                {
+                    if (enemy.GetComponent<Enemy>().enemyType == EnemyType.Librarian)
+                    {
+                        librarianActive = true;
+                        timeSpawnedLibrarian = Time.timeSinceLevelLoad + 15f;
+                        //break;
+                    }
+                    else if (enemy.GetComponent<Enemy>().enemyType == EnemyType.TunnelMonster)
+                    {
+                        activeTunnel = true;
+                        //break;
+                    }
+                }
+                if (!activeTunnel)
+                {
+                    Transform closest = tunnelGraph[0][0];
+                    foreach (List<Transform> paths in tunnelGraph)
+                    {
+                        foreach (Transform pathPosition in paths)
+                        {
+                            if ((player.position - pathPosition.position).magnitude < (player.position - closest.position).magnitude)
+                            {
+                                closest = pathPosition;
+                            }
+                        }
+                    }
+                    spawner.SpawnEnemy(closest.parent.GetChild(0).position, EnemyType.TunnelMonster);
+                }
+            }
+            yield return new WaitForSeconds(Random.Range(2f, 5f));
+        }
     }
 
     public void SetUpTutorialPannel(int num)
@@ -204,12 +284,14 @@ public class GameController : Singleton<GameController>
 
     public void Restart()
     {
+        Time.timeScale = 1f;
         Destroy(gameObject);//Perissting across games causes referance issues like button UI
         SceneManager.LoadScene("Game");
     }
 
     public void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
     }
 

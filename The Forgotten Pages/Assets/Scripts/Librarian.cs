@@ -13,7 +13,7 @@ public class Librarian : Enemy
     public NavMeshAgent navMeshAgent;
     private Transform previousPosition;
     private Position currentPosition;
-    public List<Transform> navGraph;
+    [System.NonSerialized]  public List<Transform> navGraph;
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     private Camera camera;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
@@ -38,19 +38,27 @@ public class Librarian : Enemy
     protected override IEnumerator EnemyActionBehaivior()
     {
         StartCoroutine(DetectSound());
+        //Sets initial desitination to closest one to the player
+        currentPosition = navGraph[0].GetComponent<Position>();
+        for (int i = 1; i < navGraph.Count; i++)
+        {
+            if ((transform.position - currentPosition.transform.position).magnitude > (transform.position - navGraph[i].position).magnitude)
+            {
+                currentPosition = navGraph[i].GetComponent<Position>();
+            }
+        }
+        previousPosition = currentPosition.transform;
+        Position closest = currentPosition.otherPositions[0].GetComponent<Position>();
+        for (int i = 1; i < currentPosition.otherPositions.Count; i++)
+        {
+            if ((player.transform.position - closest.transform.position).magnitude > (player.transform.position - currentPosition.otherPositions[i].position).magnitude)
+            {
+                closest = currentPosition.otherPositions[i].GetComponent<Position>();
+            }
+        }
+        currentPosition = closest;
         while (true)
         {
-            //Sets initial desitination to closest position
-            currentPosition = navGraph[0].GetComponent<Position>();
-            for (int i = 1; i < navGraph.Count; i++)
-            {
-                if ((transform.position - currentPosition.transform.position).magnitude > (transform.position - navGraph[i].position).magnitude)
-                {
-                    currentPosition = navGraph[i].GetComponent<Position>();
-                }
-            }
-            previousPosition = null;
-
             //Walking in path
             while (!foundPlayer)
             {
@@ -90,6 +98,17 @@ public class Librarian : Enemy
                         yield return new WaitForSeconds(.1f);
                     }
                 }
+
+                //Sets initial desitination to closest position
+                currentPosition = navGraph[0].GetComponent<Position>();
+                for (int i = 1; i < navGraph.Count; i++)
+                {
+                    if ((transform.position - currentPosition.transform.position).magnitude > (transform.position - navGraph[i].position).magnitude)
+                    {
+                        currentPosition = navGraph[i].GetComponent<Position>();
+                    }
+                }
+                previousPosition = null;
             }
         }
     }
