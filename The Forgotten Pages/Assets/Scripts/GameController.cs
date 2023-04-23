@@ -292,6 +292,7 @@ public class GameController : Singleton<GameController>
     public void MainMenu()
     {
         Time.timeScale = 1f;
+        Destroy(gameObject);//Perissting across games causes referance issues like button UI
         SceneManager.LoadScene("Main Menu");
     }
 

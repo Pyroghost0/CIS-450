@@ -109,11 +109,12 @@ public class PlayerMovement : MonoBehaviour
             while (timer < 1f)
             {
                 jumpscareImage.color = new Color(1f, 1f, 1f, 1f - (timer));
-                timer += Time.unscaledTime;
-                yield return new WaitForFixedUpdate();
+                timer += Time.unscaledDeltaTime;
+                yield return new WaitForEndOfFrame();
             }
             jumpscareImage.color = Color.white;
             jumpscareImage.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {

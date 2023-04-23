@@ -45645,11 +45645,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isGrounded: 0
-  jumpHeight: 3
   flashlight: {fileID: 204792173}
   sanityBar: {fileID: 1591624053}
   jumpscareImage: {fileID: 1941301088}
   jumpscareSound: {fileID: 1953086334}
+  gameOverScreen: {fileID: 283551157}
 --- !u!143 &1953086328
 CharacterController:
   m_ObjectHideFlags: 0
