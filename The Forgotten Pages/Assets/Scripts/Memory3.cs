@@ -51,10 +51,18 @@ public class Memory3 : MonoBehaviour, Memory
         yield return new WaitUntil(() => GameController.instance.isInMemory);
 
         player.GetComponent<MemoryPlayerMovement>().canMove = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.1f);
 
-        motherCharacter.StartDialouge(new string[] { "This is where the new dialouge will go", "for this fluff cutscene i haven't written yet!" });
+        motherCharacter.moveToNewPos = true;
+        motherCharacter.newPos = 97.91f;
+        motherCharacter.speed = 2;
+
+        motherCharacter.StartDialouge(new string[] { "Oh, so here's where you ran off to!", "Looking for Dad?", "He told me he'd meet us back at home.", "Come on honey, let's go, the sun's almost set.", "We can pick up food on the way home." });
         yield return new WaitUntil(() => !motherCharacter.isTalking);
+
+        motherCharacter.moveToNewPos = true;
+        motherCharacter.newPos = 104.5f;
+        motherCharacter.speed = 2;
 
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
         GameController.instance.memoriesCollected++;
