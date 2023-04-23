@@ -1,4 +1,4 @@
-/* Caleb Kahn, Anna Breuker
+/* Caleb Kahn, Anna Breuker, Cooper Denault
  * MemoryFragment
  * Project 5
  * The object that triggers the cutscene

@@ -1,4 +1,4 @@
-/* Caleb Kahn, Anna Breuker
+/* Caleb Kahn, Anna Breuker, Cooper Denault
  * GameController
  * Project 5
  * General functions such as spawning enemies and winning the game
