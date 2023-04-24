@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject winScreen;
 
     public AudioSource pickupSound;
+    public bool inJumpscare;
 
     private void Start()
     {
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory)
+        if (!GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory && !inJumpscare)
         {
             //checking if the player is on the ground
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -140,6 +141,8 @@ public class PlayerMovement : MonoBehaviour
         {
             sanityBar.fillAmount = 0;
             Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.Confined;
+            jumpscareImage.gameObject.SetActive(false);
             gameOverScreen.SetActive(true);
             Debug.Log("Dead");
         }

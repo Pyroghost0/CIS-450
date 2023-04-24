@@ -16,10 +16,11 @@ public class EnemyJumpscareCollider : MonoBehaviour
             }
             else
             {
-                other.GetComponent<PlayerMovement>().RemoveSanity(enemy.sanityDamage);
                 //other.GetComponent<PlayerMovement>().StartJumpscare(enemy.jumpscareSprite);
                 //enemy.StopAllCoroutines();
                 enemy.GetComponent<Animator>().SetFloat("Activated", 1);
+                other.GetComponent<PlayerMovement>().inJumpscare = true;
+                transform.localRotation = Quaternion.Euler(-90f, Mathf.Atan2(other.transform.position.x - transform.position.x, other.transform.position.z - transform.position.z) * 57.2958f, 0f);
                 //Destroy(enemy.gameObject);
             }
         }

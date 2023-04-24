@@ -60,6 +60,8 @@ public class Mimic : Enemy
     public void DestroyEnemy()
     {
         player.GetComponent<PlayerMovement>().StartJumpscare(jumpscareSprite);
+        player.GetComponent<PlayerMovement>().inJumpscare = false;
+        player.GetComponent<PlayerMovement>().RemoveSanity(sanityDamage);
         Destroy(gameObject);
     }
 }

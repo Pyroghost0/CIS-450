@@ -28,6 +28,8 @@ public class ExitDoor : MonoBehaviour
             if (GameController.instance.memoriesCollected >= 3)
             {
                 Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.Confined;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().jumpscareImage.gameObject.SetActive(false);
                 winScreen.SetActive(true);
                 Debug.Log("player wins!");
             }

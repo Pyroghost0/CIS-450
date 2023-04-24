@@ -64,7 +64,7 @@ public class Librarian : Enemy
             {
                 //Debug.Log(navMeshAgent.destination);
                 navMeshAgent.destination = currentPosition.transform.position;
-                yield return new WaitUntil(() => foundPlayer || Vector3.Distance(currentPosition.transform.position, transform.position) <= 3f);
+                yield return new WaitUntil(() => foundPlayer || Vector3.Distance(currentPosition.transform.position, transform.position) <= 4.5f);
                 Transform position = currentPosition.transform;
                 //Picks a random next position (if it contains the previous position, it'll pick a different one
                 currentPosition = currentPosition.otherPositions.Count != 1 && currentPosition.otherPositions.Contains(previousPosition) ? currentPosition.otherPositions[(currentPosition.otherPositions.FindIndex(x => x.Equals(previousPosition)) + Random.Range(1, currentPosition.otherPositions.Count)) % currentPosition.otherPositions.Count].GetComponent<Position>() : currentPosition.otherPositions[Random.Range(0, currentPosition.otherPositions.Count)].GetComponent<Position>();
@@ -83,7 +83,7 @@ public class Librarian : Enemy
                     }
                     else
                     {
-                        yield return new WaitUntil(() => foundPlayer || Vector3.Distance(destination, transform.position) <= 1f);
+                        yield return new WaitUntil(() => foundPlayer || Vector3.Distance(destination, transform.position) <= 2.5f);
                     }
                 }
                 for (int i = 0; i < 50; i++)
@@ -153,8 +153,16 @@ public class Librarian : Enemy
         //Renderer works with a spriteRender or any type of renderer, but it doesn't work well, and the camera one is munually put in with the CameraSite class which is an added extention to the camera class
         //Debug.Log("Mesh: " + camera.IsObjectVisible(GetComponent<MeshRenderer>()));
         //Debug.Log("Renderer" + GetComponent<MeshRenderer>().isVisible);
-        yield return new WaitUntil(() => !camera.IsObjectVisible(GetComponent<MeshRenderer>()));
+        yield return new WaitUntil(() => !camera.IsObjectVisible(GetComponentInChildren<SkinnedMeshRenderer>()));
         //Debug.Log("Out of view");
+        Destroy(gameObject);
+    }
+
+    public void DestroyEnemy()
+    {
+        player.GetComponent<PlayerMovement>().StartJumpscare(jumpscareSprite);
+        player.GetComponent<PlayerMovement>().inJumpscare = false;
+        player.GetComponent<PlayerMovement>().RemoveSanity(sanityDamage);
         Destroy(gameObject);
     }
 }

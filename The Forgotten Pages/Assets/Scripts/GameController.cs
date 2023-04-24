@@ -213,7 +213,7 @@ public class GameController : Singleton<GameController>
                 spawner.SpawnEnemy(farthest.position, EnemyType.Librarian);
             }
             else if (spawnNum == 2)
-            {
+            {/*
                 activeTunnel = false;
                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject enemy in enemies)
@@ -238,7 +238,7 @@ public class GameController : Singleton<GameController>
                         }
                     }
                     spawner.SpawnEnemy(closest.parent.GetChild(0).GetChild(0).position, EnemyType.TunnelMonster);
-                }
+                }*/
             }
             else// if (spawnNum == 4)
             {
