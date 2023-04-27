@@ -54,6 +54,7 @@ public class SeePlayerState : EnemyState
                 {
                     //Debug.Log("This thing is wired so don't touch it... I'm cooking");
                     yield return new WaitForSeconds(.1f);
+                    yield return new WaitUntil(() => !tunnelMonster.frozen);
                 }
             }
         }

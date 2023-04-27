@@ -786,6 +786,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 2
   sanityDamage: 0.25
+  frozen: 0
+  jumpscareCollider: {fileID: 1002535310767664235}
   jumpscareSprite: {fileID: 0}
   navMeshAgent: {fileID: 6630602607532793915}
   tunnelGraph: []

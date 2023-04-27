@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     //public float jumpHeight = 3f;
     public PlayerUpgrade playerUpgrades;
     public Light flashlight;
+    public bool freezeUsable = true;
+    public RectTransform frozenOverlay;
 
     public Image sanityBar;
     public Image jumpscareImage;
@@ -46,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         playerUpgrades = new PlayerAbility();
+        playerUpgrades = new FlreezeAbility(playerUpgrades, this);
         //playerUpgrades = new PlayerFlashlight(playerUpgrades, flashlight);
         //playerUpgrades = new PlayerSprint(playerUpgrades, this);
     }
@@ -89,10 +92,10 @@ public class PlayerMovement : MonoBehaviour
             /*if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
+            }*/
             //add gravity to velocity
             velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);*/
+            controller.Move(velocity * Time.deltaTime);
         }
     }
 
@@ -150,5 +153,40 @@ public class PlayerMovement : MonoBehaviour
         {
             sanityBar.fillAmount -= amount;
         }
+    }
+
+    public void Freeze()
+    {
+        StartCoroutine(FreezeCoroutine());
+    }
+
+    IEnumerator FreezeCoroutine()
+    {
+        freezeUsable = false;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.GetComponent<Enemy>().Freeze();
+        }
+        float timer = 0f;
+        Image frozenImage = frozenOverlay.GetComponent<Image>();
+        frozenOverlay.gameObject.SetActive(true);
+        while (timer < 10f)
+        {
+            frozenOverlay.sizeDelta = new Vector2(960f, 540f) * (1f + (timer * timer / 300f));
+            frozenImage.color = new Color(1f, 1f, 1f, 1f - (timer * timer / 100f));
+            yield return new WaitForEndOfFrame();
+            timer += Time.deltaTime;
+        }
+        frozenOverlay.gameObject.SetActive(false);
+        foreach (GameObject enemy in enemies)
+        {
+            if (enemy != null)
+            {
+                enemy.GetComponent<Enemy>().Unfreeze();
+            }
+        }
+        yield return new WaitForSeconds(20f);
+        freezeUsable = true;
     }
 }

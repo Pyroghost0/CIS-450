@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum EnemyType {
     Librarian = 0,//Detects sound, Doesn't know the players location unless they run
@@ -20,6 +21,9 @@ public abstract class Enemy : MonoBehaviour
     protected float minDespawnTime = 20f;
     public EnemyType enemyType;
     public float sanityDamage = .25f;
+    public bool frozen = false;
+    public GameObject jumpscareCollider;
+    //private float frozenSpeed;
 
     public Sprite jumpscareSprite;
 
@@ -27,6 +31,21 @@ public abstract class Enemy : MonoBehaviour
         StartCoroutine(EnemyActionBehaivior());
         yield return new WaitForSeconds(minDespawnTime);
         StartCoroutine(DespawnBehaivior());
+    }
+
+    public virtual void Freeze()
+    {
+        frozen = true;
+        GetComponent<NavMeshAgent>().isStopped = true;
+        jumpscareCollider.SetActive(false);
+        //frozenSpeed = GetComponent<NavMeshAgent>().speed;
+    }
+
+    public virtual void Unfreeze()
+    {
+        frozen = false;
+        GetComponent<NavMeshAgent>().isStopped = false;
+        jumpscareCollider.SetActive(true);
     }
 
     protected abstract IEnumerator EnemyActionBehaivior();

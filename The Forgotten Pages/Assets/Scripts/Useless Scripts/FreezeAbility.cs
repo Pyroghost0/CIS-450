@@ -1,18 +1,28 @@
+/* Caleb Kahn
+ * FreezeAbility
+ * Project 5
+ * The flashlight ability for the player
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FreezeAbility : MonoBehaviour
+public class FlreezeAbility : PlayerDecorator
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerMovement playerMovement;
+
+    public FlreezeAbility(PlayerUpgrade playerUpgrade, PlayerMovement pm)
     {
-        
+        playerMovement = pm;
+        nextAbility = playerUpgrade;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void UseAbillity()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q) && playerMovement.freezeUsable && !GameController.instance.isInMemory)
+        {
+            playerMovement.Freeze();
+        }
+        nextAbility.UseAbillity();
     }
 }

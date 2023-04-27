@@ -14,7 +14,7 @@ public class TunnelMonsterSight : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !tunnelMonster.frozen)
         {
             RaycastHit rayHit;
             //Debug.DrawRay(transform.position, transform.forward * 100f, Color.red);

@@ -71,6 +71,7 @@ public class Librarian : Enemy
                 previousPosition = position;
             }
             //Debug.Log("Found Player");
+            navMeshAgent.speed = 7f;
             while (foundPlayer)
             {
                 while (foundPlayer)
@@ -96,6 +97,7 @@ public class Librarian : Enemy
                     {
                         //Debug.Log("This thing is wired so don't touch it... I'm cooking");
                         yield return new WaitForSeconds(.1f);
+                        yield return new WaitUntil(() => !frozen);
                     }
                 }
 
@@ -110,6 +112,7 @@ public class Librarian : Enemy
                 }
                 previousPosition = null;
             }
+            navMeshAgent.speed = 3.5f;
         }
     }
 
@@ -117,31 +120,34 @@ public class Librarian : Enemy
     {
         while (true)
         {
-            RaycastHit[] rayHits = Physics.RaycastAll(transform.position, player.transform.position - transform.position, player.soundRadius);
-            //Debug.DrawRay(transform.position, player.transform.position - transform.position);
-            int walls = 0;
-            bool found = false;
-            for (int i = 0; i < rayHits.Length; i++)
+            if (!frozen)
             {
-                if (rayHits[i].distance > player.soundRadius / walls)
+                RaycastHit[] rayHits = Physics.RaycastAll(transform.position, player.transform.position - transform.position, player.soundRadius);
+                //Debug.DrawRay(transform.position, player.transform.position - transform.position);
+                int walls = 0;
+                bool found = false;
+                for (int i = 0; i < rayHits.Length; i++)
                 {
-                    break;
-                }
-                if (rayHits[i].collider != null)
-                {
-                    //Debug.Log(rayHits[i].collider.name);
-                    if (rayHits[i].collider.CompareTag("Player"))
+                    if (rayHits[i].distance > player.soundRadius / walls)
                     {
-                        found = true;
                         break;
                     }
-                    else
+                    if (rayHits[i].collider != null)
                     {
-                        walls++;
+                        //Debug.Log(rayHits[i].collider.name);
+                        if (rayHits[i].collider.CompareTag("Player"))
+                        {
+                            found = true;
+                            break;
+                        }
+                        else
+                        {
+                            walls++;
+                        }
                     }
                 }
+                foundPlayer = found;
             }
-            foundPlayer = found;
             yield return new WaitForFixedUpdate();
         }
     }
@@ -153,7 +159,7 @@ public class Librarian : Enemy
         //Renderer works with a spriteRender or any type of renderer, but it doesn't work well, and the camera one is munually put in with the CameraSite class which is an added extention to the camera class
         //Debug.Log("Mesh: " + camera.IsObjectVisible(GetComponent<MeshRenderer>()));
         //Debug.Log("Renderer" + GetComponent<MeshRenderer>().isVisible);
-        yield return new WaitUntil(() => !camera.IsObjectVisible(GetComponentInChildren<SkinnedMeshRenderer>()));
+        yield return new WaitUntil(() => !camera.IsObjectVisible(GetComponentInChildren<SkinnedMeshRenderer>()) && !foundPlayer && (transform.position - player.transform.position).magnitude > 20f);
         //Debug.Log("Out of view");
         Destroy(gameObject);
     }

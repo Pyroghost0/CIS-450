@@ -17,6 +17,7 @@ public class ShyMonster : Enemy
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     private Transform player;
     public bool wasFound = false;
+    private bool previousStopState;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class ShyMonster : Enemy
             }*/
             navMeshAgent.isStopped = camera.IsObjectVisible(GetComponent<MeshRenderer>());
             yield return new WaitForFixedUpdate();
+            yield return new WaitUntil(() => !frozen);
         }
         //Debug.Log("Next phase");
         navMeshAgent.isStopped = false;
@@ -106,7 +108,7 @@ public class ShyMonster : Enemy
         float inSightTime = 0f;
         while (!wasFound)
         {
-            if (camera.IsObjectVisible(GetComponent<MeshRenderer>()))
+            if (camera.IsObjectVisible(GetComponent<MeshRenderer>()) && !frozen)
             {
                 RaycastHit rayHit;
                 if (Physics.Raycast(transform.position, player.position - transform.position, out rayHit) && rayHit.collider != null && rayHit.collider.CompareTag("Player"))
@@ -169,5 +171,20 @@ public class ShyMonster : Enemy
         yield return new WaitUntil(() => !camera.IsObjectVisible(GetComponent<MeshRenderer>()));
         //Debug.Log("Out of view");
         Destroy(gameObject);
+    }
+
+    public override void Freeze()
+    {
+        frozen = true;
+        previousStopState = navMeshAgent.isStopped;
+        navMeshAgent.isStopped = true;
+        jumpscareCollider.SetActive(false);
+    }
+
+    public override void Unfreeze()
+    {
+        frozen = false;
+        navMeshAgent.isStopped = previousStopState;
+        jumpscareCollider.SetActive(true);
     }
 }

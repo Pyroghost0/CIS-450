@@ -636,6 +636,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 4
   sanityDamage: 0.25
+  frozen: 0
+  jumpscareCollider: {fileID: 3663688089863019333}
   jumpscareSprite: {fileID: 21300000, guid: 91c47ea16df0f44449085af2da3cdfe4, type: 3}
   navMeshAgent: {fileID: 6104056319304162173}
   bodyMesh: {fileID: 6460495799611290688}

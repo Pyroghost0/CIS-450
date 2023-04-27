@@ -19,7 +19,7 @@ public class PlayerFlashlight : PlayerDecorator
 
     public override void UseAbillity()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && !GameController.instance.isInMemory)
         {
             light.enabled = !light.enabled;
         }

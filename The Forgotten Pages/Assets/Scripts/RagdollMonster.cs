@@ -35,7 +35,7 @@ public class RagdollMonster : Enemy
         {
             //Debug.Log("Camera: " + camera.IsObjectVisible(bodyMesh));
             //Debug.Log("Mesh: " + bodyMesh.isVisible);
-            if (camera.IsObjectVisible(bodyMesh))
+            if (camera.IsObjectVisible(bodyMesh) && !frozen)
             {
                 //Debug.Log(1);
                 RaycastHit rayHit;
@@ -76,12 +76,24 @@ public class RagdollMonster : Enemy
     {
         while (true)
         {
-            if (!camera.IsObjectVisible(bodyMesh))
+            if (!camera.IsObjectVisible(bodyMesh) && !frozen)
             {
                 //Debug.Log("Despawning");
                 Destroy(gameObject);
             }
             yield return new WaitForSeconds(scream.clip.length);
         }
+    }
+
+    public override void Freeze()
+    {
+        frozen = true;
+        scream.pitch = -.5f;
+    }
+
+    public override void Unfreeze()
+    {
+        frozen = false;
+        scream.pitch = 1f;
     }
 }

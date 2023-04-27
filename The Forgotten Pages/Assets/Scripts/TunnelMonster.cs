@@ -131,6 +131,7 @@ public class TunnelMonster : Enemy
         float timer = Random.Range(0f, Mathf.PI*2f);
         while (!atDespawn)
         {
+            yield return new WaitUntil(() => !frozen);
             if (seesPlayer)
             {
                 Vector3 direction = player.position - transform.position;
