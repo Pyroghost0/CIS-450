@@ -32,12 +32,15 @@ public class GameController : Singleton<GameController>
     public TextMeshProUGUI mainTutorialText;
     public TextMeshProUGUI descriptionTutorialText;
     public List<Transform> tutorialNavGraph;
-    private string[] tutorialMainTexts = { "Movement", "The Librarian", "Memory Fragments" };
-    private string[] tutorialDescriptionTexts = { "To move, press the WASD or arrow keys.", "The Librarian is near you, and can hear your movements. Walking will make more noise, but you can hide from her if you get out of her path and stop moving.", 
-        "These books are fragments of your memeory. Collect all 5 memory fragments to be able to escape. NOTE only 3 fragments are in the playtesting build." };
+    private string[] tutorialMainTexts = { "The Library", "Movement", "The Librarian", "Memory Fragments" };
+    private string[] tutorialDescriptionTexts = { "You are a child trapped in a library. \nYou don't remember how you got here. \nYou don't remember who you are. \nYou do not know what lurks in the shadows. \nYou need to remember.",
+        "To move, press the WASD or arrow keys.", "The Librarian is near you, and can hear your movements. Walking will make more noise, but you can hide from her if you get out of her path and stop moving.", 
+        "These books are fragments of your memeory. Collect all 5 memory fragments to be able to escape." };
 
     public AudioSource heartBeat;
     public AudioSource breathing;
+
+    public int tutorialNum;
 
     private void Awake()
     {
@@ -306,7 +309,8 @@ public class GameController : Singleton<GameController>
 
     public void SetUpTutorialPannel(int num)
     {
-        if (num == 1)
+        tutorialNum = num;
+        if (num == 2)
         {
             StartCoroutine(DelayForLibrarian());
         }
@@ -328,15 +332,22 @@ public class GameController : Singleton<GameController>
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         tutorialPannel.SetActive(true);
-        mainTutorialText.text = tutorialMainTexts[1];
-        descriptionTutorialText.text = tutorialDescriptionTexts[1];
+        mainTutorialText.text = tutorialMainTexts[2];
+        descriptionTutorialText.text = tutorialDescriptionTexts[2];
     }
 
     public void Continue()
     {
-        Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        tutorialPannel.SetActive(false);
+        if (tutorialNum == 0)
+        {
+            SetUpTutorialPannel(1);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            tutorialPannel.SetActive(false);
+        }
     }
 
     public void Restart()
