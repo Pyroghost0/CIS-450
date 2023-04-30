@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public bool sprinting = false;
     public float soundRadius = 2f;
     private float notMovingSoundRadius = 2f;
-    private float walkingSoundRadius = 6f;
-    private float SprintingSoundRadius = 12f;
+    private float walkingSoundRadius = 8f;
+    private float SprintingSoundRadius = 15f;
 
     //variables for gravity
     public Vector3 velocity;
@@ -53,6 +53,13 @@ public class PlayerMovement : MonoBehaviour
         //playerUpgrades = new PlayerSprint(playerUpgrades, this);
     }
 
+    public void MoreHidden()
+    {
+        notMovingSoundRadius = 2f;
+        walkingSoundRadius = 6f;
+        SprintingSoundRadius = 12f;
+        TunnelMonsterSight.moreHidden = true;
+    }
 
     void Update()
     {

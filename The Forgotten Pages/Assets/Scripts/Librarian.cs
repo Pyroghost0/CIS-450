@@ -163,12 +163,4 @@ public class Librarian : Enemy
         //Debug.Log("Out of view");
         Destroy(gameObject);
     }
-
-    public void DestroyEnemy()
-    {
-        player.GetComponent<PlayerMovement>().StartJumpscare(jumpscareSprite);
-        player.GetComponent<PlayerMovement>().inJumpscare = false;
-        player.GetComponent<PlayerMovement>().RemoveSanity(sanityDamage);
-        Destroy(gameObject);
-    }
 }

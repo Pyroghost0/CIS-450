@@ -12,6 +12,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public void StartGame()
     {
+        TunnelMonsterSight.moreHidden = false;
         SceneManager.LoadScene("Game");
     }
 

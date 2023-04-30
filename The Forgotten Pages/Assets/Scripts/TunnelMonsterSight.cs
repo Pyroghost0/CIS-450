@@ -11,6 +11,16 @@ public class TunnelMonsterSight : MonoBehaviour
 {
     public Transform tunnelMonsterTransform;
     public TunnelMonster tunnelMonster;
+    public static bool moreHidden = false;
+
+    void Start()
+    {
+        if (moreHidden)
+        {
+            transform.localScale = new Vector3(10f, 4f, 22.5f);
+            transform.position = new Vector3(0f, 0f, 8.5f);
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {

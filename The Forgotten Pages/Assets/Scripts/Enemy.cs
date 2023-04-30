@@ -48,6 +48,15 @@ public abstract class Enemy : MonoBehaviour
         jumpscareCollider.SetActive(true);
     }
 
+    public void DestroyEnemy()
+    {
+        PlayerMovement player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        player.RemoveSanity(sanityDamage);
+        player.StartJumpscare(jumpscareSprite);
+        player.inJumpscare = false;
+        Destroy(gameObject);
+    }
+
     protected abstract IEnumerator EnemyActionBehaivior();
     protected abstract IEnumerator DespawnBehaivior();
 }

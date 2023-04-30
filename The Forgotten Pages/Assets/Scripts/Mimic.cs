@@ -57,11 +57,4 @@ public class Mimic : Enemy
             yield return new WaitForSeconds(1f);
         }
     }
-    public void DestroyEnemy()
-    {
-        player.GetComponent<PlayerMovement>().StartJumpscare(jumpscareSprite);
-        player.GetComponent<PlayerMovement>().inJumpscare = false;
-        player.GetComponent<PlayerMovement>().RemoveSanity(sanityDamage);
-        Destroy(gameObject);
-    }
 }
