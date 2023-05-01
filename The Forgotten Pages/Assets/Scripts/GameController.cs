@@ -350,6 +350,14 @@ public class GameController : Singleton<GameController>
         }
     }
 
+    public void TryAgain()
+    {
+        Time.timeScale = 1f;
+        TunnelMonsterSight.moreHidden = false;
+        Destroy(gameObject);//Perissting across games causes referance issues like button UI
+        SceneManager.LoadScene("Game");
+    }
+
     public void Restart()
     {
         Time.timeScale = 1f;
