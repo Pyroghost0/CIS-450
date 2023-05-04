@@ -62,6 +62,11 @@ public IEnumerator Cutscene()
 
 
     GameController.instance.memoriesCollected++;
+    GameController.instance.memoryImages[3].color = Color.white;
+    if (GameController.instance.memoriesCollected == 4)
+    {
+        GameController.instance.memoryImages[4].color = Color.white;
+    }
     Debug.Log(GameController.instance.memoriesCollected);
 
 }

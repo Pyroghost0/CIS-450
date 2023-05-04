@@ -127,7 +127,11 @@ public class Memory1 : MonoBehaviour, Memory
         GameController.instance.SpawnEnemies();
         player3D.playerUpgrades = new PlayerSprint(player3D.playerUpgrades, player3D);
         GameController.instance.memoriesCollected++;
-
+        GameController.instance.memoryImages[0].color = Color.white;
+        if (GameController.instance.memoriesCollected == 4)
+        {
+            GameController.instance.memoryImages[4].color = Color.white;
+        }
     }
 
     public void RecordMemory()

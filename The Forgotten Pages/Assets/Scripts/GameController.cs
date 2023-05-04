@@ -26,7 +26,9 @@ public class GameController : Singleton<GameController>
     public GameObject memoryManger;
     public Memory[] memories = new Memory[] {new Memory1(), new Memory2() };
     public int memoriesCollected;
-    public TextMeshProUGUI memoryText;
+    public Image[] memoryImages;
+    public GameObject gameUI;
+    //public TextMeshProUGUI memoryText;
 
     public GameObject tutorialPannel;
     public TextMeshProUGUI mainTutorialText;
@@ -97,7 +99,7 @@ public class GameController : Singleton<GameController>
         {
             SwitchGameMode(0);
         }
-        memoryText.text = "Memories Collected:\n" + memoriesCollected + "/3";
+        //memoryText.text = "Memories Collected:\n" + memoriesCollected + "/3";
     }
 
     public void SwitchGameMode(int memoryNumber)
@@ -112,14 +114,13 @@ public class GameController : Singleton<GameController>
         {
             //play everything in the 3D scene
         }
+        gameUI.SetActive(!isInMemory);
     }
 
     public void LibrarianInArea()
     {
     
         StartCoroutine(LibrarianInAreaCoroutine());
-
-
     }
 
     IEnumerator LibrarianInAreaCoroutine()
@@ -135,7 +136,7 @@ public class GameController : Singleton<GameController>
             
             color.a = timer / .5f;
             librarianText.color = color;
-            libraianOutline.color = new Color(.5f, .5f, .5f, timer);
+            libraianOutline.color = new Color(1f, 1f, 1f, timer * 2f);
             //libraianOutline.color = new Color(0f, 0f, 0f, timer / .5f);
             timer += Time.deltaTime;
             yield return new WaitForFixedUpdate();
@@ -143,21 +144,21 @@ public class GameController : Singleton<GameController>
         timer = .5f;
         color.a = 1f;
         librarianText.color = color;
-        libraianOutline.color = new Color(.5f, .5f, .5f, .5f);
+        libraianOutline.color = new Color(1f, 1f, 1f, timer * 2f);
         //libraianOutline.color = new Color(0f, 0f, 0f, 0f);
         yield return new WaitForSeconds(3f);
         while (timer > 0f)
         {
             color.a = timer / .5f;
             librarianText.color = color;
-            libraianOutline.color = new Color(0f, 0f, 0f, timer);
+            libraianOutline.color = new Color(1f, 1f, 1f, timer * 2f);
             //libraianOutline.color = new Color(0f, 0f, 0f, timer / .5f);
             timer -= Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
         color.a = 0f;
         librarianText.color = color;
-        libraianOutline.color = new Color(.5f, .5f, .5f, 0f);
+        libraianOutline.color = new Color(1f, 1f, 1f, 0f);
         //libraianOutline.color = new Color(0f, 0f, 0f, 0f);
 
         heartBeat.Stop();
