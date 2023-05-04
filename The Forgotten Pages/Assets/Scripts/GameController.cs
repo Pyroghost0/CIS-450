@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Buffers;
 
 public class GameController : Singleton<GameController>
 {
@@ -24,7 +25,8 @@ public class GameController : Singleton<GameController>
 
     public bool isInMemory;
     public GameObject memoryManger;
-    public Memory[] memories = new Memory[] {new Memory1(), new Memory2() };
+    public Memory[] memories = new Memory[] {new Memory1(), new Memory2(), new Memory3(), new Memory4() };
+    public GameObject finalMemory;
     public int memoriesCollected;
     public Image[] memoryImages;
     public GameObject gameUI;
@@ -73,7 +75,7 @@ public class GameController : Singleton<GameController>
     void Start()
     {
         isInMemory = false;
-        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>(), memoryManger.gameObject.GetComponent<Memory3>() };
+        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>(), memoryManger.gameObject.GetComponent<Memory3>(), memoryManger.gameObject.GetComponent<Memory4>() };
 
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
@@ -95,9 +97,13 @@ public class GameController : Singleton<GameController>
     // Update is called once per frame
     void Update()
     {
+        if (memoriesCollected >= 4)
+        { 
+            finalMemory.SetActive(true);
+        }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            SwitchGameMode(0);
+            SwitchGameMode(3);
         }
         //memoryText.text = "Memories Collected:\n" + memoriesCollected + "/3";
     }

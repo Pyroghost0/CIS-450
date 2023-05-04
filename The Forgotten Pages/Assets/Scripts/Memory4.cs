@@ -3,10 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+/* 
+ * Anna Breuker
+ * Memory4.cs
+ * Project 7&8
+ * the cutscene details for the car memory
+ */
 public class Memory4 : MonoBehaviour, Memory
 {
     public MemoryNPC motherCharacter;
+    public MemoryNPC otherCar;
 public MemoryTutorialBox tutorialBox;
 public MemoryExitDoor exitDoor;
 
@@ -17,6 +23,10 @@ public PolygonCollider2D memoryConfiner;
 public CinemachineVirtualCamera cmCamera;
 
 public PlayerMovement player3D;
+
+public ScrollingBackground road;
+
+    public Animator waves;
 
 // Start is called before the first frame update
 void Start()
@@ -43,20 +53,45 @@ public IEnumerator Cutscene()
     yield return new WaitUntil(() => GameController.instance.isInMemory);
 
     player.GetComponent<MemoryPlayerMovement>().canMove = false;
+    player.GetComponent<SpriteRenderer>().flipX= false;
     yield return new WaitForSeconds(.1f);
 
-    motherCharacter.moveToNewPos = true;
-    motherCharacter.newPos = 97.91f;
-    motherCharacter.speed = 2;
-
-    motherCharacter.StartDialouge(new string[] { "Oh, so here's where you ran off to!", "Looking for Dad?", "He told me he'd meet us back at home.", "Come on honey, let's go, the sun's almost set.", "We can pick up food on the way home." });
+    motherCharacter.StartDialouge(new string[] { "You excited to get to the library?", "I know, I know, you've been talking about it for weeks.", "And your favorite author's going to be there today, right?"});
     yield return new WaitUntil(() => !motherCharacter.isTalking);
 
-    motherCharacter.moveToNewPos = true;
-    motherCharacter.newPos = 104.5f;
-    motherCharacter.speed = 2;
+    yield return new WaitForSeconds(1f);
 
-    player.GetComponent<MemoryPlayerMovement>().canMove = true;
+    motherCharacter.StartDialouge(new string[] { "And the roads are so nice today!", "We should take a trip down to the park when we're done." });
+    yield return new WaitUntil(() => !motherCharacter.isTalking);
+
+    yield return new WaitForSeconds(1f);
+   
+    motherCharacter.StartDialouge(new string[] { "Oh, bud, you dropped something." });
+    yield return new WaitUntil(() => !motherCharacter.isTalking);
+    
+        
+    motherCharacter.GetComponent<SpriteRenderer>().flipX= true;
+    yield return new WaitForSeconds(.1f);
+    
+    motherCharacter.StartDialouge(new string[] { "Here, let me-" });
+    yield return new WaitUntil(() => !motherCharacter.isTalking);
+
+    otherCar.moveToNewPos = true;
+    otherCar.newPos = motherCharacter.gameObject.transform.position.x;
+    otherCar.speed = 10;
+    yield return new WaitUntil(()=> !otherCar.moveToNewPos);
+
+    road.speed = 0f;
+    waves.SetBool("isFrozen", true);
+    tutorialBox.description = "Press [Q] to scream.";
+    tutorialBox.gameObject.SetActive(true);
+    yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Q));
+
+    tutorialBox.gameObject.SetActive(false);
+    //could add something here with freeze effect on screen or a scream sound effect.
+    yield return new WaitForSeconds(3f);
+
+    GameController.instance.SwitchGameMode(0);
 
     yield return new WaitUntil(() => GameController.instance.isInMemory == false);
 
