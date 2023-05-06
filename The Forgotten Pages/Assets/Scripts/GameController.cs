@@ -103,7 +103,7 @@ public class GameController : Singleton<GameController>
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            SwitchGameMode(3);
+            SwitchGameMode(1);
         }
         //memoryText.text = "Memories Collected:\n" + memoriesCollected + "/3";
     }

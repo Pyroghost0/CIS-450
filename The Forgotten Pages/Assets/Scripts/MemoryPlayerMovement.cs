@@ -17,6 +17,8 @@ public class MemoryPlayerMovement : MonoBehaviour
     public float moveLimiter = 0.7f;
     public float movementSpeed = 3f;
 
+    public bool outOfBounds;
+
     public bool canMove;
     public bool isMoving;
     public bool sprintUnlocked;
@@ -46,7 +48,11 @@ public class MemoryPlayerMovement : MonoBehaviour
             //movementSpeed = 0;
             body.velocity = Vector2.zero;
         }
-        if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory && canMove)
+        else if (outOfBounds)
+        {
+            body.velocity = Vector2.right * movementSpeed;
+        }
+        else if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().isInMemory && canMove)
         {
             //player movement
             horizontal = Input.GetAxis("Horizontal");
