@@ -16,6 +16,7 @@ public class GameController : Singleton<GameController>
     public static GameController instance;
 
     public Transform player;
+    public Vector3 spawnPos;
     public Spawner spawner;
     public TextMeshProUGUI librarianText;
     public Image libraianOutline;
@@ -118,6 +119,7 @@ public class GameController : Singleton<GameController>
         if (isInMemory)
         {
             //pause everything in the 3D scene
+            spawnPos = player.transform.position;
             memories[memoryNumber].StartCutscene();
         }
         if (!isInMemory)
@@ -490,8 +492,11 @@ public class GameController : Singleton<GameController>
     public void Restart()
     {
         Time.timeScale = 1f;
-        Destroy(gameObject);//Perissting across games causes referance issues like button UI
-        SceneManager.LoadScene("Game");
+        player.transform.position = spawnPos;
+        player.gameObject.GetComponent<PlayerMovement>().gameOverScreen.SetActive(false);
+        player.gameObject.GetComponent<PlayerMovement>().sanityBar.fillAmount = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     public void MainMenu()
