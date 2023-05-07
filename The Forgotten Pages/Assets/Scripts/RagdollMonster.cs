@@ -11,13 +11,15 @@ using UnityEngine.AI;
 public class RagdollMonster : Enemy
 {
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
-    private Camera camera;
+    public Camera camera;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     private Transform player;
     public float stareAmount = 0f;
     public GameObject body;
-    public MeshRenderer bodyMesh;
+    public SkinnedMeshRenderer bodyMesh;
     public AudioSource scream;
+
+    public RagdollAnimation ragdollAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,7 @@ public class RagdollMonster : Enemy
         {
             //Debug.Log("Camera: " + camera.IsObjectVisible(bodyMesh));
             //Debug.Log("Mesh: " + bodyMesh.isVisible);
-            if (camera.IsObjectVisible(bodyMesh) && !frozen)
+            if (camera.IsObjectVisible(bodyMesh) && !frozen && ragdollAnimation.seen)
             {
                 //Debug.Log(1);
                 RaycastHit rayHit;
@@ -44,7 +46,7 @@ public class RagdollMonster : Enemy
                 {
                     //Debug.Log("Seen");
                     stareAmount += Time.deltaTime / 6f;
-                    if (stareAmount >= 1f)
+                    if (stareAmount >= 0.75f)
                     {
                         Debug.Log("Attack");
                         if (player.GetComponent<PlayerMovement>().jumpscareImage.gameObject.activeSelf)
@@ -63,10 +65,15 @@ public class RagdollMonster : Enemy
                         scream.volume = stareAmount;
                     }
                 }
-                /*else
+				/*else
                 {
                     Debug.Log("Collider: " + (rayHit.collider != null ? rayHit.collider.name : "Fail"));
                 }*/
+			}
+			else
+			{
+                scream.volume = 0;
+                stareAmount = 0;
             }
             yield return new WaitForFixedUpdate();
         }
