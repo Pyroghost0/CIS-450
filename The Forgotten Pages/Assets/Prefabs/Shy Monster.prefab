@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 6937115702151793087}
   - component: {fileID: 2163275810274966467}
   - component: {fileID: 145484803160746854}
+  - component: {fileID: 3803048431409523289}
   m_Layer: 0
   m_Name: Shy Monster
   m_TagString: Enemy
@@ -546,7 +547,7 @@ MonoBehaviour:
   frozen: 0
   jumpscareCollider: {fileID: 2403075418226612021}
   jumpscareSprite: {fileID: 0}
-  navMeshAgent: {fileID: 0}
+  navMeshAgent: {fileID: 6937115702151793087}
   wasFound: 0
 --- !u!95 &145484803160746854
 Animator:
@@ -568,3 +569,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!33 &3803048431409523289
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8149072400568985880}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
