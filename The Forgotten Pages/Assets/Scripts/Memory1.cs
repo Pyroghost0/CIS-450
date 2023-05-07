@@ -103,7 +103,7 @@ public class Memory1 : MonoBehaviour, Memory
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
 
         //dialouge
-        motherCharacter.StartDialouge(new string[] {"Oh dear, that was quite the fall!", "Shhh, shhh. Don't cry! I've got just the thing.", "It's nothing a band-aid can't fix."});
+        motherCharacter.StartDialouge(new string[] {"Oh dear, that was quite the fall!", "Shhh, shhh. Don't cry! I've got just the thing.", "It's nothing a bandage can't fix."});
         //a lot of motherCharacter.isTalking == false
         yield return new WaitUntil(() => motherCharacter.isTalking == false);
 

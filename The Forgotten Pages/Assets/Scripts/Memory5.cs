@@ -1,18 +1,9 @@
 using Cinemachine;
-using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-/* 
- * Anna Breuker
- * Memory3.cs
- * Project 5
- * the cutscene details for memory 3
- */
-
-public class Memory3 : MonoBehaviour, Memory
+public class Memory5 : MonoBehaviour, Memory
 {
     public MemoryNPC motherCharacter;
     public MemoryTutorialBox tutorialBox;
@@ -54,23 +45,57 @@ public class Memory3 : MonoBehaviour, Memory
         player.GetComponent<MemoryPlayerMovement>().canMove = false;
         yield return new WaitForSeconds(.1f);
 
-        motherCharacter.moveToNewPos = true;
-        motherCharacter.newPos = 97.91f;
-        motherCharacter.speed = 2;
+        tutorialBox.description = "You're playing hide and seek! Press [E] to hide.";
+        tutorialBox.gameObject.SetActive(true);
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.E));
 
-        motherCharacter.StartDialouge(new string[] { "Oh, so here's where you ran off to!", "Looking for Dad?", "He told me he'd meet us back at home.", "Come on honey, let's go, the sun's almost set.", "We can pick up food on the way home." });
+        tutorialBox.gameObject.SetActive(false);
+
+        player.GetComponent<SpriteRenderer>().sortingOrder = -1;
+
+        motherCharacter.moveToNewPos = true;
+        motherCharacter.newPos = 99;
+        motherCharacter.speed = 2;
+        yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
+
+        motherCharacter.StartDialouge(new string[] { "Ready or not, here I come!"});
         yield return new WaitUntil(() => !motherCharacter.isTalking);
 
         motherCharacter.moveToNewPos = true;
-        motherCharacter.newPos = 104.5f;
+        motherCharacter.newPos = 101;
+        motherCharacter.speed = 1;
+        yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
+
+        motherCharacter.StartDialouge(new string[] { "Hmmmmm, not here..." });
+        yield return new WaitUntil(() => !motherCharacter.isTalking);
+
+
+        motherCharacter.moveToNewPos = true;
+        motherCharacter.newPos = 94;
+        motherCharacter.speed = 1;
+        yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
+
+        motherCharacter.StartDialouge(new string[] { "Huh, well I'm stumped!", "Guess I'll just have to go to the park all by myself." });
+        yield return new WaitUntil(() => !motherCharacter.isTalking);
+
+        player.GetComponent<SpriteRenderer>().sortingOrder = 10;
+
+        motherCharacter.moveToNewPos = true;
+        motherCharacter.newPos = 95;
+        motherCharacter.speed = 2;
+        motherCharacter.StartDialouge(new string[] { "Oh! There you are!", "Haha, ready to go? I think Dad said he'd meet us there." });
+        yield return new WaitUntil(() => !motherCharacter.isTalking);
+
+        motherCharacter.moveToNewPos = true;
+        motherCharacter.newPos = 106;
         motherCharacter.speed = 2;
 
         player.GetComponent<MemoryPlayerMovement>().canMove = true;
 
         yield return new WaitUntil(() => GameController.instance.isInMemory == false);
 
-        
-        GameController.instance.memoriesCollected++; 
+        //need to fix this at the meeting
+        GameController.instance.memoriesCollected++;
         GameController.instance.memoryImages[2].color = Color.white;
         if (GameController.instance.memoriesCollected == 4)
         {
@@ -85,3 +110,4 @@ public class Memory3 : MonoBehaviour, Memory
         player.GetComponent<MemoryPlayerMovement>().flashlightUnlocked = true;
     }
 }
+

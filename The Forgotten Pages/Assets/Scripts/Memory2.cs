@@ -45,6 +45,7 @@ public class Memory2 : MonoBehaviour, Memory
         StartCoroutine(Cutscene());
         cmCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = memoryConfiner;
         player.transform.position = playerStartPos;
+        player.GetComponent<SpriteRenderer>().flipX = true;
     }
 
     public IEnumerator Cutscene()

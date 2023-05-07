@@ -24172,7 +24172,6 @@ GameObject:
   m_Component:
   - component: {fileID: 898914716}
   - component: {fileID: 898914718}
-  - component: {fileID: 898914717}
   - component: {fileID: 898914719}
   m_Layer: 0
   m_Name: Background (1)
@@ -24199,20 +24198,6 @@ Transform:
   m_Father: {fileID: 205000015}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &898914717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898914715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 145d589a72422614580c40fd7a61692c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
-  endPos: 89.6
 --- !u!212 &898914718
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32514,7 +32499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144821895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 98.6, y: 87.3, z: 0}
+  m_LocalPosition: {x: 96, y: 71.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42365,7 +42350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605321180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: -8.2, z: 0}
+  m_LocalPosition: {x: 7.0999985, y: -8.199997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43937,6 +43922,7 @@ GameObject:
   - component: {fileID: 1653049850}
   - component: {fileID: 1653049851}
   - component: {fileID: 1653049852}
+  - component: {fileID: 1653049853}
   m_Layer: 0
   m_Name: MemoryManager
   m_TagString: Untagged
@@ -44044,6 +44030,26 @@ MonoBehaviour:
   player3D: {fileID: 1953086327}
   road: {fileID: 351680978}
   waves: {fileID: 1514191310}
+--- !u!114 &1653049853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653049847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ee6fd78b5b4784d8df6f0f7053ddbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motherCharacter: {fileID: 1605321184}
+  tutorialBox: {fileID: 1644424643}
+  exitDoor: {fileID: 1249913180}
+  player: {fileID: 1144821895}
+  playerStartPos: {x: 96, y: 71.8, z: 0}
+  memoryConfiner: {fileID: 898914719}
+  cmCamera: {fileID: 1790452973}
+  player3D: {fileID: 0}
 --- !u!1001 &1653187883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47936,7 +47942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BoundingShape2D: {fileID: 712009218}
+  m_BoundingShape2D: {fileID: 898914719}
   m_Damping: 0.5
   m_MaxWindowSize: 0
 --- !u!114 &1790452973

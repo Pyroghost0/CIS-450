@@ -25,7 +25,7 @@ public class GameController : Singleton<GameController>
 
     public bool isInMemory;
     public GameObject memoryManger;
-    public Memory[] memories = new Memory[] {new Memory1(), new Memory2(), new Memory3(), new Memory4() };
+    public Memory[] memories = new Memory[] {new Memory1(), new Memory2(), new Memory3(), new Memory4(), new Memory5() };
     public GameObject finalMemory;
     public int memoriesCollected;
     public Image[] memoryImages;
@@ -75,7 +75,7 @@ public class GameController : Singleton<GameController>
     void Start()
     {
         isInMemory = false;
-        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>(), memoryManger.gameObject.GetComponent<Memory3>(), memoryManger.gameObject.GetComponent<Memory4>() };
+        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>(), memoryManger.gameObject.GetComponent<Memory3>(), memoryManger.gameObject.GetComponent<Memory4>(), memoryManger.gameObject.GetComponent<Memory5>() };
 
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
@@ -103,7 +103,7 @@ public class GameController : Singleton<GameController>
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            SwitchGameMode(1);
+            SwitchGameMode(4);
         }
         //memoryText.text = "Memories Collected:\n" + memoriesCollected + "/3";
     }
