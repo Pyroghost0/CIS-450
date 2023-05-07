@@ -47,6 +47,11 @@ public class MemoryFragment : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
             playerMove.pickupSound.Play();
 
             GameController.instance.SwitchGameMode(memoryNum);

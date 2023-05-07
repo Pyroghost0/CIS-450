@@ -69,14 +69,13 @@ public class Memory3 : MonoBehaviour, Memory
 
         yield return new WaitUntil(() => GameController.instance.isInMemory == false);
 
-        
         GameController.instance.memoriesCollected++; 
-        GameController.instance.memoryImages[2].color = Color.white;
-        if (GameController.instance.memoriesCollected == 4)
+        //GameController.instance.memoryImages[2].color = Color.white;
+        if (GameController.instance.memoriesCollected == 3)
         {
-            GameController.instance.memoryImages[4].color = Color.white;
+            GameController.instance.finalMemory.SetActive(true);
         }
-        Debug.Log(GameController.instance.memoriesCollected);
+        //Debug.Log(GameController.instance.memoriesCollected);
 
     }
 

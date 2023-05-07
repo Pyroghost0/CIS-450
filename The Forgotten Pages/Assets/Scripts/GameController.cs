@@ -105,14 +105,10 @@ public class GameController : Singleton<GameController>
         {
             Pause();
         }
-        if (memoriesCollected >= 4)
-        { 
-            finalMemory.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
+        /*if (Input.GetKeyDown(KeyCode.C))
         {
             SwitchGameMode(4);
-        }
+        }*/
         //memoryText.text = "Memories Collected:\n" + memoriesCollected + "/3";
     }
 
@@ -229,10 +225,10 @@ public class GameController : Singleton<GameController>
                         }
                     }
                 }
-                int spawnNum = Random.Range(0, memoriesCollected >= 2 ? 3 : memoriesCollected+1);
+                int spawnNum = Random.Range(0, memoriesCollected >= 3 ? 4 : memoriesCollected+1);
 
                 //Librarian
-                if (spawnNum == 0 && Time.timeSinceLevelLoad >= timeSpawnedLibrarian)
+                if (spawnNum == 0 && !librarianActive && Time.timeSinceLevelLoad >= timeSpawnedLibrarian)
                 {
                     Position closestPosition = navGraph[0].GetComponent<Position>();
                     for (int i = 1; i < navGraph.Count; i++)
@@ -346,7 +342,7 @@ public class GameController : Singleton<GameController>
                 }*/
 
                 //Shy *not Among Us* monster
-                else if (spawnNum == 2 && Time.timeSinceLevelLoad >= timeSpawnedShy)
+                else if (spawnNum == 2 && !shyActive && Time.timeSinceLevelLoad >= timeSpawnedShy)
                 {
                     List<Transform> closestTransforms = new List<Transform>();
                     for (int i = 0; i < navGraph.Count; i++)
@@ -423,7 +419,7 @@ public class GameController : Singleton<GameController>
                         {
                             ragSpawn2 = positionNumbers[2];
                         }
-                        Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                        Debug.Log(ragSpawn1 + "\tRagdoll\t" + ragSpawn2);
                     }
                 }
             }

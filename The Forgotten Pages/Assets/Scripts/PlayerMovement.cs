@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         playerUpgrades = new PlayerAbility();
-        playerUpgrades = new FlreezeAbility(playerUpgrades, this);
+        //playerUpgrades = new FlreezeAbility(playerUpgrades, this);
         //playerUpgrades = new PlayerFlashlight(playerUpgrades, flashlight);
         //playerUpgrades = new PlayerSprint(playerUpgrades, this);
     }

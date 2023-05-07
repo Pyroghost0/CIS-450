@@ -90,9 +90,9 @@ public class Memory2 : MonoBehaviour, Memory
         player3D.playerUpgrades = new PlayerFlashlight(player3D.playerUpgrades, player3D.flashlight);
         GameController.instance.memoriesCollected++;
         GameController.instance.memoryImages[1].color = Color.white;
-        if (GameController.instance.memoriesCollected == 4)
+        if (GameController.instance.memoriesCollected == 3)
         {
-            GameController.instance.memoryImages[4].color = Color.white;
+            GameController.instance.finalMemory.SetActive(true);
         }
 
     }
