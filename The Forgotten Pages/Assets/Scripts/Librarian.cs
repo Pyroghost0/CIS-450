@@ -20,6 +20,8 @@ public class Librarian : Enemy
     private PlayerMovement player;
     private bool foundPlayer = false;
 
+    public Light startLight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,8 @@ public class Librarian : Enemy
 
     protected override IEnumerator EnemyActionBehaivior()
     {
+        yield return new WaitForSeconds(3f);
+        startLight.enabled = false;
         StartCoroutine(DetectSound());
         //Sets initial desitination to closest one to the player
         currentPosition = navGraph[0].GetComponent<Position>();

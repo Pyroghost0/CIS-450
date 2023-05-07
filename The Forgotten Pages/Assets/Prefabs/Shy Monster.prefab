@@ -545,7 +545,7 @@ MonoBehaviour:
   sanityDamage: 0.1
   frozen: 0
   jumpscareCollider: {fileID: 2403075418226612021}
-  jumpscareSprite: {fileID: 0}
+  jumpscareSprite: {fileID: 21300000, guid: 68ca839c1a379f44d9f7859fca5e2186, type: 3}
   navMeshAgent: {fileID: 6937115702151793087}
   wasFound: 0
   meshRenderer: {fileID: 1339374381407342384}
