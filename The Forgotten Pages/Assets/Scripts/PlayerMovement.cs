@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
                         sprintingSound.Stop();
                         isWalking = true;
                         walkingSound.Play();
-                        
+
                     }
                 }
                 else if (soundRadius == SprintingSoundRadius)
@@ -134,6 +134,13 @@ public class PlayerMovement : MonoBehaviour
             //add gravity to velocity
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
+        }
+        else
+        {
+            isSprinting = false;
+            sprintingSound.Stop();
+            isWalking = false;
+            walkingSound.Stop();
         }
     }
 
