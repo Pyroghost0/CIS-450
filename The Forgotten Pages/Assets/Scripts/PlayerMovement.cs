@@ -45,6 +45,12 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource pickupSound;
     public bool inJumpscare;
 
+    public bool isWalking;
+    public AudioSource walkingSound;
+
+    public bool isSprinting;
+    public AudioSource sprintingSound;
+
     private void Start()
     {
         playerUpgrades = new PlayerAbility();
@@ -84,9 +90,34 @@ public class PlayerMovement : MonoBehaviour
                 x *= Mathf.Abs(x) / magnitude;
                 z *= Mathf.Abs(z) / magnitude;
                 soundRadius = sprinting ? SprintingSoundRadius : walkingSoundRadius;
+                if (soundRadius == walkingSoundRadius)
+                {
+                    if (!isWalking)
+                    {
+                        isSprinting = false;
+                        sprintingSound.Stop();
+                        isWalking = true;
+                        walkingSound.Play();
+                        
+                    }
+                }
+                else if (soundRadius == SprintingSoundRadius)
+                {
+                    if (!isSprinting)
+                    {
+                        isWalking = false;
+                        walkingSound.Stop();
+                        isSprinting = true;
+                        sprintingSound.Play();
+                    }
+                }
             }
             else
             {
+                isWalking = false;
+                walkingSound.Stop();
+                isSprinting = false;
+                sprintingSound.Stop();
                 soundRadius = notMovingSoundRadius;
             }
             //playerAnimation.SetFloat("X", Input.GetAxisRaw("Horizontal"));
