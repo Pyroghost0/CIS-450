@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.012731749, g: 0.013414757, b: 0.012107871, a: 0.1}
+  m_IndirectSpecularColor: {r: 0.012731704, g: 0.0134147275, b: 0.012107854, a: 0.1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -59961,7 +59961,21 @@ MonoBehaviour:
   - {fileID: 3267858273214486284}
   - {fileID: 3267858273644638078}
   - {fileID: 3267858274658127209}
-  ragdollPositions: []
+  ragdollPositions:
+  - {fileID: 65512277}
+  - {fileID: 1984705458}
+  - {fileID: 416407204}
+  - {fileID: 1656526974}
+  - {fileID: 408793213}
+  - {fileID: 400504214}
+  - {fileID: 905575893}
+  - {fileID: 697987115}
+  - {fileID: 1163479705}
+  - {fileID: 693205669}
+  - {fileID: 163751867}
+  - {fileID: 1900264837}
+  - {fileID: 523135304}
+  - {fileID: 1233991642}
   isInMemory: 0
   memoryManger: {fileID: 1653049847}
   finalMemory: {fileID: 198223261}

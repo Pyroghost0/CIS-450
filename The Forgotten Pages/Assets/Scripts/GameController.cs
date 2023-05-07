@@ -359,6 +359,7 @@ public class GameController : Singleton<GameController>
                         closestTransforms.Insert(insertInto, navGraph[i]);
                     }
                     spawner.SpawnEnemy(closestTransforms[2].position, EnemyType.ShyMonster);
+                    shyActive = true;
                     Debug.Log("Spawn Shy");
                 }
 
