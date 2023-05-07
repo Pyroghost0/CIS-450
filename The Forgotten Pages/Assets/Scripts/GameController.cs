@@ -16,22 +16,26 @@ public class GameController : Singleton<GameController>
     public static GameController instance;
 
     public Transform player;
+    public Vector3 spawnPos;
     public Spawner spawner;
     public TextMeshProUGUI librarianText;
     public Image libraianOutline;
     public List<Transform> navGraph = new List<Transform>();
     public List<List<Transform>> tunnelGraph = new List<List<Transform>>();
     public List<Transform> mimicPositions;
+    public List<Transform> ragdollPositions;
 
     public bool isInMemory;
     public GameObject memoryManger;
-    public Memory[] memories = new Memory[] {new Memory1(), new Memory2(), new Memory3(), new Memory4() };
+    public Memory[] memories = new Memory[] {new Memory1(), new Memory2(), new Memory3(), new Memory4(), new Memory5() };
     public GameObject finalMemory;
     public int memoriesCollected;
     public Image[] memoryImages;
     public GameObject gameUI;
     //public TextMeshProUGUI memoryText;
 
+    public bool isPaused;
+    public GameObject pauseScreen;
     public GameObject tutorialPannel;
     public TextMeshProUGUI mainTutorialText;
     public TextMeshProUGUI descriptionTutorialText;
@@ -45,6 +49,7 @@ public class GameController : Singleton<GameController>
     public AudioSource breathing;
 
     public int tutorialNum;
+
 
     private void Awake()
     {
@@ -75,7 +80,7 @@ public class GameController : Singleton<GameController>
     void Start()
     {
         isInMemory = false;
-        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>(), memoryManger.gameObject.GetComponent<Memory3>(), memoryManger.gameObject.GetComponent<Memory4>() };
+        memories = new Memory[] {memoryManger.gameObject.GetComponent<Memory1>(), memoryManger.gameObject.GetComponent<Memory2>(), memoryManger.gameObject.GetComponent<Memory3>(), memoryManger.gameObject.GetComponent<Memory4>(), memoryManger.gameObject.GetComponent<Memory5>() };
 
         for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
@@ -97,14 +102,14 @@ public class GameController : Singleton<GameController>
     // Update is called once per frame
     void Update()
     {
-        if (memoriesCollected >= 4)
-        { 
-            finalMemory.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && !player.GetComponent<PlayerMovement>().gameOverScreen.activeSelf)
         {
-            SwitchGameMode(1);
+            Pause();
         }
+        /*if (Input.GetKeyDown(KeyCode.C))
+        {
+            SwitchGameMode(4);
+        }*/
         //memoryText.text = "Memories Collected:\n" + memoriesCollected + "/3";
     }
 
@@ -114,6 +119,7 @@ public class GameController : Singleton<GameController>
         if (isInMemory)
         {
             //pause everything in the 3D scene
+            spawnPos = player.transform.position;
             memories[memoryNumber].StartCutscene();
         }
         if (!isInMemory)
@@ -181,136 +187,246 @@ public class GameController : Singleton<GameController>
     {
         float timeSpawnedLibrarian = 0f;
         bool librarianActive = false;
-        bool activeTunnel = false;
         int mimicSpawn1 = -1;
         int mimicSpawn2 = -1;
+        bool activeTunnel = false;
+        float timeSpawnedShy = 0f;
+        bool shyActive = false;
+        int ragSpawn1 = -1;
+        int ragSpawn2 = -1;
+        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
         while (true)
         {
-            yield return new WaitUntil(() => !isInMemory);
-            if (librarianActive)
+            if (!isInMemory && !playerMovement.frozenOverlay.gameObject.activeSelf)
             {
-                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach (GameObject enemy in enemies)
+                if (librarianActive)
                 {
-                    if (enemy.GetComponent<Enemy>().enemyType == EnemyType.Librarian)
+                    librarianActive = false;
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach (GameObject enemy in enemies)
                     {
-                        librarianActive = true;
-                        timeSpawnedLibrarian = Time.timeSinceLevelLoad + 15f;
-                        break;
-                    }
-                }
-            }
-            int spawnNum = Time.timeSinceLevelLoad >= timeSpawnedLibrarian ? Random.Range(0, 3) * 2 : Random.Range(1, 3) * 2;
-            if (spawnNum == 0)
-            {
-                Position closestPosition = navGraph[0].GetComponent<Position>();
-                for (int i = 1; i < navGraph.Count; i++)
-                {
-                    if ((transform.position - closestPosition.transform.position).magnitude > (transform.position - navGraph[i].position).magnitude)
-                    {
-                        closestPosition = navGraph[i].GetComponent<Position>();
-                    }
-                }
-                Transform farthest = closestPosition.otherPositions[0];
-                for (int i = 1; i < closestPosition.otherPositions.Count; i++)
-                {
-                    if ((player.position - farthest.transform.position).magnitude < (player.position - closestPosition.otherPositions[i].position).magnitude)
-                    {
-                        farthest = closestPosition.otherPositions[i];
-                    }
-                }
-                librarianActive = true;
-                spawner.SpawnEnemy(farthest.position, EnemyType.Librarian);
-            }
-            else if (spawnNum == 2)
-            {/*
-                activeTunnel = false;
-                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                foreach (GameObject enemy in enemies)
-                {
-                    if (enemy.GetComponent<Enemy>().enemyType == EnemyType.TunnelMonster)
-                    {
-                        activeTunnel = true;
-                        //break;
-                    }
-                }
-                if (!activeTunnel)
-                {
-                    Transform closest = tunnelGraph[0][0];
-                    foreach (List<Transform> paths in tunnelGraph)
-                    {
-                        foreach (Transform pathPosition in paths)
+                        if (enemy.GetComponent<Enemy>().enemyType == EnemyType.Librarian)
                         {
-                            if ((player.position - pathPosition.position).magnitude < (player.position - closest.position).magnitude)
-                            {
-                                closest = pathPosition;
-                            }
-                        }
-                    }
-                    spawner.SpawnEnemy(closest.parent.GetChild(0).GetChild(0).position, EnemyType.TunnelMonster);
-                }*/
-            }
-            else// if (spawnNum == 4)
-            {
-                activeTunnel = false;
-                GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                bool foundFirst = false;
-                bool foundSecond = false;
-                foreach (GameObject enemy in enemies)
-                {
-                    if (enemy.GetComponent<Enemy>().enemyType == EnemyType.Mimic)
-                    {
-                        if ((mimicSpawn1 != -1 && mimicSpawn2 == -1) ||  foundSecond || (enemy.transform.position - mimicPositions[mimicSpawn1].position).magnitude < (enemy.transform.position - mimicPositions[mimicSpawn2].position).magnitude)
-                        {
-                            foundFirst = true;
-                        }
-                        else
-                        {
-                            foundSecond = true;
-                        }
-                        if (foundFirst && foundSecond)
-                        {
+                            librarianActive = true;
+                            timeSpawnedLibrarian = Time.timeSinceLevelLoad + 15f;
                             break;
                         }
                     }
                 }
-                if (!foundFirst || !foundSecond)
+                if (shyActive)
                 {
-                    mimicSpawn1 = foundFirst ? mimicSpawn1 : -1;
-                    mimicSpawn2 = foundSecond ? mimicSpawn2 : -1;
-                    //Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
-                    List<Transform> closestTransforms = new List<Transform>();
-                    List<int> positionNumbers = new List<int>();
-                    for (int i = 0; i < mimicPositions.Count; i++)
+                    shyActive = false;
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach (GameObject enemy in enemies)
                     {
-                        if (i != mimicSpawn1 && i != mimicSpawn2)
+                        if (enemy.GetComponent<Enemy>().enemyType == EnemyType.ShyMonster)
                         {
-                            int insertInto = closestTransforms.Count;
-                            for (int j = 0; j < closestTransforms.Count; j++)
-                            {
-                                if ((player.position - mimicPositions[i].position).magnitude < (player.position - closestTransforms[j].position).magnitude)
-                                {
-                                    insertInto = j;
-                                    break;
-                                }
-                            }
-                            closestTransforms.Insert(insertInto, mimicPositions[i]);
-                            positionNumbers.Insert(insertInto, i);
+                            shyActive = true;
+                            timeSpawnedShy = Time.timeSinceLevelLoad + 25f;
+                            break;
                         }
                     }
-                    spawner.SpawnEnemy(closestTransforms[2].position, EnemyType.Mimic);
-                    if (!foundFirst)
+                }
+                int spawnNum = Random.Range(0, memoriesCollected >= 3 ? 4 : memoriesCollected+1);
+
+                //Librarian
+                if (spawnNum == 0 && !librarianActive && Time.timeSinceLevelLoad >= timeSpawnedLibrarian)
+                {
+                    Position closestPosition = navGraph[0].GetComponent<Position>();
+                    for (int i = 1; i < navGraph.Count; i++)
                     {
-                        mimicSpawn1 = positionNumbers[2];
+                        if ((transform.position - closestPosition.transform.position).magnitude > (transform.position - navGraph[i].position).magnitude)
+                        {
+                            closestPosition = navGraph[i].GetComponent<Position>();
+                        }
                     }
-                    else
+                    Transform farthest = closestPosition.otherPositions[0];
+                    for (int i = 1; i < closestPosition.otherPositions.Count; i++)
                     {
-                        mimicSpawn2 = positionNumbers[2];
+                        if ((player.position - farthest.transform.position).magnitude < (player.position - closestPosition.otherPositions[i].position).magnitude)
+                        {
+                            farthest = closestPosition.otherPositions[i];
+                        }
                     }
-                    //Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                    librarianActive = true;
+                    spawner.SpawnEnemy(farthest.position, EnemyType.Librarian);
+                }
+
+                //Mimic
+                else if (spawnNum == 1)
+                {
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    bool foundFirst = false;
+                    bool foundSecond = false;
+                    foreach (GameObject enemy in enemies)
+                    {
+                        if (enemy.GetComponent<Enemy>().enemyType == EnemyType.Mimic)
+                        {
+                            if ((mimicSpawn1 != -1 && mimicSpawn2 == -1) || foundSecond || (enemy.transform.position - mimicPositions[mimicSpawn1].position).magnitude < (enemy.transform.position - mimicPositions[mimicSpawn2].position).magnitude)
+                            {
+                                foundFirst = true;
+                            }
+                            else
+                            {
+                                foundSecond = true;
+                            }
+                            if (foundFirst && foundSecond)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    if (!foundFirst || !foundSecond)
+                    {
+                        mimicSpawn1 = foundFirst ? mimicSpawn1 : -1;
+                        mimicSpawn2 = foundSecond ? mimicSpawn2 : -1;
+                        //Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                        List<Transform> closestTransforms = new List<Transform>();
+                        List<int> positionNumbers = new List<int>();
+                        for (int i = 0; i < mimicPositions.Count; i++)
+                        {
+                            if (i != mimicSpawn1 && i != mimicSpawn2)
+                            {
+                                int insertInto = closestTransforms.Count;
+                                for (int j = 0; j < closestTransforms.Count; j++)
+                                {
+                                    if ((player.position - mimicPositions[i].position).magnitude < (player.position - closestTransforms[j].position).magnitude)
+                                    {
+                                        insertInto = j;
+                                        break;
+                                    }
+                                }
+                                closestTransforms.Insert(insertInto, mimicPositions[i]);
+                                positionNumbers.Insert(insertInto, i);
+                            }
+                        }
+                        spawner.SpawnEnemy(closestTransforms[2].position, EnemyType.Mimic);
+                        if (!foundFirst)
+                        {
+                            mimicSpawn1 = positionNumbers[2];
+                        }
+                        else
+                        {
+                            mimicSpawn2 = positionNumbers[2];
+                        }
+                        //Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                    }
+                }
+
+                //Tunnel
+                /*else if (spawnNum == 2)
+                {
+                    activeTunnel = false;
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach (GameObject enemy in enemies)
+                    {
+                        if (enemy.GetComponent<Enemy>().enemyType == EnemyType.TunnelMonster)
+                        {
+                            activeTunnel = true;
+                            //break;
+                        }
+                    }
+                    if (!activeTunnel)
+                    {
+                        Transform closest = tunnelGraph[0][0];
+                        foreach (List<Transform> paths in tunnelGraph)
+                        {
+                            foreach (Transform pathPosition in paths)
+                            {
+                                if ((player.position - pathPosition.position).magnitude < (player.position - closest.position).magnitude)
+                                {
+                                    closest = pathPosition;
+                                }
+                            }
+                        }
+                        spawner.SpawnEnemy(closest.parent.GetChild(0).GetChild(0).position, EnemyType.TunnelMonster);
+                    }
+                }*/
+
+                //Shy *not Among Us* monster
+                else if (spawnNum == 2 && !shyActive && Time.timeSinceLevelLoad >= timeSpawnedShy)
+                {
+                    List<Transform> closestTransforms = new List<Transform>();
+                    for (int i = 0; i < navGraph.Count; i++)
+                    {
+                        int insertInto = closestTransforms.Count;
+                        for (int j = 0; j < closestTransforms.Count; j++)
+                        {
+                            if ((player.position - navGraph[i].position).magnitude < (player.position - closestTransforms[j].position).magnitude)
+                            {
+                                insertInto = j;
+                                break;
+                            }
+                        }
+                        closestTransforms.Insert(insertInto, navGraph[i]);
+                    }
+                    spawner.SpawnEnemy(closestTransforms[2].position, EnemyType.ShyMonster);
+                    shyActive = true;
+                    Debug.Log("Spawn Shy");
+                }
+
+                //Ragdoll
+                else if (spawnNum == 3)
+                {
+                    GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    bool foundFirst = false;
+                    bool foundSecond = false;
+                    foreach (GameObject enemy in enemies)
+                    {
+                        if (enemy.GetComponent<Enemy>().enemyType == EnemyType.RagdollMonster)
+                        {
+                            if ((ragSpawn1 != -1 && ragSpawn2 == -1) || foundSecond || (enemy.transform.position - ragdollPositions[ragSpawn1].position).magnitude < (enemy.transform.position - ragdollPositions[ragSpawn2].position).magnitude)
+                            {
+                                foundFirst = true;
+                            }
+                            else
+                            {
+                                foundSecond = true;
+                            }
+                            if (foundFirst && foundSecond)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    if (!foundFirst || !foundSecond)
+                    {
+                        ragSpawn1 = foundFirst ? ragSpawn1 : -1;
+                        ragSpawn2 = foundSecond ? ragSpawn2 : -1;
+                        //Debug.Log(mimicSpawn1 + "\t\t" + mimicSpawn2);
+                        List<Transform> closestTransforms = new List<Transform>();
+                        List<int> positionNumbers = new List<int>();
+                        for (int i = 0; i < ragdollPositions.Count; i++)
+                        {
+                            if (i != ragSpawn1 && i != ragSpawn2)
+                            {
+                                int insertInto = closestTransforms.Count;
+                                for (int j = 0; j < closestTransforms.Count; j++)
+                                {
+                                    if ((player.position - ragdollPositions[i].position).magnitude < (player.position - closestTransforms[j].position).magnitude)
+                                    {
+                                        insertInto = j;
+                                        break;
+                                    }
+                                }
+                                closestTransforms.Insert(insertInto, ragdollPositions[i]);
+                                positionNumbers.Insert(insertInto, i);
+                            }
+                        }
+                        spawner.SpawnEnemy(closestTransforms[2].position, EnemyType.RagdollMonster);
+                        if (!foundFirst)
+                        {
+                            ragSpawn1 = positionNumbers[2];
+                        }
+                        else
+                        {
+                            ragSpawn2 = positionNumbers[2];
+                        }
+                        Debug.Log(ragSpawn1 + "\tRagdoll\t" + ragSpawn2);
+                    }
                 }
             }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(Random.Range(3f, 7f));
         }
     }
 
@@ -343,6 +459,14 @@ public class GameController : Singleton<GameController>
         descriptionTutorialText.text = tutorialDescriptionTexts[2];
     }
 
+    public void Pause()
+    {
+        isPaused = !isPaused;
+        pauseScreen.SetActive(isPaused);
+        Cursor.lockState = tutorialPannel.activeSelf || isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+        Time.timeScale = isPaused || tutorialPannel.activeSelf ? 0f : 1f;
+    }
+
     public void Continue()
     {
         if (tutorialNum == 0)
@@ -368,8 +492,11 @@ public class GameController : Singleton<GameController>
     public void Restart()
     {
         Time.timeScale = 1f;
-        Destroy(gameObject);//Perissting across games causes referance issues like button UI
-        SceneManager.LoadScene("Game");
+        player.transform.position = spawnPos;
+        player.gameObject.GetComponent<PlayerMovement>().gameOverScreen.SetActive(false);
+        player.gameObject.GetComponent<PlayerMovement>().sanityBar.fillAmount = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     public void MainMenu()

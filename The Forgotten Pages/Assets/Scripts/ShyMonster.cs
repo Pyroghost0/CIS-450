@@ -18,6 +18,7 @@ public class ShyMonster : Enemy
     private Transform player;
     public bool wasFound = false;
     private bool previousStopState;
+    public Renderer meshRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +38,11 @@ public class ShyMonster : Enemy
         {
             //Debug.Log(Vector3.Distance(player.parent.position, transform.position));
             navMeshAgent.SetDestination(player.position);
-            /*if (camera.IsObjectVisible(GetComponent<MeshRenderer>()))
+            /*if (camera.IsObjectVisible(meshRenderer))
             {
                 Debug.Log("Stopping");
             }*/
-            navMeshAgent.isStopped = camera.IsObjectVisible(GetComponent<MeshRenderer>());
+            navMeshAgent.isStopped = camera.IsObjectVisible(meshRenderer);
             yield return new WaitForFixedUpdate();
             yield return new WaitUntil(() => !frozen);
         }
@@ -108,7 +109,7 @@ public class ShyMonster : Enemy
         float inSightTime = 0f;
         while (!wasFound)
         {
-            if (camera.IsObjectVisible(GetComponent<MeshRenderer>()) && !frozen)
+            if (camera.IsObjectVisible(meshRenderer) && !frozen)
             {
                 RaycastHit rayHit;
                 if (Physics.Raycast(transform.position, player.position - transform.position, out rayHit) && rayHit.collider != null && rayHit.collider.CompareTag("Player"))
@@ -161,14 +162,14 @@ public class ShyMonster : Enemy
                     }
                 }
             }
-            if (wall && !camera.IsObjectVisible(GetComponent<MeshRenderer>()))
+            if (wall && !camera.IsObjectVisible(meshRenderer))
             {
                 break;
             }
             yield return new WaitForFixedUpdate();
             timer += Time.deltaTime;
         }
-        yield return new WaitUntil(() => !camera.IsObjectVisible(GetComponent<MeshRenderer>()));
+        yield return new WaitUntil(() => !camera.IsObjectVisible(meshRenderer));
         //Debug.Log("Out of view");
         Destroy(gameObject);
     }

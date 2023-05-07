@@ -542,12 +542,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 1
-  sanityDamage: 0.25
+  sanityDamage: 0.1
   frozen: 0
   jumpscareCollider: {fileID: 2403075418226612021}
   jumpscareSprite: {fileID: 0}
-  navMeshAgent: {fileID: 0}
+  navMeshAgent: {fileID: 6937115702151793087}
   wasFound: 0
+  meshRenderer: {fileID: 1339374381407342384}
 --- !u!95 &145484803160746854
 Animator:
   serializedVersion: 5

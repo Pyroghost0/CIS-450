@@ -6,18 +6,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
+    public static float mouseSensitivity = 50f;
     public GameObject player;
     private float verticalLookRotation = 0f;
+    public TextMeshProUGUI sensitivityText;
+    public Slider sensitivitySlider;
 
-    /*private void Start()
+    void Start()
     {
-        StartCoroutine(Sight());
-    }*/
+        sensitivitySlider.value = mouseSensitivity/2f;
+        //StartCoroutine(Sight());
+    }
+
+    public void changeSensitivity()
+    {
+        sensitivityText.text = sensitivitySlider.value.ToString();
+        mouseSensitivity = sensitivitySlider.value*2f;
+    }
 
     /*private void OnApplicationFocus(bool focus)
     {

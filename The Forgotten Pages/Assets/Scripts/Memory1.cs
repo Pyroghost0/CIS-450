@@ -103,7 +103,7 @@ public class Memory1 : MonoBehaviour, Memory
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
 
         //dialouge
-        motherCharacter.StartDialouge(new string[] {"Oh dear, that was quite the fall!", "Shhh, shhh. Don't cry! I've got just the thing.", "It's nothing a band-aid can't fix."});
+        motherCharacter.StartDialouge(new string[] {"Oh dear, that was quite the fall!", "Shhh, shhh. Don't cry! I've got just the thing.", "It's nothing a bandage can't fix."});
         //a lot of motherCharacter.isTalking == false
         yield return new WaitUntil(() => motherCharacter.isTalking == false);
 
@@ -116,7 +116,7 @@ public class Memory1 : MonoBehaviour, Memory
 
         motherCharacter.StartDialouge(new string[] { "See? There you go. All better.", "You want to go home?", "We can pick up some icecream on the way!" });
 
-        yield return new WaitUntil(() => motherCharacter.isTalking == false);
+        yield return new WaitUntil(() => motherCharacter.isTalking == false || !GameController.instance.isInMemory);
 
         motherCharacter.moveToNewPos = true;
         motherCharacter.newPos = 115f;
@@ -128,10 +128,6 @@ public class Memory1 : MonoBehaviour, Memory
         player3D.playerUpgrades = new PlayerSprint(player3D.playerUpgrades, player3D);
         GameController.instance.memoriesCollected++;
         GameController.instance.memoryImages[0].color = Color.white;
-        if (GameController.instance.memoriesCollected == 4)
-        {
-            GameController.instance.memoryImages[4].color = Color.white;
-        }
     }
 
     public void RecordMemory()
