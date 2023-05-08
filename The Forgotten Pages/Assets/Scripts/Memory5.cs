@@ -78,7 +78,7 @@ public class Memory5 : MonoBehaviour, Memory
         motherCharacter.StartDialouge(new string[] { "Huh, well I'm stumped!", "Guess I'll just have to go to the park all by myself." });
         yield return new WaitUntil(() => !motherCharacter.isTalking);
 
-        player.GetComponent<SpriteRenderer>().sortingOrder = 10;
+        player.GetComponent<SpriteRenderer>().sortingOrder = 5;
 
         motherCharacter.moveToNewPos = true;
         motherCharacter.newPos = 95;
