@@ -54,7 +54,7 @@ public class Memory5 : MonoBehaviour, Memory
         player.GetComponent<SpriteRenderer>().sortingOrder = -1;
 
         motherCharacter.moveToNewPos = true;
-        motherCharacter.newPos = 99;
+        motherCharacter.newPos = 98.5f;
         motherCharacter.speed = 2;
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
 
@@ -62,7 +62,7 @@ public class Memory5 : MonoBehaviour, Memory
         yield return new WaitUntil(() => !motherCharacter.isTalking);
 
         motherCharacter.moveToNewPos = true;
-        motherCharacter.newPos = 101;
+        motherCharacter.newPos = 100f;
         motherCharacter.speed = 1;
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
 
@@ -71,7 +71,7 @@ public class Memory5 : MonoBehaviour, Memory
 
 
         motherCharacter.moveToNewPos = true;
-        motherCharacter.newPos = 94;
+        motherCharacter.newPos = 94.5f;
         motherCharacter.speed = 1;
         yield return new WaitUntil(() => motherCharacter.moveToNewPos == false);
 
@@ -97,10 +97,11 @@ public class Memory5 : MonoBehaviour, Memory
         //need to fix this at the meeting
         GameController.instance.memoriesCollected++;
         GameController.instance.memoryImages[3].color = Color.white;
-        if (GameController.instance.memoriesCollected == 3)
+        GameController.instance.memoryFragments[2].SetActive(true);
+        /*if (GameController.instance.memoriesCollected == 3)
         {
             GameController.instance.finalMemory.SetActive(true);
-        }
+        }*/
         //Debug.Log(GameController.instance.memoriesCollected);
 
     }

@@ -47,6 +47,7 @@ public class MemoryPlayerMovement : MonoBehaviour
         {
             //movementSpeed = 0;
             body.velocity = Vector2.zero;
+            animator.SetBool("isMoving", false);
         }
         else if (outOfBounds)
         {
@@ -99,16 +100,19 @@ public class MemoryPlayerMovement : MonoBehaviour
         }
         if (flashlightUnlocked)
         {
-            Debug.Log("flashlight should be unlocked");
-            if (Input.GetKey(KeyCode.F))
+            //Debug.Log("flashlight should be unlocked");
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                flashlightLight.SetActive(true);
-                flashlightOn = true;
-            }
-            else
-            {
-                flashlightLight.SetActive(false);
-                flashlightOn = false;
+                if (!flashlightLight.activeSelf)
+                {
+                    flashlightLight.SetActive(true);
+                    flashlightOn = true;
+                }
+                else
+                {
+                    flashlightLight.SetActive(false);
+                    flashlightOn = false;
+                }
             }
         }
     }

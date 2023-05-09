@@ -12,7 +12,7 @@ using TMPro;
 
 public class MouseLook : MonoBehaviour
 {
-    public static float mouseSensitivity = 50f;
+    public static float mouseSensitivity = 66f;
     public GameObject player;
     private float verticalLookRotation = 0f;
     public TextMeshProUGUI sensitivityText;

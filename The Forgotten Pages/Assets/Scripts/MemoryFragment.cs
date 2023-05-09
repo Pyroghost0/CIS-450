@@ -53,8 +53,9 @@ public class MemoryFragment : MonoBehaviour
                 Destroy(enemy);
             }
             playerMove.pickupSound.Play();
-
-            GameController.instance.SwitchGameMode(memoryNum);
+            playerMove.sanityBar.fillAmount = 1f;
+            gameController.spawnPos = transform.position;
+            gameController.SwitchGameMode(memoryNum);
             gameController.breathing.Stop();
             gameController.heartBeat.Stop();
 

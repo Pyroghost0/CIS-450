@@ -27,8 +27,9 @@ public class GameController : Singleton<GameController>
 
     public bool isInMemory;
     public GameObject memoryManger;
-    public Memory[] memories = new Memory[] {new Memory1(), new Memory2(), new Memory3(), new Memory4(), new Memory5() };
-    public GameObject finalMemory;
+    //public Memory[] memories = new Memory[] {new Memory1(), new Memory2(), new Memory3(), new Memory4(), new Memory5() };
+    public Memory[] memories;
+    public GameObject[] memoryFragments;
     public int memoriesCollected;
     public Image[] memoryImages;
     public GameObject gameUI;
@@ -57,6 +58,7 @@ public class GameController : Singleton<GameController>
         if (instance == null)
         {
             instance = this;
+            memories = new Memory[] { gameObject.AddComponent<Memory1>(), gameObject.AddComponent<Memory2>(), gameObject.AddComponent<Memory3>(), gameObject.AddComponent<Memory4>(), gameObject.AddComponent<Memory5>() };
             //make sure this persists across scenes
             DontDestroyOnLoad(gameObject);
         }
@@ -70,7 +72,7 @@ public class GameController : Singleton<GameController>
 
     private void OnApplicationFocus(bool focus)
     {
-        if (!tutorialPannel.activeSelf)
+        if (!tutorialPannel.activeSelf && !isPaused)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -125,8 +127,20 @@ public class GameController : Singleton<GameController>
         if (!isInMemory)
         {
             //play everything in the 3D scene
+            StartCoroutine(MovementTransition());
         }
         gameUI.SetActive(!isInMemory);
+    }
+
+    IEnumerator MovementTransition()
+    {
+        player.GetComponent<PlayerMovement>().inJumpscare = true;
+        float timeStarted = Time.realtimeSinceStartup+1f;
+        yield return new WaitUntil(() => Input.GetAxisRaw("Horizontal") != 1f || Input.GetAxisRaw("Vertical") != 0f || timeStarted <= Time.realtimeSinceStartup);
+        //Debug.Log(Input.GetAxisRaw("Horizontal"));
+        //Debug.Log(Input.GetAxisRaw("Vertical"));
+        //Debug.Log(timeStarted <= Time.realtimeSinceStartup);
+        player.GetComponent<PlayerMovement>().inJumpscare = false;
     }
 
     public void LibrarianInArea()
@@ -492,9 +506,16 @@ public class GameController : Singleton<GameController>
     public void Restart()
     {
         Time.timeScale = 1f;
+        player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = spawnPos;
+        player.GetComponent<CharacterController>().enabled = true;
         player.gameObject.GetComponent<PlayerMovement>().gameOverScreen.SetActive(false);
         player.gameObject.GetComponent<PlayerMovement>().sanityBar.fillAmount = 1;
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
         Cursor.lockState = CursorLockMode.Locked;
 
     }

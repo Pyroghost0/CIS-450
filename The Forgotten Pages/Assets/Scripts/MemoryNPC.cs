@@ -94,7 +94,7 @@ public class MemoryNPC : MonoBehaviour
         for (int i = 1; i < dialouge.Length; i++)
         {
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
-            Debug.Log(i);
+            //Debug.Log(i);
             text.text = dialouge[i];
             yield return new WaitForSeconds(.5f);
         }
