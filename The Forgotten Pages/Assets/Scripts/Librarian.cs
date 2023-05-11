@@ -61,6 +61,7 @@ public class Librarian : Enemy
             }
         }
         light.intensity = .5f;
+        transform.GetComponent<Animator>().SetTrigger("StartWalk");
         StartCoroutine(DetectSound());
         //Sets initial desitination to closest one to the player
         currentPosition = navGraph[0].GetComponent<Position>();
