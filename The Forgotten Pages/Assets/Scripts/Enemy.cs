@@ -36,6 +36,10 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Freeze()
     {
         frozen = true;
+        if (GetComponent<Animator>() != null)
+        {
+            GetComponent<Animator>().speed = 0f;
+        }
         GetComponent<NavMeshAgent>().isStopped = true;
         jumpscareCollider.SetActive(false);
         //frozenSpeed = GetComponent<NavMeshAgent>().speed;
@@ -44,6 +48,10 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Unfreeze()
     {
         frozen = false;
+        if (GetComponent<Animator>() != null)
+        {
+            GetComponent<Animator>().speed = 1f;
+        }
         GetComponent<NavMeshAgent>().isStopped = false;
         jumpscareCollider.SetActive(true);
     }

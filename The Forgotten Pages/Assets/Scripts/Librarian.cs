@@ -39,8 +39,28 @@ public class Librarian : Enemy
 
     protected override IEnumerator EnemyActionBehaivior()
     {
-        yield return new WaitForSeconds(3f);
-        startLight.enabled = false;
+        //yield return new WaitForSeconds(3f);
+        //startLight.enabled = false;
+        float timer = 0f;
+        while (timer < 2.5f)
+        {
+            yield return new WaitForFixedUpdate();
+            if (!frozen)
+            {
+                timer += Time.deltaTime;
+            }
+        }
+        Light light = startLight.GetComponent<Light>();
+        while (timer < 3f)
+        {
+            light.intensity = 3.5f - timer;
+            yield return new WaitForFixedUpdate();
+            if (!frozen)
+            {
+                timer += Time.deltaTime;
+            }
+        }
+        light.intensity = .5f;
         StartCoroutine(DetectSound());
         //Sets initial desitination to closest one to the player
         currentPosition = navGraph[0].GetComponent<Position>();

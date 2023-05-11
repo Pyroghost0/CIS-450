@@ -904,7 +904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 3
-  sanityDamage: 0.25
+  sanityDamage: 0.5
   frozen: 0
   jumpscareCollider: {fileID: 0}
   jumpscareSprite: {fileID: 21300000, guid: 2ab09f4998637f24385e9c2f27e24f3e, type: 3}

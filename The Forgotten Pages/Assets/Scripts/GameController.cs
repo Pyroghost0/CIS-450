@@ -97,9 +97,10 @@ public class GameController : Singleton<GameController>
             }
             tunnelGraph.Add(tunnels);
         }
+        //spawner.SpawnEnemy(tunnelGraph[0][0].GetChild(0).position, EnemyType.TunnelMonster, tunnelGraph[0][0].GetChild(0));
         SetUpTutorialPannel(0);
         //SpawnEnemies();
-    }
+}
 
     // Update is called once per frame
     void Update()
@@ -140,6 +141,7 @@ public class GameController : Singleton<GameController>
         //Debug.Log(Input.GetAxisRaw("Horizontal"));
         //Debug.Log(Input.GetAxisRaw("Vertical"));
         //Debug.Log(timeStarted <= Time.realtimeSinceStartup);
+        Input.ResetInputAxes();
         player.GetComponent<PlayerMovement>().inJumpscare = false;
     }
 
@@ -211,6 +213,7 @@ public class GameController : Singleton<GameController>
         PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
         while (true)
         {
+            yield return new WaitForSeconds(Random.Range(3f, 5f));
             if (!isInMemory && !playerMovement.frozenOverlay.gameObject.activeSelf)
             {
                 if (librarianActive)
@@ -241,7 +244,8 @@ public class GameController : Singleton<GameController>
                         }
                     }
                 }
-                int spawnNum = Random.Range(0, memoriesCollected >= 3 ? 4 : memoriesCollected+1);
+                int spawnNum = Random.Range(0, memoriesCollected >= 4 ? 5 : memoriesCollected+1);
+                Debug.Log(spawnNum);
 
                 //Librarian
                 if (spawnNum == 0 && !librarianActive && Time.timeSinceLevelLoad >= timeSpawnedLibrarian)
@@ -328,7 +332,7 @@ public class GameController : Singleton<GameController>
                 }
 
                 //Tunnel
-                /*else if (spawnNum == 2)
+                else if (spawnNum == 2)
                 {
                     activeTunnel = false;
                     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -353,12 +357,13 @@ public class GameController : Singleton<GameController>
                                 }
                             }
                         }
-                        spawner.SpawnEnemy(closest.parent.GetChild(0).GetChild(0).position, EnemyType.TunnelMonster);
+                        //spawner.SpawnEnemy(closest.parent.GetChild(0).GetChild(0).position, EnemyType.TunnelMonster);
+                        spawner.SpawnEnemy(closest.parent.GetChild(0).GetChild(0).position, EnemyType.TunnelMonster, closest.parent.GetChild(0).GetChild(0));
                     }
-                }*/
+                }
 
                 //Shy *not Among Us* monster
-                else if (spawnNum == 2 && !shyActive && Time.timeSinceLevelLoad >= timeSpawnedShy)
+                else if (spawnNum == 3 && !shyActive && Time.timeSinceLevelLoad >= timeSpawnedShy)
                 {
                     List<Transform> closestTransforms = new List<Transform>();
                     for (int i = 0; i < navGraph.Count; i++)
@@ -376,11 +381,11 @@ public class GameController : Singleton<GameController>
                     }
                     spawner.SpawnEnemy(closestTransforms[2].position, EnemyType.ShyMonster);
                     shyActive = true;
-                    Debug.Log("Spawn Shy");
+                    //Debug.Log("Spawn Shy");
                 }
 
                 //Ragdoll
-                else if (spawnNum == 3)
+                else if (spawnNum == 4)
                 {
                     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
                     bool foundFirst = false;
@@ -440,7 +445,7 @@ public class GameController : Singleton<GameController>
                     }
                 }
             }
-            yield return new WaitForSeconds(Random.Range(3f, 7f));
+            yield return new WaitForSeconds(Random.Range(5f - memoriesCollected, 7f - memoriesCollected));
         }
     }
 

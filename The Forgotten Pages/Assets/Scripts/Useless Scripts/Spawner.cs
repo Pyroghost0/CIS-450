@@ -11,8 +11,8 @@ public class Spawner : MonoBehaviour
 {
     public EnemySpawner enemySpawner;
 
-    public void SpawnEnemy(Vector3 position, EnemyType enemyType)
+    public void SpawnEnemy(Vector3 position, EnemyType enemyType, Transform rotation = null)
     {
-        enemySpawner.SpawnEnemy(position, enemyType);
+        enemySpawner.SpawnEnemy(position, enemyType, rotation == null ? transform.rotation : rotation.rotation);
     }
 }

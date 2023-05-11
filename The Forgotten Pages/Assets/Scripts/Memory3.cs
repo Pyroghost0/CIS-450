@@ -49,9 +49,9 @@ public class Memory3 : MonoBehaviour, Memory
 
     public IEnumerator Cutscene()
     {
+        player.GetComponent<MemoryPlayerMovement>().canMove = false;
         yield return new WaitUntil(() => GameController.instance.isInMemory);
 
-        player.GetComponent<MemoryPlayerMovement>().canMove = false;
         yield return new WaitForSeconds(.1f);
 
         motherCharacter.moveToNewPos = true;
@@ -72,6 +72,8 @@ public class Memory3 : MonoBehaviour, Memory
         GameController.instance.memoriesCollected++;
         //GameController.instance.memoryImages[2].color = Color.white;
         GameController.instance.memoryFragments[1].SetActive(true);
+        player3D.speed = 3f;
+        player3D.playerSprint.initSpeed = 3f;
         /*if (GameController.instance.memoriesCollected == 3)
         {
             GameController.instance.finalMemory.SetActive(true);

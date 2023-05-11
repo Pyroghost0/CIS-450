@@ -10,11 +10,12 @@ using UnityEngine;
 public class PlayerSprint : PlayerDecorator
 {
     public PlayerMovement playerMovement;
-    private float initSpeed;
+    public float initSpeed;
 
     public PlayerSprint(PlayerUpgrade playerUpgrade, PlayerMovement pm)
     {
         playerMovement = pm;
+        playerMovement.playerSprint = this;
         initSpeed = pm.speed;
         nextAbility = playerUpgrade;
     }

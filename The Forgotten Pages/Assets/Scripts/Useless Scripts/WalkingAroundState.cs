@@ -40,7 +40,7 @@ public class WalkingAroundState : EnemyState
         }
         while (!tunnelMonster.seesPlayer)
         {
-            tunnelMonster.navMeshAgent.destination = currentPosition.position;
+            tunnelMonster.navMeshAgent.destination = currentPosition.GetComponent<Position>().otherPositions.Count == 0 ? currentPosition.GetChild(0).position : currentPosition.position;
             //Debug.Log(navMeshAgent.destination);
             yield return new WaitUntil(() => tunnelMonster.seesPlayer || Vector3.Distance(currentPosition.position, transform.position) <= 3f);
             if (!tunnelMonster.seesPlayer && currentPosition.GetComponent<Position>().otherPositions.Count == 0)

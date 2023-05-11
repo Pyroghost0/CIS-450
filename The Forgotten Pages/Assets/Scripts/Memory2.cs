@@ -50,9 +50,9 @@ public class Memory2 : MonoBehaviour, Memory
 
     public IEnumerator Cutscene()
     {
+        player.GetComponent<MemoryPlayerMovement>().canMove = false;
         yield return new WaitUntil(() => GameController.instance.isInMemory);
 
-        player.GetComponent<MemoryPlayerMovement>().canMove = false;
         yield return new WaitForSeconds(1);
 
         motherCharacter.StartDialouge(new string[] {"Okay honey, now it's your turn.", "Try and come up with a spooky story!"});
@@ -91,6 +91,8 @@ public class Memory2 : MonoBehaviour, Memory
         GameController.instance.memoriesCollected++;
         GameController.instance.memoryImages[1].color = Color.white;
         GameController.instance.memoryFragments[0].SetActive(true);
+        player3D.speed = 3.5f;
+        player3D.playerSprint.initSpeed = 3.5f;
         /*if (GameController.instance.memoriesCollected == 3)
         {
             GameController.instance.finalMemory.SetActive(true);

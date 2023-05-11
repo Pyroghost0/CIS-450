@@ -18,17 +18,35 @@ public class ShyMonster : Enemy
     private Transform player;
     public bool wasFound = false;
     private bool previousStopState;
-    public Renderer meshRenderer;
+    public Animator animator;
+    public SkinnedMeshRenderer meshRenderer;
+    public Material normalMat;
+    public Material frozenMat;
 
     // Start is called before the first frame update
     void Start()
     {
         //enemyType = EnemyType.ShyMonster;
+        animator = GetComponent<Animator>();
         navGraph = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().navGraph;
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().behindPosition;
         minDespawnTime = 0f;
         StartCoroutine(EnemyBehaivior());
+    }
+
+    void Update()
+    {
+        if (navMeshAgent.isStopped)
+        {
+            meshRenderer.material = frozenMat;
+            animator.speed = 0f;
+        }
+        else
+        {
+            meshRenderer.material = normalMat;
+            animator.speed = 1f;
+        }
     }
 
     protected override IEnumerator EnemyActionBehaivior()
@@ -115,7 +133,7 @@ public class ShyMonster : Enemy
                 if (Physics.Raycast(transform.position, player.position - transform.position, out rayHit) && rayHit.collider != null && rayHit.collider.CompareTag("Player"))
                 {
                     inSightTime += Time.deltaTime;
-                    if (inSightTime >= 3.5f)
+                    if (inSightTime >= 2f)
                     {
                         wasFound = true;
                     }

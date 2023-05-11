@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject winScreen;
 
+    public AudioSource freezeSound;
     public AudioSource pickupSound;
     public bool inJumpscare;
 
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isSprinting;
     public AudioSource sprintingSound;
+    public PlayerSprint playerSprint;
 
     private void Start()
     {
@@ -216,6 +218,7 @@ public class PlayerMovement : MonoBehaviour
         float timer = 0f;
         Image frozenImage = frozenOverlay.GetComponent<Image>();
         frozenOverlay.gameObject.SetActive(true);
+        freezeSound.Play();
         while (timer < 10f)
         {
             frozenOverlay.sizeDelta = new Vector2(960f, 540f) * (1f + (timer * timer / 300f));

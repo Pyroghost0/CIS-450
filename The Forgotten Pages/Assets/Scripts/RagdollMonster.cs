@@ -95,12 +95,14 @@ public class RagdollMonster : Enemy
     public override void Freeze()
     {
         frozen = true;
+        ragdollAnimation.mainRB.gameObject.SetActive(false);
         scream.pitch = -.5f;
     }
 
     public override void Unfreeze()
     {
         frozen = false;
+        ragdollAnimation.mainRB.gameObject.SetActive(true);
         scream.pitch = 1f;
     }
 }

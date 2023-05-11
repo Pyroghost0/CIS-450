@@ -40,9 +40,9 @@ public class Memory5 : MonoBehaviour, Memory
 
     public IEnumerator Cutscene()
     {
+        player.GetComponent<MemoryPlayerMovement>().canMove = false;
         yield return new WaitUntil(() => GameController.instance.isInMemory);
 
-        player.GetComponent<MemoryPlayerMovement>().canMove = false;
         yield return new WaitForSeconds(.1f);
 
         tutorialBox.description = "You're playing hide and seek! Press [E] to hide.";
@@ -98,6 +98,8 @@ public class Memory5 : MonoBehaviour, Memory
         GameController.instance.memoriesCollected++;
         GameController.instance.memoryImages[3].color = Color.white;
         GameController.instance.memoryFragments[2].SetActive(true);
+        player3D.speed = 2.5f;
+        player3D.playerSprint.initSpeed = 2.5f;
         /*if (GameController.instance.memoriesCollected == 3)
         {
             GameController.instance.finalMemory.SetActive(true);

@@ -50,9 +50,9 @@ public class Memory1 : MonoBehaviour, Memory
 
     public IEnumerator Cutscene()
     {
+        player.GetComponent<MemoryPlayerMovement>().canMove = false;
         yield return new WaitUntil(() => GameController.instance.isInMemory);
 
-        player.GetComponent<MemoryPlayerMovement>().canMove = false;
         //player shouldn't be able to move yet.
         Debug.Log("cutscene started");
         importantKidCharacter.moveToNewPos = true;

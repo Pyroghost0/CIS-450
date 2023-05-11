@@ -50,10 +50,11 @@ public void StartCutscene()
 
 public IEnumerator Cutscene()
 {
+    player.GetComponent<MemoryPlayerMovement>().canMove = false;
+    player.GetComponent<SpriteRenderer>().flipX = false;
     yield return new WaitUntil(() => GameController.instance.isInMemory);
 
-    player.GetComponent<MemoryPlayerMovement>().canMove = false;
-    player.GetComponent<SpriteRenderer>().flipX= false;
+    
     yield return new WaitForSeconds(.1f);
 
     motherCharacter.StartDialouge(new string[] { "You excited to get to the library?", "I know, I know, you've been talking about it for weeks.", "And your favorite author's going to be there today, right?"});
@@ -86,10 +87,12 @@ public IEnumerator Cutscene()
     tutorialBox.description = "Press [Q] to scream.";
     tutorialBox.gameObject.SetActive(true);
     yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Q));
-
+    player3D.freezeSound.Play();
+    player3D.frozenOverlay.gameObject.SetActive(true);
     tutorialBox.gameObject.SetActive(false);
     //could add something here with freeze effect on screen or a scream sound effect.
-    yield return new WaitForSeconds(3f);
+    yield return new WaitForSeconds(4f);
+    player3D.frozenOverlay.gameObject.SetActive(false);
 
     GameController.instance.SwitchGameMode(0);
 
@@ -100,7 +103,9 @@ public IEnumerator Cutscene()
     GameController.instance.memoryImages[2].color = Color.white;
     GameController.instance.memoryImages[4].color = Color.white;
     player3D.playerUpgrades = new FlreezeAbility(player3D.playerUpgrades, player3D);
-    //Debug.Log(GameController.instance.memoriesCollected);
+        player3D.speed = 2f;
+        player3D.playerSprint.initSpeed = 2f;
+        //Debug.Log(GameController.instance.memoriesCollected);
 
     }
 

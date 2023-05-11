@@ -37,7 +37,7 @@ public class SeePlayerState : EnemyState
                 if (tunnelMonster.seesPlayer)
                 {
                     tunnelMonster.seesPlayer = false;
-                    yield return new WaitForFixedUpdate();
+                    yield return new WaitForEndOfFrame();
                 }
                 else
                 {
